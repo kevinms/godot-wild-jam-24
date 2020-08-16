@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World/walls-v2.png" type="Texture" id=1]
+
+[sub_resource type="TileSet" id=1]
+0/name = "walls-v2.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 224 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 1, 5 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Floor" type="TileMap" parent="."]
+format = 1
+
+[node name="Walls" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131074, 0, 131076, 131075, 0, 65539, 131076, 0, 65540, 131077, 0, 65539, 131078, 0, 65540, 131079, 0, 65539, 131080, 0, 131074, 196610, 0, 262147, 196616, 0, 262147, 196617, 0, 262147, 196620, 0, 1, 196621, 0, 1, 262146, 0, 262147, 262152, 0, 262148, 262153, 0, 262147, 327682, 0, 262147, 327689, 0, 196612, 327690, 0, 65539, 327691, 0, 65539, 327692, 0, 65539, 327693, 0, 196610, 393218, 0, 262147, 393225, 0, 262148, 393229, 0, 262147, 458754, 0, 327684, 458755, 0, 393218, 458756, 0, 393219, 458757, 0, 393220, 458758, 0, 393219, 458759, 0, 393219, 458760, 0, 327681, 458765, 0, 262147, 524296, 0, 327684, 524297, 0, 327683, 524298, 0, 393219, 524299, 0, 393219, 524300, 0, 393219, 524301, 0, 327682 )
