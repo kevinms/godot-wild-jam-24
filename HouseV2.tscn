@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://World/walls-v2.png" type="Texture" id=1]
 [ext_resource path="res://World/floor-tiles-v2.png" type="Texture" id=2]
@@ -15,6 +15,9 @@
 [ext_resource path="res://Furniture/bookshelf_flower.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Furniture/Pacifier.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Furniture/Crib.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Furniture/BedLarge.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Furniture/TableSmallFront.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Furniture/PlantSmall.tscn" type="PackedScene" id=18]
 
 [sub_resource type="TileSet" id=1]
 0/name = "floor-tiles-v2.png 0"
@@ -440,6 +443,27 @@ position = Vector2( 400.119, -153.908 )
 
 [node name="crib" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 434.588, -147.022 )
+
+[node name="Node2D" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 145.212, 10.8169 )
+
+[node name="PlantSmall" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 255.025, -20.0661 )
+
+[node name="PlantSmall2" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 293.752, -143.08 )
+
+[node name="TableSmallFront" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 191.304, -25.3761 )
+
+[node name="Lamp" parent="YSort/TableSmallFront" instance=ExtResource( 9 )]
+position = Vector2( 0, -14.4212 )
+
+[node name="TableSmallFront2" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 95.7871, -25.5634 )
+
+[node name="Lamp2" parent="YSort/TableSmallFront2" instance=ExtResource( 9 )]
+position = Vector2( -0.374573, -14.0466 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 127.542
