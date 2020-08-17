@@ -4,15 +4,16 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.51068
-height = 10.6787
+height = 9.5062
 
 [node name="bookshelf_flower" type="StaticBody2D"]
 
 [node name="primary_sprite" type="Sprite" parent="."]
-position = Vector2( 0, -9.51073 )
+position = Vector2( 0.445454, -15.8584 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 3.50427 )
+visible = false
+position = Vector2( -0.111359, -2.84338 )
 rotation = 1.5708
 shape = SubResource( 1 )
