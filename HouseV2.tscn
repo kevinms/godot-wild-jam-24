@@ -428,7 +428,7 @@ position = Vector2( 101.702, 110.616 )
 position = Vector2( 99.9185, 219.726 )
 
 [node name="PlantTall3" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 509.687, 54.263 )
+position = Vector2( 508.98, 48.9597 )
 scale = Vector2( -1, 1 )
 
 [node name="Pacifier" parent="YSort" instance=ExtResource( 14 )]
@@ -447,7 +447,7 @@ position = Vector2( 316.225, -152.364 )
 position = Vector2( 451.71, -150.535 )
 
 [node name="crib" parent="YSort" instance=ExtResource( 15 )]
-position = Vector2( 386.37, -105.948 )
+position = Vector2( 365.511, -102.766 )
 
 [node name="Node2D" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 145.212, 10.8169 )
