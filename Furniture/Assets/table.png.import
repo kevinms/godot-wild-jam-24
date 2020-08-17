@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/plant-tall.png-830976761517a165801ea53f783ea187.stex"
+path="res://.import/table.png-f1beaca11f3444e29dd827e9514b8031.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Furniture/plant-tall.png"
-dest_files=[ "res://.import/plant-tall.png-830976761517a165801ea53f783ea187.stex" ]
+source_file="res://Furniture/Assets/table.png"
+dest_files=[ "res://.import/table.png-f1beaca11f3444e29dd827e9514b8031.stex" ]
 
 [params]
 
