@@ -475,7 +475,7 @@ position = Vector2( 165.675, 125.365 )
 texture = ExtResource( 19 )
 
 [node name="DiaperChangingStation" parent="YSort" instance=ExtResource( 20 )]
-position = Vector2( 386.954, -146.024 )
+position = Vector2( 383.954, -142.524 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 127.542
