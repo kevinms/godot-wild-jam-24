@@ -19,11 +19,11 @@ __meta__ = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 508.0
-margin_bottom = 68.0
+margin_bottom = 36.0
 
 [node name="Bars" type="VBoxContainer" parent="HBoxContainer"]
 margin_right = 133.0
-margin_bottom = 64.0
+margin_bottom = 32.0
 
 [node name="Bar" type="HBoxContainer" parent="HBoxContainer/Bars"]
 margin_right = 133.0
@@ -55,11 +55,11 @@ align = 2
 margin_left = 69.0
 margin_right = 133.0
 margin_bottom = 32.0
+value = 60.0
 texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
 texture_progress = ExtResource( 3 )
 
 [node name="Counters" type="HBoxContainer" parent="HBoxContainer"]
 margin_left = 137.0
 margin_right = 137.0
-margin_bottom = 64.0
+margin_bottom = 32.0

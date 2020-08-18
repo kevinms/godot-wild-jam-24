@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://World/walls-v2.png" type="Texture" id=1]
 [ext_resource path="res://World/floor-tiles-v2.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://Furniture/Fridge.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Furniture/KitchenSink.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Furniture/KitchenCounter.tscn" type="PackedScene" id=29]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=30]
 
 [sub_resource type="TileSet" id=1]
 0/name = "floor-tiles-v2.png 0"
@@ -404,6 +405,13 @@ position = Vector2( 286.983, 204.707 )
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
 
+[node name="GUI" parent="YSort/Player/Camera2D" instance=ExtResource( 30 )]
+visible = false
+margin_left = -255.212
+margin_top = -142.111
+margin_right = -110.212
+margin_bottom = -102.111
+
 [node name="Light2D" type="Light2D" parent="YSort"]
 position = Vector2( 176.572, 100.274 )
 scale = Vector2( 3.97974, 1.19865 )
@@ -526,10 +534,13 @@ position = Vector2( 407.354, 41.9317 )
 position = Vector2( 380.071, 42.1169 )
 
 [node name="KitchenCounter" parent="YSort" instance=ExtResource( 29 )]
-position = Vector2( 349.549, 140.037 )
+position = Vector2( 351.437, 41.8741 )
+
+[node name="KitchenCounter3" parent="YSort" instance=ExtResource( 29 )]
+position = Vector2( 368.662, 91.6634 )
 
 [node name="KitchenCounter2" parent="YSort" instance=ExtResource( 29 )]
-position = Vector2( 323.518, 140.04 )
+position = Vector2( 325.406, 41.8771 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 127.542
