@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Furniture/Assets/frig.png" type="Texture" id=1]
+[ext_resource path="res://Furniture/Fridge.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.50567
 height = 18.8349
 
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 4.05446
+
 [node name="Fridge" type="StaticBody2D"]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.630672, -31.3234 )
@@ -16,3 +21,10 @@ texture = ExtResource( 1 )
 position = Vector2( 0.525562, -9.88054 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="Fridge" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fridge"]
+position = Vector2( 0.140305, -4.34954 )
+rotation = 1.5708
+shape = SubResource( 2 )

@@ -22,13 +22,19 @@ func _ready():
 	hour = 7
 	minute = 0
 	updateUI()
+	
+func updateEnergy(level):
+	energy = level
+	updateUI()
+
+func getEnergy():
+	return energy
 
 func updateUI():
 	numberElement.text = "%02d:%02d" % [hour, minute]
 	energyGuageElement.value = energy
 	minHand.rect_rotation = minute/60.0*360
 	hourHand.rect_rotation = (hour/12.0 + minute/60.0/12 )*360
-
 
 func _on_Timer_timeout():
 	minute += INTERVAL
