@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Furniture/Assets/GodotDoll.png" type="Texture" id=1]
+
+[node name="GodotDoll" type="Node2D"]
+
+[node name="GodotDoll" type="Sprite" parent="."]
+position = Vector2( -0.117989, -5.54526 )
+scale = Vector2( 0.417452, 0.417452 )
+texture = ExtResource( 1 )
