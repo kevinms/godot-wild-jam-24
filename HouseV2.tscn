@@ -502,6 +502,9 @@ position = Vector2( 383.954, -142.524 )
 [node name="GodotPicture" parent="YSort" instance=ExtResource( 22 )]
 position = Vector2( 43.2654, 129.302 )
 
+[node name="GodotWild-jam-wallpaper" parent="YSort" instance=ExtResource( 25 )]
+position = Vector2( 63.2396, 129.075 )
+
 [node name="ComputerDesk" parent="YSort" instance=ExtResource( 21 )]
 position = Vector2( 3.8443, 197.16 )
 
@@ -630,6 +633,3 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="GodotWild-jam-wallpaper" parent="." instance=ExtResource( 25 )]
-position = Vector2( 63.2396, 129.075 )
