@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Furniture/Assets/godot-wild-jam-wallpaper.png" type="Texture" id=1]
+
+[node name="Node2D" type="Position2D"]
+
+[node name="godot-wild-jam-wallpaper" type="Sprite" parent="."]
+position = Vector2( 0.0468216, -19.4312 )
+scale = Vector2( 0.135, 0.135 )
+texture = ExtResource( 1 )

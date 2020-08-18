@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://World/walls-v2.png" type="Texture" id=1]
 [ext_resource path="res://World/floor-tiles-v2.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://GodotPicture.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Furniture/LampTall.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Furniture/GodotDoll.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Furniture/GodotWildJamWallpaper.tscn" type="PackedScene" id=25]
 
 [sub_resource type="TileSet" id=1]
 0/name = "floor-tiles-v2.png 0"
@@ -488,7 +489,7 @@ texture = ExtResource( 19 )
 position = Vector2( 383.954, -142.524 )
 
 [node name="GodotPicture" parent="YSort" instance=ExtResource( 22 )]
-position = Vector2( 51.5, 129.5 )
+position = Vector2( 43.2654, 129.302 )
 
 [node name="ComputerDesk" parent="YSort" instance=ExtResource( 21 )]
 position = Vector2( 3.8443, 197.16 )
@@ -500,7 +501,7 @@ position = Vector2( 3.75, 160.25 )
 position = Vector2( 416, 175.25 )
 
 [node name="GodotDoll" parent="YSort" instance=ExtResource( 24 )]
-position = Vector2( 65.3787, 129.642 )
+position = Vector2( 62.7495, 130.336 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 127.542
@@ -591,3 +592,6 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GodotWild-jam-wallpaper" parent="." instance=ExtResource( 25 )]
+position = Vector2( 63.2396, 129.075 )
