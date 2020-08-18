@@ -5,7 +5,7 @@
 [ext_resource path="res://Furniture/Crib.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/walls.png" type="Texture" id=4]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://GUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass-tile.png 0"
