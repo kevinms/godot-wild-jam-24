@@ -397,8 +397,8 @@ graph_offset = Vector2( -112, 52 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [sub_resource type="CapsuleShape2D" id=24]
-radius = 6.52327
-height = 11.3394
+radius = 9.49068
+height = 8.07057
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -436,6 +436,8 @@ parameters/Walk/blend_position = Vector2( -0.0457857, -0.70578 )
 position = Vector2( 0, -15 )
 
 [node name="ActionArea" type="Area2D" parent="Position2D"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/ActionArea"]
 position = Vector2( 0, 14 )
@@ -443,3 +445,5 @@ rotation = 1.5708
 shape = SubResource( 24 )
 [connection signal="area_shape_entered" from="Position2D/ActionArea" to="." method="_on_ActionArea_area_shape_entered"]
 [connection signal="area_shape_exited" from="Position2D/ActionArea" to="." method="_on_ActionArea_area_shape_exited"]
+[connection signal="body_entered" from="Position2D/ActionArea" to="." method="_on_ActionArea_body_entered"]
+[connection signal="body_exited" from="Position2D/ActionArea" to="." method="_on_ActionArea_body_exited"]

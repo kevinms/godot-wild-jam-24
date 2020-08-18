@@ -6,7 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 const ACCEL = 2000
 const MAX_SPEED = 200
-const MIN_SPEED = 25
+const MIN_SPEED = 50
 const FRICTION = 1200
 
 onready var animationPlayer = $AnimationPlayer
@@ -22,9 +22,14 @@ func _ready():
 	pass # Replace with function body.
 
 func takeAction(object):
+	print("name: ", object.get_name())
+	
 	if object.get_name() == "Fridge":
 		print("Opening the fridge for a snack!")
 		guiHandle.updateEnergy(100)
+
+	if object.has_method("interact"):
+		object.interact()
 
 func _process(delta):
 	if Input.is_action_just_released("ui_select"):
@@ -62,4 +67,12 @@ func _on_ActionArea_area_shape_entered(area_id, area, area_shape, self_shape):
 
 
 func _on_ActionArea_area_shape_exited(area_id, area, area_shape, self_shape):
+	objectInFront = null
+
+
+func _on_ActionArea_body_entered(body):
+	objectInFront = body
+
+
+func _on_ActionArea_body_exited(body):
 	objectInFront = null

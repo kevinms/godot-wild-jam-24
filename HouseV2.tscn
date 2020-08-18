@@ -1,10 +1,9 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://World/walls-v2.png" type="Texture" id=1]
 [ext_resource path="res://World/floor-tiles-v2.png" type="Texture" id=2]
 [ext_resource path="res://World/grass-tile.png" type="Texture" id=3]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/light-texture.png" type="Texture" id=5]
 [ext_resource path="res://Furniture/TV.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Furniture/CouchUp.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Furniture/TableSmallUp.tscn" type="PackedScene" id=8]
@@ -411,14 +410,6 @@ margin_top = -142.111
 margin_right = -110.212
 margin_bottom = -102.111
 
-[node name="Light2D" type="Light2D" parent="YSort"]
-position = Vector2( 176.572, 100.274 )
-scale = Vector2( 3.97974, 1.19865 )
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="TV" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 176.665, 114.952 )
 
@@ -509,10 +500,10 @@ position = Vector2( 63.2396, 129.075 )
 position = Vector2( 3.8443, 197.16 )
 
 [node name="LampTall" parent="YSort" instance=ExtResource( 23 )]
-position = Vector2( 3.75, 160.25 )
+position = Vector2( 4.64191, 155.939 )
 
 [node name="LampTall2" parent="YSort" instance=ExtResource( 23 )]
-position = Vector2( 416, 175.25 )
+position = Vector2( 416.446, 170.642 )
 
 [node name="GodotDoll" parent="YSort" instance=ExtResource( 24 )]
 position = Vector2( 62.7495, 130.336 )

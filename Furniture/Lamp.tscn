@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Furniture/Assets/lamp.png" type="Texture" id=1]
 [ext_resource path="res://World/light-texture.png" type="Texture" id=2]
+[ext_resource path="res://Interactions/ToggleLight.gd" type="Script" id=3]
 
-[node name="Lamp" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 1.84375
+height = 4.96823
+
+[node name="Lamp" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.0743256, -8.02715 )
@@ -14,3 +22,8 @@ position = Vector2( -0.0290069, -0.581214 )
 scale = Vector2( 1.23279, 0.783197 )
 texture = ExtResource( 2 )
 energy = 0.7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.125, -1.9375 )
+rotation = 1.5708
+shape = SubResource( 1 )

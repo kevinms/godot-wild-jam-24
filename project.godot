@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="godot-wild-jam-24"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://HouseV2.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -85,6 +85,10 @@ ui_down={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_2="Interactive"
 
 [rendering]
 
