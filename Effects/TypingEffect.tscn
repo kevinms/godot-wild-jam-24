@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Effects/TypingEffect.gd" type="Script" id=2]
+[ext_resource path="res://SFX/keyboard-click-lk201.ogg" type="AudioStream" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 21
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Grow"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 121.4 ]
+}
+
+[node name="TypingEffect" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Letter" type="Label" parent="."]
+margin_left = -5.61865
+margin_top = -15.7322
+margin_right = 6.38137
+margin_bottom = 6.2678
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.831373, 0.329412, 0.027451, 1 )
+text = "A"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Grow"
+anims/Grow = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

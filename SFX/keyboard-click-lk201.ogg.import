@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/keyboard-click-lk201.ogg-7f62bf6d047b57d36a00751af64b599a.oggstr"
+
+[deps]
+
+source_file="res://SFX/keyboard-click-lk201.ogg"
+dest_files=[ "res://.import/keyboard-click-lk201.ogg-7f62bf6d047b57d36a00751af64b599a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

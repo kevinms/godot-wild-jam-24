@@ -1,4 +1,4 @@
 extends StaticBody2D
 
-func interact(guiHandle):
+func interact(guiHandle, player):
 	guiHandle.endDay()
