@@ -87,6 +87,7 @@ frame = 1
 playing = true
 
 [node name="Minigame" type="Node2D" parent="."]
+visible = false
 position = Vector2( 37.7008, 35.7166 )
 z_index = 60
 
