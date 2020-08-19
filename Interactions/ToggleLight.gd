@@ -1,4 +1,4 @@
 extends Node2D
 
-func interact():
+func interact(guiHandle):
 	$Light2D.visible = !$Light2D.visible

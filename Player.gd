@@ -28,8 +28,9 @@ func takeAction(object):
 		print("Opening the fridge for a snack!")
 		guiHandle.updateEnergy(100)
 
+	print(object)
 	if object.has_method("interact"):
-		object.interact()
+		object.interact(guiHandle)
 
 func _process(delta):
 	if Input.is_action_just_released("ui_select"):
