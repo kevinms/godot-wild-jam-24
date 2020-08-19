@@ -5,7 +5,6 @@ enum ColorState{
 }
 var color_state = ColorState.RED
 var color = Color("d45407")
-#var color = Color(0,0,0)
 
 func rainbow_next_color():
 	match color_state:
@@ -16,9 +15,7 @@ func rainbow_next_color():
 				else:
 					color_state = ColorState.GREEN
 			else:
-				print("before red: ", color)
 				color.r8 = min(color.r8 + 50, 212)
-				print("after  red: ", color.r8)
 		ColorState.GREEN:
 			if color.g8 >= 212:
 				if color.r8 > 7:
