@@ -1,0 +1,389 @@
+extends StaticBody2D
+
+func interact():
+	for child in get_children():
+		if child.has_method("interact"):
+			child.interact()
+extends StaticBody2D
+
+func interact(guiHandle, player):
+	guiHandle.endDay()
+extends Control
+
+var day = 0
+var hour = 0
+var minute = 0
+const INTERVAL = 1
+
+var energy = 100.0
+const ENERGYRATE = 0.8
+
+onready var numberElement = $margin/HBoxContainer/Bars/Bar/Count/Number
+onready var energyGuageElement = $margin/HBoxContainer/Bars/Bar/Guage
+onready var minHand = $margin/HBoxContainer/Bars/Bar/Count/Title/MinuteHand
+onready var hourHand = $margin/HBoxContainer/Bars/Bar/Count/Title/HourHand
+onready var anim = $AnimationPlayer
+
+onready var dayLabel = $CanvasLayer/CenterContainer/DayLabel
+onready var remainingLabel = $CanvasLayer/CenterContainer/RemainingLabel
+
+func _ready():
+	hour = 7
+	minute = 0
+	updateUI()
+	
+func updateEnergy(level):
+	energy = level
+	updateUI()
+
+func getEnergy():
+	return energy
+	
+func endDay():
+	print("End of day!")
+	hour = 7
+	minute = 0
+	day += 1
+	updateUI()
+	anim.play("EndOfDay")
+
+func updateUI():
+	numberElement.text = "%02d:%02d" % [hour, minute]
+	dayLabel.text = "Day: %d" % [day]
+	remainingLabel.text = "%d days %d hours %d min remaining" % [9 - day, 24-hour, 60-minute]
+	
+	energyGuageElement.value = energy
+	minHand.rect_rotation = minute/60.0*360
+	hourHand.rect_rotation = (hour/12.0 + minute/60.0/12 )*360
+
+func _on_Timer_timeout():
+	minute += INTERVAL
+	if minute > 60:
+		minute = 0
+		hour += 1
+	if hour > 12:
+		hour = 1
+		day += 1
+		
+	energy -= ENERGYRATE
+	updateUI()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "EndOfDay":
+		energy = 100
+extends Node2D
+
+const SPEED = 60
+var velocity
+
+var text = "A"
+
+func _ready():
+	rotate(rand_range(-PI/4, PI/4))
+	velocity = transform.x.normalized() * SPEED
+	$Letter.text = text
+	$Letter.add_color_override("font_color", RainbowColor.rainbow_next_color())
+
+func _physics_process(delta):
+	global_transform.origin += velocity * delta
+
+func _on_Timer_timeout():
+	queue_free()
+extends Node
+
+var color = Color("d45407")
+
+func rainbow_next_color():
+	color.h += 0.035
+	
+	return color
+extends Node2D
+
+func interact(guiHandle, player):
+	$Light2D.visible = !$Light2D.visible
+extends Node2D
+
+var typeable = false
+
+var text setget set_text, get_text
+func set_text(value):
+	$Label.text = value
+func get_text():
+	return $Label.text
+
+var color setget set_color
+func set_color(value):
+	$Label.add_color_override("font_color", value)
+extends StaticBody2D
+
+var typingEffect = load("res://Effects/TypingEffect.tscn")
+
+var quality = 0
+var player = null
+onready var minigame = $Minigame
+var minigame_active = false
+
+func _input(event):
+	if !minigame_active:
+		return
+
+	if event is InputEventKey and event.pressed:
+		quality += 1
+		$Minigame/GameQualityValue.text = str(quality)
+		
+		# Update the computer screen
+		var letter = char(event.unicode)
+#		if source[next_letter_index] == letter:
+#			$Minigame/TypedCode.text += letter
+#			next_letter_index += 1
+#		$Minigame/TypedCode.text += source[next_letter_index]
+#		next_letter_index += 1
+		$Minigame/ComputerScreen.key_press(letter)
+		
+		# Spawn effect
+		var obj = typingEffect.instance()
+		obj.position = $LetterSpawn.position
+		obj.text = OS.get_scancode_string(event.scancode)
+		add_child(obj)
+
+func interact(gui, actor):
+	player = actor
+	player.state = player.State.MINIGAME
+	
+	minigame_active = true
+	$Light2D.visible = true
+	minigame.visible = true
+	$AnimationPlayer.play("Expand")
+
+func _process(delta):
+	if !minigame_active:
+		return
+
+	if Input.is_action_just_released("ui_cancel"):
+		player.state = player.State.NORMAL
+		
+		minigame_active = false
+		minigame.visible = false
+		$Light2D.visible = false
+		$AnimationPlayer.stop(true)
+		return
+extends Node2D
+
+onready var computer_char_scene = load("res://Interactions/ComputerChar.tscn")
+
+const max_line_length = 32
+const char_width = 5
+const char_height = 10
+const max_lines_displayed = 8
+
+var source_lines = []
+
+var current_char = 0
+var current_line = 0
+var next_hidden_line = 0
+
+func _ready():
+	var source = load_text_file("res://source-code.txt")
+	
+	# Replace tabs with spaces
+	source = source.replace("\t", "  ")
+	# Split on new lines
+	var raw_lines = source.split("\n", true)
+	# Split lines based on line length
+	var short_lines = []
+	for line in raw_lines:
+		line = line.strip_edges(false, true)
+		while line.length() > max_line_length:
+			short_lines.append(line.left(max_line_length))
+			line = line.right(max_line_length).strip_edges(true, false)
+		short_lines.append(line)
+	
+	# Loop over all lines
+	for line in short_lines:
+		var all_chars = []
+		var non_space = 0
+		for c in line:
+			# Create char object
+			var obj = computer_char_scene.instance()
+			obj.text = c
+			
+			# Determine if char is typeable (exclude leading/trailing whitespace)
+			if c != ' ':
+				non_space += 1
+			if non_space > 0:
+				obj.typeable = true
+			
+			all_chars.append(obj)
+		source_lines.append(all_chars)
+	
+	# Add N lines, starting at line offset, to the scene
+	var i = 0
+	var y = 0
+	while i < source_lines.size() and i < max_lines_displayed:
+		add_line(source_lines[i], y)
+		y += char_height
+		print(i)
+		i += 1
+	
+	current_line = 0
+	next_hidden_line = i
+	set_cursor()
+
+func key_press(letter):
+	print(letter)
+	
+	var line = source_lines[current_line]
+	var c = line[current_char]
+	
+	if c.text != letter:
+		return
+	
+	c.color = Color(0,1,0)
+	
+	# Find next typeable character!
+	current_char += 1
+	while current_line < source_lines.size():
+		print("cl: ", current_line)
+		
+		# Look on the current line
+		while current_char < line.size():
+			print("cc: ", current_char)
+			if line[current_char].typeable:
+				print(line[current_char].text)
+				set_cursor()
+				return
+			current_char += 1
+		
+		# Delete the current line and shift up
+		del_line(line)
+		
+		# Update the current line to the next one
+		current_char = 0
+		current_line += 1
+		if current_line < source_lines.size():
+			line = source_lines[current_line]
+		
+		# Add the new line at the bottom
+		if next_hidden_line < source_lines.size():
+			var temp_line = source_lines[next_hidden_line]
+			add_line(temp_line, next_hidden_line * char_height)
+			next_hidden_line += 1
+	
+	#TODO: Reset everything if we reach this far.
+	
+	# As lines are typed:
+	#   Remove top line
+	#   Shift all chars up one row
+	#   Add a new row at the bottom
+
+func add_line(line: Array, y: float):
+	var x = 0
+	for c in line:
+			c.position = Vector2(x, y)
+			$TextPosition.add_child(c)
+			x += char_width
+
+func del_line(line: Array):
+	for c in line:
+		c.queue_free()
+	shift_up()
+
+func shift_up():
+	$TextPosition.translate(Vector2.UP * char_height)
+
+func set_cursor():
+	$TextPosition/ComputerCursor.position = Vector2(current_char * char_width, current_line * char_height)
+
+func load_text_file(path):
+	var file = File.new()
+	
+	# Open file
+	var err = file.open(path, File.READ)
+	if err != OK:
+		printerr("Could not open file, error code ", err)
+		return ""
+	
+	var text = file.get_as_text()
+	
+	file.close()
+	return text
+extends KinematicBody2D
+
+const ACCEL = 2000
+const MAX_SPEED = 200
+const MIN_SPEED = 50
+const FRICTION = 1200
+
+enum State {
+	NORMAL,
+	MINIGAME
+}
+
+var state = State.NORMAL
+
+onready var animationPlayer = $AnimationPlayer
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
+onready var guiHandle = $Camera2D/GUI
+
+onready var objectInFront = null
+
+var velocity = Vector2.ZERO
+
+func takeAction(object):
+	print("name: ", object.get_name())
+	
+	if object.get_name() == "Fridge":
+		print("Opening the fridge for a snack!")
+		guiHandle.updateEnergy(100)
+
+	print(object)
+	if object.has_method("interact"):
+		object.interact(guiHandle, self)
+
+func _process(delta):
+	if state == State.MINIGAME:
+		return
+	
+	if Input.is_action_just_released("ui_accept"):
+		if objectInFront != null:
+			takeAction(objectInFront)
+
+func _physics_process(delta):
+	if state == State.MINIGAME:
+		return
+	
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector = input_vector.normalized()
+
+	if input_vector != Vector2.ZERO:
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Walk/blend_position", input_vector)
+		animationState.travel("Walk")
+		var effectiveSpeed = MAX_SPEED * (guiHandle.getEnergy() / 100.0 )
+		if effectiveSpeed < MIN_SPEED:
+			effectiveSpeed = MIN_SPEED
+		velocity = velocity.move_toward(input_vector*effectiveSpeed, ACCEL * delta)
+	else:
+		animationState.travel("Idle")
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION*delta)
+	
+	move_and_slide(velocity)
+
+
+func _on_ActionArea_area_shape_entered(area_id, area, area_shape, self_shape):
+	#print(area_id, area, area_shape, self_shape)
+	#print(area.get_name())
+	objectInFront = area
+
+func _on_ActionArea_area_shape_exited(area_id, area, area_shape, self_shape):
+	objectInFront = null
+
+func _on_ActionArea_body_entered(body):
+	objectInFront = body
+
+func _on_ActionArea_body_exited(body):
+	objectInFront = null

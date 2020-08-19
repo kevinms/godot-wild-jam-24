@@ -11,18 +11,19 @@ var source_lines = []
 
 var current_char = 0
 var current_line = 0
-var next_line = 0
+var next_hidden_line = 0
 
 func _ready():
 	var source = load_text_file("res://source-code.txt")
 	
 	# Replace tabs with spaces
-	source = source.replace("\t", "..")
+	source = source.replace("\t", "  ")
 	# Split on new lines
 	var raw_lines = source.split("\n", true)
 	# Split lines based on line length
 	var short_lines = []
 	for line in raw_lines:
+		line = line.strip_edges(false, true)
 		while line.length() > max_line_length:
 			short_lines.append(line.left(max_line_length))
 			line = line.right(max_line_length).strip_edges(true, false)
@@ -31,13 +32,17 @@ func _ready():
 	# Loop over all lines
 	for line in short_lines:
 		var all_chars = []
+		var non_space = 0
 		for c in line:
 			# Create char object
 			var obj = computer_char_scene.instance()
 			obj.text = c
 			
 			# Determine if char is typeable (exclude leading/trailing whitespace)
-			obj.typeable = true
+			if c != ' ':
+				non_space += 1
+			if non_space > 0:
+				obj.typeable = true
 			
 			all_chars.append(obj)
 		source_lines.append(all_chars)
@@ -52,7 +57,7 @@ func _ready():
 		i += 1
 	
 	current_line = 0
-	next_line = i
+	next_hidden_line = i
 	set_cursor()
 
 func key_press(letter):
@@ -80,10 +85,20 @@ func key_press(letter):
 				return
 			current_char += 1
 		
+		# Delete the current line and shift up
+		del_line(line)
+		
+		# Update the current line to the next one
 		current_char = 0
 		current_line += 1
-		del_line(line)
-		line = source_lines[current_line]
+		if current_line < source_lines.size():
+			line = source_lines[current_line]
+		
+		# Add the new line at the bottom
+		if next_hidden_line < source_lines.size():
+			var temp_line = source_lines[next_hidden_line]
+			add_line(temp_line, next_hidden_line * char_height)
+			next_hidden_line += 1
 	
 	#TODO: Reset everything if we reach this far.
 	

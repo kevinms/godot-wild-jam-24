@@ -101,7 +101,6 @@ visible = false
 position = Vector2( 59.6902, 14.6998 )
 z_index = 60
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [node name="Minigame" type="Node2D" parent="."]
@@ -199,10 +198,11 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Minigame"]
 position = Vector2( 163.164, 8.90556 )
 frames = SubResource( 12 )
+frame = 1
 playing = true
 
 [node name="ComputerScreen" parent="Minigame" instance=ExtResource( 8 )]
-position = Vector2( -109.721, -60.6129 )
+position = Vector2( -107.756, -14.0308 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Expand = SubResource( 7 )

@@ -1,9 +1,5 @@
 extends KinematicBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 const ACCEL = 2000
 const MAX_SPEED = 200
 const MIN_SPEED = 50
@@ -24,9 +20,6 @@ onready var guiHandle = $Camera2D/GUI
 onready var objectInFront = null
 
 var velocity = Vector2.ZERO
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func takeAction(object):
 	print("name: ", object.get_name())
@@ -69,9 +62,6 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION*delta)
 	
 	move_and_slide(velocity)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func _on_ActionArea_area_shape_entered(area_id, area, area_shape, self_shape):

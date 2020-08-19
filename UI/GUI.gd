@@ -1,10 +1,5 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var day = 0
 var hour = 0
 var minute = 0
@@ -22,7 +17,6 @@ onready var anim = $AnimationPlayer
 onready var dayLabel = $CanvasLayer/CenterContainer/DayLabel
 onready var remainingLabel = $CanvasLayer/CenterContainer/RemainingLabel
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	hour = 7
 	minute = 0
