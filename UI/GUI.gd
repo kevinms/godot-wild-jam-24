@@ -20,6 +20,7 @@ onready var hourHand = $margin/HBoxContainer/Bars/Bar/Count/Title/HourHand
 onready var anim = $AnimationPlayer
 
 onready var dayLabel = $CanvasLayer/CenterContainer/DayLabel
+onready var remainingLabel = $CanvasLayer/CenterContainer/RemainingLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,7 +39,6 @@ func endDay():
 	print("End of day!")
 	hour = 7
 	minute = 0
-	energy = 100
 	day += 1
 	updateUI()
 	anim.play("EndOfDay")
@@ -46,6 +46,8 @@ func endDay():
 func updateUI():
 	numberElement.text = "%02d:%02d" % [hour, minute]
 	dayLabel.text = "Day: %d" % [day]
+	remainingLabel.text = "%d days %d hours %d min remaining" % [9 - day, 24-hour, 60-minute]
+	
 	energyGuageElement.value = energy
 	minHand.rect_rotation = minute/60.0*360
 	hourHand.rect_rotation = (hour/12.0 + minute/60.0/12 )*360
@@ -61,3 +63,8 @@ func _on_Timer_timeout():
 		
 	energy -= ENERGYRATE
 	updateUI()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "EndOfDay":
+		energy = 100
