@@ -39,6 +39,7 @@ tracks/1/keys = {
 }
 
 [node name="TypingEffect" type="Node2D"]
+scale = Vector2( 1e-05, 1e-05 )
 script = ExtResource( 2 )
 
 [node name="Letter" type="Label" parent="."]
