@@ -184,6 +184,7 @@ margin_left = 151.097
 margin_top = 100.983
 margin_right = 229.097
 margin_bottom = 126.983
+custom_fonts/font = ExtResource( 7 )
 text = "Confirm"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -234,6 +235,7 @@ margin_left = 151.097
 margin_top = 100.983
 margin_right = 229.097
 margin_bottom = 126.983
+custom_fonts/font = ExtResource( 7 )
 text = "Confirm"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -314,6 +316,7 @@ margin_left = 214.337
 margin_top = 209.056
 margin_right = 292.337
 margin_bottom = 235.056
+custom_fonts/font = ExtResource( 7 )
 text = "Confirm"
 __meta__ = {
 "_edit_use_anchors_": false
