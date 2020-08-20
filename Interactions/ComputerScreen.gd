@@ -2,7 +2,7 @@ extends Node2D
 
 onready var computer_char_scene = load("res://Interactions/ComputerChar.tscn")
 
-const max_line_length = 32
+const max_line_length = 26
 const char_width = 5
 const char_height = 10
 const max_lines_displayed = 8

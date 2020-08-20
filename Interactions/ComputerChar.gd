@@ -11,3 +11,4 @@ func get_text():
 var color setget set_color
 func set_color(value):
 	$Label.add_color_override("font_color", value)
+	$AnimationPlayer.play("Grow")
