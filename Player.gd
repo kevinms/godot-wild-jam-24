@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const ACCEL = 2000
 const MAX_SPEED = 200
-const MIN_SPEED = 50
+const MIN_SPEED = 100
 const FRICTION = 1200
 
 enum State {
@@ -19,24 +19,53 @@ onready var guiHandle = $Camera2D/GUI
 
 onready var objectInFront = null
 
+var objectsInFront = []
+
+var held_object = null
+
 var velocity = Vector2.ZERO
 
 func takeAction(object):
 	print("name: ", object.get_name())
 	
+	print(object)
+	if object.has_method("interact"):
+		object.interact(guiHandle, self)
+	
 	if object.get_name() == "Fridge":
 		print("Opening the fridge for a snack!")
 		guiHandle.updateEnergy(100)
 
-	print(object)
-	if object.has_method("interact"):
-		object.interact(guiHandle, self)
+func pickup_or_drop() -> bool:
+	# Drop the object, if we already have one.
+	if held_object != null:
+		remove_child(held_object)
+		get_parent().add_child(held_object)
+		held_object.position = position + Vector2.DOWN
+		held_object = null
+		return true
+	
+	# Try to pick up objects in front of us.
+	for object in objectsInFront:
+		if object.is_in_group("pickupable"):
+			var parent = object.get_parent()
+			parent.remove_child(object)
+			add_child(object)
+			object.position = Vector2.ZERO
+			held_object = object
+			return true
+	
+	return false
 
 func _process(delta):
 	if state == State.MINIGAME:
 		return
 	
 	if Input.is_action_just_released("ui_accept"):
+		if pickup_or_drop():
+			print("Picked up object")
+			return
+		
 		if objectInFront != null:
 			takeAction(objectInFront)
 
@@ -63,17 +92,27 @@ func _physics_process(delta):
 	
 	move_and_slide(velocity)
 
+func object_stack_add(object):
+	if !objectsInFront.has(object):
+		objectsInFront.append(object)
+
+func object_stack_del(object):
+	objectsInFront.erase(object)
 
 func _on_ActionArea_area_shape_entered(area_id, area, area_shape, self_shape):
 	#print(area_id, area, area_shape, self_shape)
 	#print(area.get_name())
 	objectInFront = area
+	object_stack_add(area)
 
 func _on_ActionArea_area_shape_exited(area_id, area, area_shape, self_shape):
 	objectInFront = null
+	object_stack_del(area)
 
 func _on_ActionArea_body_entered(body):
 	objectInFront = body
+	object_stack_add(body)
 
 func _on_ActionArea_body_exited(body):
 	objectInFront = null
+	object_stack_del(body)

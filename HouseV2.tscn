@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://World/walls-v2.png" type="Texture" id=1]
 [ext_resource path="res://World/floor-tiles-v2.png" type="Texture" id=2]
@@ -18,7 +18,7 @@
 [ext_resource path="res://Furniture/BedLarge.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Furniture/TableSmallFront.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Furniture/PlantSmall.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Characters/baby.png" type="Texture" id=19]
+[ext_resource path="res://Characters/Baby.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Furniture/DiaperChangingStation.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Furniture/ComputerDesk.tscn" type="PackedScene" id=21]
 [ext_resource path="res://GodotPicture.tscn" type="PackedScene" id=22]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Furniture/KitchenSink.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Furniture/KitchenCounter.tscn" type="PackedScene" id=29]
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Furniture/TrashCan.tscn" type="PackedScene" id=31]
 
 [sub_resource type="TileSet" id=1]
 0/name = "floor-tiles-v2.png 0"
@@ -373,7 +374,7 @@ points = PoolVector2Array( 19, 28, 0, 28, 0, 24, 19, 24 )
 } ]
 0/z_index = 0
 
-[node name="Node2D" type="Node2D"]
+[node name="House" type="Node2D"]
 
 [node name="Floor" type="TileMap" parent="."]
 z_index = -99
@@ -399,17 +400,21 @@ cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -393208, 0, 196610, -393207, 0, 65539, -393206, 0, 65540, -393205, 0, 65539, -393204, 0, 65539, -393203, 0, 65540, -393202, 0, 196612, -327677, 0, 196610, -327676, 0, 65539, -327675, 0, 65539, -327674, 0, 65540, -327673, 0, 65539, -327672, 0, 196612, -327666, 0, 262147, -262141, 0, 262147, -262136, 0, 262147, -262130, 0, 262147, -196605, 0, 262147, -196600, 0, 262147, -196599, 0, 131074, -196598, 0, 65539, -196597, 0, 196611, -196596, 0, 65539, -196595, 0, 131076, -196594, 0, 131074, -196593, 0, 65539, -196592, 0, 196612, -131070, 0, 196610, -131069, 0, 131075, -131068, 0, 65539, -131067, 0, 65539, -131066, 0, 131076, -131065, 0, 131074, -131064, 0, 196612, -131061, 0, 262147, -131060, 0, 0, -131056, 0, 262147, -65536, 0, 131074, -65535, 0, 65540, -65534, 0, 196612, -65528, 0, 262148, -65525, 0, 262147, -65520, 0, 262147, 0, 0, 262147, 9, 0, 196610, 10, 0, 65539, 11, 0, 131075, 12, 0, 65539, 13, 0, 131076, 14, 0, 131074, 15, 0, 65539, 16, 0, 196612, 65536, 0, 327681, 65537, 0, 393218, 65538, 0, 327684, 65544, 0, 262146, 65545, 0, 262148, 65552, 0, 262148, 131074, 0, 196610, 131075, 0, 65539, 131076, 0, 65539, 131077, 0, 65539, 131078, 0, 65539, 131079, 0, 65539, 131080, 0, 196612, 262143, 0, 196610, 196608, 0, 65540, 196609, 0, 65539, 196610, 0, 131076, 196616, 0, 262147, 196617, 0, 262146, 196620, 0, 1, 196624, 0, 262146, 327679, 0, 262147, 262152, 0, 262148, 262153, 0, 196610, 262154, 0, 65539, 262155, 0, 131076, 262156, 0, 131074, 262157, 0, 196612, 262160, 0, 262147, 393215, 0, 262147, 327682, 0, 262146, 327689, 0, 262148, 327693, 0, 458754, 327694, 0, 393218, 327695, 0, 393218, 327696, 0, 327685, 458751, 0, 262147, 393218, 0, 327682, 393219, 0, 393218, 393220, 0, 393219, 393221, 0, 393220, 393222, 0, 393219, 393223, 0, 393218, 393224, 0, 458756, 393229, 0, 262147, 524287, 0, 327681, 458752, 0, 393218, 458753, 0, 393219, 458754, 0, 327685, 458760, 0, 327681, 458761, 0, 393219, 458762, 0, 393218, 458763, 0, 393219, 458764, 0, 393218, 458765, 0, 327685 )
 
+[node name="Baby" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( 101.106, 148.577 )
+collision_mask = 2
+
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 56.0867, 162.171 )
+position = Vector2( 67.0002, 154.598 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
 
 [node name="GUI" parent="YSort/Player/Camera2D" instance=ExtResource( 30 )]
-margin_left = -255.212
-margin_top = -142.111
-margin_right = -110.212
-margin_bottom = -102.111
+margin_left = -207.994
+margin_top = -148.347
+margin_right = -62.9944
+margin_bottom = -108.347
 
 [node name="TV" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 176.665, 114.952 )
@@ -439,7 +444,9 @@ position = Vector2( 99.9185, 219.726 )
 position = Vector2( 508.98, 48.9597 )
 scale = Vector2( -1, 1 )
 
-[node name="Pacifier" parent="YSort" instance=ExtResource( 14 )]
+[node name="Pacifier" parent="YSort" groups=[
+"pickupable",
+] instance=ExtResource( 14 )]
 position = Vector2( 197.642, 129.157 )
 
 [node name="bookshelf_flower" parent="YSort" instance=ExtResource( 13 )]
@@ -463,8 +470,14 @@ position = Vector2( 145.212, 10.8169 )
 [node name="PlantSmall" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 255.025, -20.0661 )
 
+[node name="TrashCan" parent="YSort" instance=ExtResource( 31 )]
+position = Vector2( 324.382, 129.926 )
+
+[node name="TrashCan2" parent="YSort" instance=ExtResource( 31 )]
+position = Vector2( 428.338, -143.658 )
+
 [node name="PlantSmall3" parent="YSort" instance=ExtResource( 18 )]
-position = Vector2( 23.2754, 145.184 )
+position = Vector2( 15.7839, 154.923 )
 
 [node name="PlantSmall4" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 20.2702, 222.789 )
@@ -484,10 +497,6 @@ position = Vector2( 95.7871, -25.5634 )
 [node name="Lamp2" parent="YSort/TableSmallFront2" instance=ExtResource( 9 )]
 position = Vector2( -0.374573, -14.0466 )
 
-[node name="baby" type="Sprite" parent="YSort"]
-position = Vector2( 165.675, 125.365 )
-texture = ExtResource( 19 )
-
 [node name="DiaperChangingStation" parent="YSort" instance=ExtResource( 20 )]
 position = Vector2( 383.954, -142.524 )
 
@@ -501,7 +510,7 @@ position = Vector2( 63.2396, 129.075 )
 position = Vector2( 3.8443, 197.16 )
 
 [node name="LampTall" parent="YSort" instance=ExtResource( 23 )]
-position = Vector2( 4.64191, 155.939 )
+position = Vector2( -0.738865, 141.573 )
 
 [node name="LampTall2" parent="YSort" instance=ExtResource( 23 )]
 position = Vector2( 416.446, 170.642 )
