@@ -400,7 +400,9 @@ graph_offset = Vector2( -112, 52 )
 radius = 9.49068
 height = 8.07057
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 script = ExtResource( 1 )
 
 [node name="Player Sprite" type="Sprite" parent="."]

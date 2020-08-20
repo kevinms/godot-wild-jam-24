@@ -53,6 +53,9 @@ func pickup_or_drop() -> bool:
 			add_child(object)
 			object.position = Vector2.ZERO
 			held_object = object
+			
+			if object.is_in_group("baby"):
+				object.hold()
 			return true
 	
 	return false

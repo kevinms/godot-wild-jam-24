@@ -545,17 +545,6 @@ position = Vector2( 325.406, 41.8771 )
 [node name="ComputerChair" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 46.9881, 180.645 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = 127.542
-margin_top = 8.62175
-margin_right = 234.542
-margin_bottom = 22.6217
-text = "Master Bedroom"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Label7" type="Label" parent="."]
 margin_left = 278.346
 margin_top = -41.3814
@@ -600,17 +589,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label5" type="Label" parent="."]
-margin_left = 321.383
-margin_top = 72.5416
-margin_right = 428.383
-margin_bottom = 86.5416
-text = "Kitchen"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Label8" type="Label" parent="."]
 margin_left = 424.564
 margin_top = 101.512
@@ -618,18 +596,6 @@ margin_right = 531.564
 margin_bottom = 115.512
 text = "Breakfast
 Nook"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label6" type="Label" parent="."]
-margin_left = 334.0
-margin_top = -138.0
-margin_right = 403.0
-margin_bottom = -124.0
-rect_pivot_offset = Vector2( 48.1659, 5.33557 )
-text = "Baby room"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
