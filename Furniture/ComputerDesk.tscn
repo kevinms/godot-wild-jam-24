@@ -10,7 +10,7 @@
 [ext_resource path="res://Interactions/ComputerScreen.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.6135, 16.3172 )
+extents = Vector2( 13.6135, 19.992 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
@@ -28,7 +28,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=5]
 size = 15
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -40,30 +40,29 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 8
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 16, 14 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 7 )
 region = Rect2( 16, 0, 16, 14 )
 
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=7]
-resource_name = "Expand"
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Minigame:scale")
@@ -88,7 +87,7 @@ texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( 0.160065, -14.8495 )
+position = Vector2( -0.0902173, -18.0197 )
 shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
@@ -101,9 +100,11 @@ visible = false
 position = Vector2( 59.6902, 14.6998 )
 z_index = 60
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Minigame" type="Node2D" parent="."]
+visible = false
 position = Vector2( 0.450806, 35.4666 )
 z_index = 60
 
@@ -126,7 +127,7 @@ margin_left = 95.3554
 margin_top = -14.9645
 margin_right = 182.355
 margin_bottom = 7.03554
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 text = "Game Dev"
 align = 1
 __meta__ = {
@@ -188,7 +189,7 @@ margin_left = 52.1606
 margin_top = 51.4764
 margin_right = 99.1606
 margin_bottom = 59.4764
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "Press ESC to quit"
 align = 1
 __meta__ = {
@@ -197,15 +198,14 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Minigame"]
 position = Vector2( 163.164, 8.90556 )
-frames = SubResource( 12 )
-frame = 1
+frames = SubResource( 10 )
 playing = true
 
 [node name="ComputerScreen" parent="Minigame" instance=ExtResource( 8 )]
 position = Vector2( -107.756, -14.0308 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Expand = SubResource( 7 )
+anims/Expand = SubResource( 11 )
 
 [node name="LetterSpawn" type="Position2D" parent="."]
 position = Vector2( 7.34173, -22.0252 )
