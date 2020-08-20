@@ -111,6 +111,7 @@ ui_down={
 [layer_names]
 
 2d_physics/layer_2="Interactions"
+2d_physics/layer_6="TrashMinigame"
 
 [rendering]
 

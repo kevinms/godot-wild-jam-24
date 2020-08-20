@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/yay.ogg-9ba8c7043a115de681ac04933e1603ad.oggstr"
+
+[deps]
+
+source_file="res://SFX/yay.ogg"
+dest_files=[ "res://.import/yay.ogg-9ba8c7043a115de681ac04933e1603ad.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

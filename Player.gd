@@ -64,6 +64,9 @@ func pickup_or_drop() -> bool:
 	return false
 
 func store_item(object):
+	if object == null:
+		return
+	
 	add_child(object)
 	object.position = Vector2.ZERO
 	held_object = object
