@@ -64,6 +64,7 @@ animations = [ {
 
 [sub_resource type="Animation" id=11]
 length = 0.5
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Minigame:scale")
 tracks/0/interp = 2
@@ -75,6 +76,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Minigame:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="ComputerDesk" type="StaticBody2D"]
@@ -202,7 +215,8 @@ frames = SubResource( 10 )
 playing = true
 
 [node name="ComputerScreen" parent="Minigame" instance=ExtResource( 8 )]
-position = Vector2( -107.756, -14.0308 )
+position = Vector2( -113.506, -23.5308 )
+scale = Vector2( 1.1, 1.1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Expand = SubResource( 11 )

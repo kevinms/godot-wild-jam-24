@@ -36,7 +36,6 @@ func interact(gui, actor):
 	
 	minigame_active = true
 	$Light2D.visible = true
-	minigame.visible = true
 	$AnimationPlayer.play("Expand")
 
 func _process(delta):
