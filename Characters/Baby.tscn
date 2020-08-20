@@ -171,7 +171,7 @@ playing = true
 [node name="Snot" type="Position2D" parent="SleepEffect"]
 position = Vector2( -1.53564, 8.74734 )
 rotation = 0.479492
-scale = Vector2( 0.282511, 0.282511 )
+scale = Vector2( 0.163542, 0.163542 )
 
 [node name="Sprite" type="Sprite" parent="SleepEffect/Snot"]
 position = Vector2( 8.15774, -6.36779 )

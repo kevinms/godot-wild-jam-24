@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Furniture/Assets/trash-can.png" type="Texture" id=1]
 [ext_resource path="res://Interactions/TrashCan.gd" type="Script" id=2]
 [ext_resource path="res://Furniture/Assets/trash-can-front.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Furniture/Assets/dialogue-white.png" type="Texture" id=5]
-[ext_resource path="res://Interactions/TrashThrowing.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.3219, 6.98237 )
@@ -176,9 +175,6 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TrashThrowing" parent="Minigame" instance=ExtResource( 6 )]
-position = Vector2( 8.54187, 83.7724 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Expand = SubResource( 9 )

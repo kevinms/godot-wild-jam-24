@@ -47,7 +47,7 @@ func lullaby():
 
 func _on_ConditionTimer_timeout():
 	# There is chance of pooping at nearly any time.
-	if !poopy and randf() < 0.1:
+	if !poopy and randf() < 0.01:
 		poopy = true
 		set_state(State.POOP)
 	
@@ -65,7 +65,7 @@ func _on_ConditionTimer_timeout():
 					set_state(State.POOP)
 		State.OBSERVE:
 			var dist = distance_to_player()
-			if dist > 100:
+			if dist > 125:
 				lonely = true
 				set_state(State.CRY)
 			
