@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 RainbowColor="*res://Effects/RainbowColor.gd"
+Helper="*res://Helper.gd"
 
 [display]
 

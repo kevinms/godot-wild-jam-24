@@ -56,7 +56,9 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[node name="DiaperChangingStation" type="StaticBody2D"]
+[node name="DiaperChangingStation" type="StaticBody2D" groups=[
+"container",
+]]
 collision_layer = 3
 collision_mask = 2
 script = ExtResource( 4 )
@@ -74,8 +76,36 @@ shape = SubResource( 8 )
 [node name="Minigame" type="Node2D" parent="."]
 visible = false
 position = Vector2( 20.9801, 33.5788 )
-scale = Vector2( 0.0184135, 0.0184135 )
 z_index = 60
+
+[node name="Requirement" type="Node2D" parent="Minigame"]
+visible = false
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="Minigame/Requirement"]
+margin_left = -6.27518
+margin_top = -112.736
+margin_right = 90.7248
+margin_bottom = -86.7357
+texture = ExtResource( 3 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning" type="Label" parent="Minigame/Requirement"]
+margin_left = -0.919769
+margin_top = -107.7
+margin_right = 88.0802
+margin_bottom = -85.7001
+custom_fonts/font = SubResource( 5 )
+text = "Baby required!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="Minigame"]
 margin_left = 82.449
@@ -167,3 +197,6 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Expand = SubResource( 9 )
+
+[node name="BabyPosition" type="Position2D" parent="."]
+position = Vector2( 6.13518, -24.5407 )

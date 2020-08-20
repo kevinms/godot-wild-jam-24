@@ -39,10 +39,18 @@ func takeAction(object):
 func pickup_or_drop() -> bool:
 	# Drop the object, if we already have one.
 	if held_object != null:
-		remove_child(held_object)
-		get_parent().add_child(held_object)
-		held_object.position = position + Vector2.DOWN
-		held_object = null
+		var item = remove_item()
+		
+		# Drop at station
+		for object in objectsInFront:
+			if object.is_in_group("container"):
+				if object.store_item(item):
+					return true
+					
+		
+		# Drop on floor
+		get_parent().add_child(item)
+		item.position = position + Vector2.DOWN
 		return true
 	
 	# Try to pick up objects in front of us.
@@ -50,15 +58,24 @@ func pickup_or_drop() -> bool:
 		if object.is_in_group("pickupable"):
 			var parent = object.get_parent()
 			parent.remove_child(object)
-			add_child(object)
-			object.position = Vector2.ZERO
-			held_object = object
-			
-			if object.is_in_group("baby"):
-				object.hold()
+			store_item(object)
 			return true
 	
 	return false
+
+func store_item(object):
+	add_child(object)
+	object.position = Vector2.ZERO
+	held_object = object
+	
+	if object.is_in_group("baby"):
+		object.hold()
+
+func remove_item() -> Node:
+	var item = held_object
+	remove_child(held_object)
+	held_object = null
+	return item
 
 func _process(delta):
 	if state == State.MINIGAME:
