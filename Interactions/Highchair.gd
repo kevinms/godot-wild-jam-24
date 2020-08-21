@@ -13,6 +13,27 @@ onready var player = Helper.get_player()
 onready var minigame = get_tree().get_root().find_node("FeedBabyMinigame", true, false)
 onready var animation: AnimationPlayer = get_tree().get_root().find_node("StartMinigameAnimation", true, false)
 
+onready var empty_bottle_scene = load("res://Furniture/EmptyBottle.tscn")
+
+var player_won: bool
+
+func _on_Minigame_player_won():
+	print("Player won yay")
+	player_won = true
+	
+	#TODO Update global stats
+	
+	# Remove food item
+	if food:
+		food.queue_free()
+		food = null
+	
+	# Create new empty bottle trash
+	var trash = empty_bottle_scene.instance()
+	var world = player.get_parent()
+	world.add_child(trash)
+	trash.global_position = $TrashPosition.global_position  + Helper.rand_vector(10)
+
 func store_item(object) -> bool:
 	if object == null:
 		return false
@@ -64,6 +85,9 @@ func start_minigame():
 	
 	minigame.start()
 	animation.play("StartFeedBabyMinigame")
+	
+	player_won = false
+	minigame.connect("player_won", self, "_on_Minigame_player_won")
 
 	minigame_active = true
 
@@ -73,6 +97,8 @@ func stop_minigame():
 	minigame.stop()
 	animation.play_backwards("StartFeedBabyMinigame")
 	
+	minigame.disconnect("player_won", self, "_on_Minigame_player_won")
+	
 	minigame_active = false
 
 func _process(delta):
@@ -80,9 +106,10 @@ func _process(delta):
 		return
 	
 	if Input.is_action_just_released("ui_cancel"):
-		# The player decided to not finish the mini game so they get an item back.
-		var item = remove_item()
-		player.store_item(item)
+		if !player_won:
+			# The player decided to not finish the mini game so they get an item back.
+			var item = remove_item()
+			player.store_item(item)
 		
 		stop_minigame()
 		return

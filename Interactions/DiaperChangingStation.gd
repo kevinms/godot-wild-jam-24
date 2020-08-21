@@ -7,6 +7,8 @@ var stored_item = null
 
 onready var player = Helper.get_player()
 
+onready var dirty_diaper_scene = load("res://Furniture/DirtyDiaper.tscn")
+
 func interact(gui, actor):
 	start_minigame()
 
@@ -35,6 +37,12 @@ func diaper_changed():
 		return
 	
 	stored_item.diaper_change()
+	
+	# Create dirty diaper
+	var trash = dirty_diaper_scene.instance()
+	var world = player.get_parent()
+	world.add_child(trash)
+	trash.global_position = $TrashPosition.global_position + Helper.rand_vector(10)
 
 func start_minigame():
 	if !has_baby():

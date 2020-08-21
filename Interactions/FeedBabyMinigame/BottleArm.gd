@@ -8,13 +8,16 @@ var attack_pos: Vector2
 onready var initial_pos = position
 
 enum State {
-	POSITION, ATTACK, RETREAT
+	POSITION, ATTACK, RETREAT, PAUSE
 }
 var state = State.POSITION
 
 func reset():
 	state = State.POSITION
 	position = initial_pos
+
+func pause():
+	state = State.PAUSE
 
 func _physics_process(delta):
 	match state:

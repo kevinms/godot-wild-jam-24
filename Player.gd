@@ -56,8 +56,9 @@ func pickup_or_drop() -> bool:
 	for object in objectsInFront:
 		if object.is_in_group("container"):
 			var item = object.remove_item()
-			store_item(item)
-			return true
+			if item:
+				store_item(item)
+				return true
 	
 	# Try to pick up objects in front of us.
 	for object in objectsInFront:

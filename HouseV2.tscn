@@ -380,7 +380,7 @@ points = PoolVector2Array( 19, 28, 0, 28, 0, 24, 19, 24 )
 } ]
 0/z_index = 0
 
-[sub_resource type="Animation" id=37]
+[sub_resource type="Animation" id=35]
 resource_name = "StartFeedBabyMinigame"
 length = 0.5
 step = 0.01
@@ -437,8 +437,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=35]
-resource_name = "StartTrashThrowing"
+[sub_resource type="Animation" id=37]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("TrashThrowing:position")
@@ -526,9 +525,9 @@ position = Vector2( 0, 210 )
 z_index = 200
 
 [node name="StartMinigameAnimation" type="AnimationPlayer" parent="YSort/Player/Camera2D"]
-anims/StartFeedBabyMinigame = SubResource( 37 )
+anims/StartFeedBabyMinigame = SubResource( 35 )
 anims/StartFridgeMinigame = SubResource( 36 )
-anims/StartTrashThrowing = SubResource( 35 )
+anims/StartTrashThrowing = SubResource( 37 )
 
 [node name="TV" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 176.665, 114.952 )

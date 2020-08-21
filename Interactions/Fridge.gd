@@ -9,6 +9,23 @@ onready var animation: AnimationPlayer = get_tree().get_root().find_node("StartM
 onready var pizza_scene = load("res://Furniture/Pizza.tscn")
 onready var babybottle_scene = load("res://Furniture/BabyBottle.tscn")
 
+var player_won: bool
+
+func _on_Minigame_player_won():
+	print("Player won yay")
+	player_won = true
+	
+	#TODO Update global stats
+	
+	# The player completed the mini game -- give the food they won.
+	var item = null
+	match minigame.which_item:
+		"Pizza":
+			item = pizza_scene.instance()
+		"BabyBottle":
+			item = babybottle_scene.instance()
+	player.store_item(item)
+
 func interact(gui, actor):
 	start_minigame()
 
@@ -17,6 +34,9 @@ func start_minigame():
 	
 	minigame.start()
 	animation.play("StartFridgeMinigame")
+	
+	player_won = false
+	minigame.connect("player_won", self, "_on_Minigame_player_won")
 
 	minigame_active = true
 	#$AnimationPlayer.play("Expand")
@@ -26,6 +46,8 @@ func stop_minigame():
 	
 	minigame.stop()
 	animation.play_backwards("StartFridgeMinigame")
+	
+	minigame.disconnect("player_won", self, "_on_Minigame_player_won")
 	
 	minigame_active = false
 	#$Minigame.visible = false
@@ -41,12 +63,4 @@ func _process(delta):
 		return
 	
 	if !minigame.active:
-		# The player completed the mini game -- give the food they won.
-		var item = null
-		match minigame.which_item:
-			"Pizza":
-				item = pizza_scene.instance()
-			"BabyBottle":
-				item = babybottle_scene.instance()
-		player.store_item(item)
 		stop_minigame()

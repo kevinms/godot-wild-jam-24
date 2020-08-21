@@ -14,6 +14,9 @@ var elapsed_time: float
 var active: bool
 var which_item: String
 
+var game_over: bool
+signal player_won
+
 func _ready():
 	stop()
 
@@ -21,6 +24,7 @@ func start():
 	active = true
 	elapsed_time = 0
 	which_item = ""
+	game_over = false
 	
 	$Pizza/Sprite.modulate = Color("#ffffff")
 	$BabyBottle/Sprite.modulate = Color("#ffffff")
@@ -82,14 +86,26 @@ func _process(delta):
 
 
 func _on_Pizza_body_entered(body):
+	if game_over:
+		return
+	
 	if body.is_in_group("fridge-player"):
 		$Pizza/WinAnimation.play("Win")
 		which_item = "Pizza"
+		
+		emit_signal("player_won")
+		game_over = true
 
 func _on_BabyBottle_body_entered(body):
+	if game_over:
+		return
+	
 	if body.is_in_group("fridge-player"):
 		$BabyBottle/WinAnimation.play("Win")
 		which_item = "BabyBottle"
+		
+		emit_signal("player_won")
+		game_over = true
 
 func _on_BabyBottle_WinAnimation_animation_finished(anim_name):
 	stop()

@@ -12,6 +12,9 @@ var active: bool
 onready var trash_scene = load("res://Interactions/TrashMinigame/TrashRigidBody.tscn")
 var trash: RigidBody2D
 
+var game_over: bool
+signal player_won
+
 func start():
 	# Reset arrow orientation
 	$ArrowPivot.rotation = initial_arrow_rotation
@@ -23,6 +26,7 @@ func start():
 	
 	reset_kick()
 	active = true
+	game_over = false
 
 func stop():
 	active = false
@@ -80,6 +84,11 @@ func _on_ResetTimer_timeout():
 
 func _on_Goal_body_entered(body):
 	print ("aaaaaaaaaaaa ", body.name)
+	if game_over:
+		return
+
+	emit_signal("player_won")
+	game_over = true
 	
 	$CheerAudio.play()
 	$Can/CheerParticles.emitting = true

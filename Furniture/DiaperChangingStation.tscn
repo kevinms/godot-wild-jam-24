@@ -5,29 +5,29 @@
 [ext_resource path="res://Furniture/Assets/dialogue-white.png" type="Texture" id=3]
 [ext_resource path="res://Interactions/DiaperChangingStation.gd" type="Script" id=4]
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 4.25789
 height = 42.6375
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 15
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 size = 12
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=4]
 size = 8
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 resource_name = "Expand"
 length = 0.5
 step = 0.01
@@ -71,7 +71,7 @@ texture = ExtResource( 1 )
 visible = false
 position = Vector2( 3.8147e-06, -8.52163 )
 rotation = 1.5708
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="Minigame" type="Node2D" parent="."]
 visible = false
@@ -100,7 +100,7 @@ margin_left = -0.919769
 margin_top = -107.7
 margin_right = 88.0802
 margin_bottom = -85.7001
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Baby required!"
 align = 1
 __meta__ = {
@@ -126,7 +126,7 @@ margin_left = 87.8044
 margin_top = -15.4364
 margin_right = 174.804
 margin_bottom = 6.5636
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Diaper Change"
 align = 1
 __meta__ = {
@@ -152,7 +152,7 @@ margin_left = 52.0
 margin_top = 5.5
 margin_right = 174.0
 margin_bottom = 17.5
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "Clean!"
 align = 1
 __meta__ = {
@@ -164,7 +164,7 @@ margin_left = 54.3575
 margin_top = 26.6591
 margin_right = 128.357
 margin_bottom = 38.6591
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "Baby Cleanliness:"
 align = 1
 __meta__ = {
@@ -176,7 +176,7 @@ margin_left = 129.405
 margin_top = 26.0953
 margin_right = 176.405
 margin_bottom = 38.0953
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -188,7 +188,7 @@ margin_left = 52.1606
 margin_top = 51.4764
 margin_right = 99.1606
 margin_bottom = 59.4764
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 text = "Press ESC to quit"
 align = 1
 __meta__ = {
@@ -196,7 +196,10 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Expand = SubResource( 9 )
+anims/Expand = SubResource( 5 )
 
 [node name="BabyPosition" type="Position2D" parent="."]
 position = Vector2( 6.13518, -24.5407 )
+
+[node name="TrashPosition" type="Position2D" parent="."]
+position = Vector2( -58.9922, 24.0688 )
