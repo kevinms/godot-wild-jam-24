@@ -117,6 +117,7 @@ func set_state(new_state):
 func _on_PoopAudio_finished():
 	$StinkEffect.play()
 	$StinkEffect.visible = true
+	Helper.notify("Baby pooped.")
 	set_state(State.CRY)
 
 

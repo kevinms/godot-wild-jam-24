@@ -649,10 +649,10 @@ position = Vector2( 374.067, 193.892 )
 position = Vector2( 407.354, 41.9317 )
 
 [node name="KitchenSink" parent="YSort" instance=ExtResource( 28 )]
-position = Vector2( 380.071, 42.1169 )
+position = Vector2( 353.024, 42.2053 )
 
 [node name="KitchenCounter" parent="YSort" instance=ExtResource( 29 )]
-position = Vector2( 351.437, 41.8741 )
+position = Vector2( 379.986, 41.9625 )
 
 [node name="KitchenCounter3" parent="YSort" instance=ExtResource( 29 )]
 position = Vector2( 368.662, 91.6634 )

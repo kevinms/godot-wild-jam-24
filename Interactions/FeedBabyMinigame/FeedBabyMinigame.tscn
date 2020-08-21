@@ -146,7 +146,7 @@ autoplay = "pulse"
 anims/pulse = SubResource( 17 )
 
 [node name="Baby" type="Position2D" parent="."]
-position = Vector2( -10, 50 )
+position = Vector2( -10, 4 )
 
 [node name="Body" type="Sprite" parent="Baby"]
 position = Vector2( 143.25, 15 )
