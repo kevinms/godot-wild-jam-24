@@ -46,7 +46,6 @@ func pickup_or_drop() -> bool:
 			if object.is_in_group("container"):
 				if object.store_item(item):
 					return true
-					
 		
 		# Drop on floor
 		get_parent().add_child(item)
@@ -66,6 +65,12 @@ func pickup_or_drop() -> bool:
 func store_item(object):
 	if object == null:
 		return
+	
+	# Drop any object we already have.
+	if held_object != null:
+		var item = remove_item()
+		get_parent().add_child(item)
+		item.position = position + Vector2.DOWN
 	
 	add_child(object)
 	object.position = Vector2.ZERO

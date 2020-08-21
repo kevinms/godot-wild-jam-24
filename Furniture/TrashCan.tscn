@@ -9,25 +9,25 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.3219, 6.98237 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 15
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 size = 12
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=4]
 size = 8
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 resource_name = "Expand"
 length = 0.5
 step = 0.01
@@ -107,7 +107,7 @@ margin_left = 98.9406
 margin_top = -121.008
 margin_right = 185.941
 margin_bottom = -99.0079
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Trash"
 align = 1
 __meta__ = {
@@ -133,7 +133,7 @@ margin_left = 63.1362
 margin_top = -100.072
 margin_right = 185.136
 margin_bottom = -88.0715
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "Clean!"
 align = 1
 __meta__ = {
@@ -145,7 +145,7 @@ margin_left = 65.4937
 margin_top = -78.9124
 margin_right = 142.494
 margin_bottom = -66.9124
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "Trash Disposed:"
 align = 1
 __meta__ = {
@@ -157,7 +157,7 @@ margin_left = 140.541
 margin_top = -79.4762
 margin_right = 187.541
 margin_bottom = -67.4762
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -169,7 +169,7 @@ margin_left = 63.2968
 margin_top = -54.0951
 margin_right = 118.297
 margin_bottom = -46.0951
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 text = "Press ESC to quit"
 align = 1
 __meta__ = {
@@ -177,4 +177,4 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Expand = SubResource( 9 )
+anims/Expand = SubResource( 5 )

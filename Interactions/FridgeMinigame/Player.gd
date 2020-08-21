@@ -1,11 +1,5 @@
 extends KinematicBody2D
 
-
-const ACCEL = 2000
-const MAX_SPEED = 150
-const FRICTION = 1200
-
-
 export (int) var speed = 120
 export (int) var jump_speed = -275
 export (int) var gravity = 800
@@ -30,13 +24,9 @@ func _physics_process(delta):
 		animationTree.set("parameters/Walk/blend_position", dir)
 		animationState.travel("Walk")
 		
-		#velocity += dir * speed
 		velocity.x = lerp(velocity.x, dir.x * speed, acceleration)
-		#var effectiveSpeed = MAX_SPEED
-		#velocity = velocity.move_toward(dir*effectiveSpeed, ACCEL * delta)
 	else:
 		animationState.travel("Idle")
-		#velocity = velocity.move_toward(Vector2.ZERO, FRICTION*delta)
 		velocity.x = lerp(velocity.x, 0, friction)
 	
 	
@@ -53,16 +43,4 @@ func _physics_process(delta):
 		can_jump = false
 		snap = Vector2.ZERO
 	
-	#var snap = Vector2.DOWN * 16 if is_on_floor() else Vector2.ZERO
 	velocity = move_and_slide_with_snap(velocity, snap, Vector2.UP)
-	
-	
-	
-	
-#	velocity.y += gravity * delta
-#	velocity = move_and_slide(velocity, Vector2.UP)
-#	if Input.is_action_just_pressed("ui_accept"):
-#		if is_on_floor():
-#			velocity.y = jump_speed
-#
-#	velocity = move_and_slide(velocity)

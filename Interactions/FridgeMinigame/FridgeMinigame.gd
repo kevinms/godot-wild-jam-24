@@ -12,13 +12,18 @@ var height_between: float
 
 var elapsed_time: float
 var active: bool
+var which_item: String
 
 func _ready():
-	start()
-	
+	stop()
+
 func start():
 	active = true
 	elapsed_time = 0
+	which_item = ""
+	
+	$Pizza/Sprite.modulate = Color("#ffffff")
+	$BabyBottle/Sprite.modulate = Color("#ffffff")
 	
 	var dist = ($Spawn.global_position - $Despawn.global_position).length()
 	height_between = dist / max_platforms
@@ -31,6 +36,8 @@ func start():
 
 func stop():
 	active = false
+	for child in $Spawn.get_children():
+		child.queue_free()
 
 func spawn():
 	var platform = platform_scene.instance()
@@ -60,6 +67,9 @@ func spawn():
 	last_spawn = platform
 
 func _process(delta):
+	if !active:
+		return
+	
 	elapsed_time += delta
 	
 	for child in $Spawn.get_children():
@@ -74,10 +84,12 @@ func _process(delta):
 func _on_Pizza_body_entered(body):
 	if body.is_in_group("fridge-player"):
 		$Pizza/WinAnimation.play("Win")
+		which_item = "Pizza"
 
 func _on_BabyBottle_body_entered(body):
 	if body.is_in_group("fridge-player"):
 		$BabyBottle/WinAnimation.play("Win")
+		which_item = "BabyBottle"
 
 func _on_BabyBottle_WinAnimation_animation_finished(anim_name):
 	stop()
