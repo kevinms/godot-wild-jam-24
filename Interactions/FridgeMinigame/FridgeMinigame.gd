@@ -11,11 +11,13 @@ var last_spawn = null
 var height_between: float
 
 var elapsed_time: float
+var active: bool
 
 func _ready():
 	start()
 	
 func start():
+	active = true
 	elapsed_time = 0
 	
 	var dist = ($Spawn.global_position - $Despawn.global_position).length()
@@ -26,6 +28,9 @@ func start():
 	$Spawn.add_child(platform)
 	platform.position = Vector2(rand_range(-120, 120), 0.0)
 	last_spawn = platform
+
+func stop():
+	active = false
 
 func spawn():
 	var platform = platform_scene.instance()
@@ -67,7 +72,15 @@ func _process(delta):
 
 
 func _on_Pizza_body_entered(body):
-	$Pizza/WinAnimation.play("Win")
+	if body.is_in_group("fridge-player"):
+		$Pizza/WinAnimation.play("Win")
 
 func _on_BabyBottle_body_entered(body):
-	$BabyBottle/WinAnimation.play("Win")
+	if body.is_in_group("fridge-player"):
+		$BabyBottle/WinAnimation.play("Win")
+
+func _on_BabyBottle_WinAnimation_animation_finished(anim_name):
+	stop()
+
+func _on_Pizza_WinAnimation_animation_finished(anim_name):
+	stop()
