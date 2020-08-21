@@ -2,10 +2,10 @@ extends Node2D
 
 onready var computer_char_scene = load("res://Interactions/ComputerChar.tscn")
 
-const max_line_length = 26
-const char_width = 5
-const char_height = 10
-const max_lines_displayed = 8
+const max_line_length = 36
+const char_width = 3.5
+const char_height = 7
+const max_lines_displayed = 11
 
 var source_lines = []
 
@@ -101,11 +101,6 @@ func key_press(letter):
 			next_hidden_line += 1
 	
 	#TODO: Reset everything if we reach this far.
-	
-	# As lines are typed:
-	#   Remove top line
-	#   Shift all chars up one row
-	#   Add a new row at the bottom
 
 func add_line(line: Array, y: float):
 	var x = 0

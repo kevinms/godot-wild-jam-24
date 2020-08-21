@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/baby-cry.ogg-de62602c749f599ec678973ceb1a01f8.oggstr"
+
+[deps]
+
+source_file="res://SFX/baby-cry.ogg"
+dest_files=[ "res://.import/baby-cry.ogg-de62602c749f599ec678973ceb1a01f8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 RainbowColor="*res://Effects/RainbowColor.gd"
+Helper="*res://Helper.gd"
 
 [display]
 
@@ -110,7 +111,9 @@ ui_down={
 [layer_names]
 
 2d_physics/layer_2="Interactions"
+2d_physics/layer_6="TrashMinigame"
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

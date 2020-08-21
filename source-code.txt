@@ -1,5 +1,125 @@
 extends StaticBody2D
 
+enum State {
+	EAT, POOP, SLEEP, CRY, OBSERVE
+}
+var state = State.SLEEP
+
+# Conditions
+var hungry = false
+var poopy = false
+var lonely = false
+var sleepy = false
+
+func _ready():
+	set_state(State.OBSERVE)
+
+func feed():
+	if !hungry:
+		return
+	
+	hungry = false
+	set_state(State.EAT)
+
+func diaper_change():
+	if !poopy:
+		return
+	
+	$StinkEffect.stop()
+	$StinkEffect.visible = false
+	poopy = false
+	set_state(State.OBSERVE)
+
+func hold():
+	if !lonely:
+		return
+	
+	lonely = false
+	set_state(State.OBSERVE)
+
+func lullaby():
+	if !sleepy:
+		return
+	
+	sleepy = false
+	set_state(State.SLEEP)
+
+
+func _on_ConditionTimer_timeout():
+	# There is chance of pooping at nearly any time.
+	if !poopy and randf() < 0.01:
+		poopy = true
+		set_state(State.POOP)
+	
+	match state:
+		State.SLEEP:
+			# Chance something bad will happen.
+			if randf() < 0.1:
+				# Time to wake up and be unhappy.
+				var coin = randf()
+				if coin < 0.5:
+					hungry = true
+					set_state(State.CRY)
+				else:
+					poopy = true
+					set_state(State.POOP)
+		State.OBSERVE:
+			var dist = distance_to_player()
+			if dist > 125:
+				lonely = true
+				set_state(State.CRY)
+			
+			# Make sure the baby is upset.
+			if hungry || poopy || lonely || sleepy:
+				set_state(State.CRY)
+
+func distance_to_player() -> float:
+	for player in get_tree().get_nodes_in_group("player"):
+		return (player.global_position - global_position).length()
+	return 0.0
+
+func set_state(new_state):
+	match state:
+		State.POOP:
+			# There is no stopping poop.
+			pass
+		State.CRY:
+			$CryAudio.stop()
+			$CryEffect.stop()
+			$CryEffect.visible = false
+		State.SLEEP:
+			$SnoreAudio.stop()
+			$SleepEffect.stop()
+			$SleepEffect.visible = false
+		State.EAT:
+			$EatAudio.stop()
+	
+	match new_state:
+		State.POOP:
+			$PoopAudio.play()
+		State.CRY:
+			$CryAudio.play()
+			$CryEffect.play()
+			$CryEffect.visible = true
+		State.SLEEP:
+			$SnoreAudio.play()
+			$SleepEffect.play()
+			$SleepEffect.visible = true
+		State.EAT:
+			$EatAudio.play()
+	
+	state = new_state
+
+func _on_PoopAudio_finished():
+	$StinkEffect.play()
+	$StinkEffect.visible = true
+	set_state(State.CRY)
+
+
+func _on_EatAudio_finished():
+	set_state(State.OBSERVE)
+extends StaticBody2D
+
 func interact():
 	for child in get_children():
 		if child.has_method("interact"):
@@ -115,6 +235,7 @@ func get_text():
 var color setget set_color
 func set_color(value):
 	$Label.add_color_override("font_color", value)
+	$AnimationPlayer.play("Grow")
 extends StaticBody2D
 
 var typingEffect = load("res://Effects/TypingEffect.tscn")
@@ -153,7 +274,6 @@ func interact(gui, actor):
 	
 	minigame_active = true
 	$Light2D.visible = true
-	minigame.visible = true
 	$AnimationPlayer.play("Expand")
 
 func _process(delta):
@@ -172,10 +292,10 @@ extends Node2D
 
 onready var computer_char_scene = load("res://Interactions/ComputerChar.tscn")
 
-const max_line_length = 32
-const char_width = 5
-const char_height = 10
-const max_lines_displayed = 8
+const max_line_length = 36
+const char_width = 3.5
+const char_height = 7
+const max_lines_displayed = 11
 
 var source_lines = []
 
@@ -271,11 +391,6 @@ func key_press(letter):
 			next_hidden_line += 1
 	
 	#TODO: Reset everything if we reach this far.
-	
-	# As lines are typed:
-	#   Remove top line
-	#   Shift all chars up one row
-	#   Add a new row at the bottom
 
 func add_line(line: Array, y: float):
 	var x = 0
@@ -308,11 +423,305 @@ func load_text_file(path):
 	
 	file.close()
 	return text
+extends StaticBody2D
+
+var quality = 0
+var minigame_active = false
+
+var stored_item = null
+
+onready var player = Helper.get_player()
+
+func interact(gui, actor):
+	start_minigame()
+
+func store_item(object) -> bool:
+	$BabyPosition.add_child(object)
+	object.position = Vector2.ZERO
+	stored_item = object
+	
+	start_minigame()
+	return true
+
+func remove_item() -> Node:
+	var item = stored_item
+	$BabyPosition.remove_child(stored_item)
+	stored_item = null
+	return item
+
+func has_baby() -> bool:
+	var object = $BabyPosition.get_child(0)
+	if object != null && object.is_in_group("baby"):
+		return true
+	return false
+
+func diaper_changed():
+	if !has_baby():
+		return
+	
+	stored_item.diaper_change()
+
+func start_minigame():
+	if !has_baby():
+		$Minigame/Requirement.visible = true
+	
+	player.state = player.State.MINIGAME
+	diaper_changed()
+	
+	minigame_active = true
+	$AnimationPlayer.play("Expand")
+
+func _process(delta):
+	if !minigame_active:
+		return
+
+	if Input.is_action_just_released("ui_cancel"):
+		player.state = player.State.NORMAL
+		
+		var item = remove_item()
+		player.store_item(item)
+		
+		minigame_active = false
+		$Minigame.visible = false
+		$AnimationPlayer.stop(true)
+		$Minigame/Requirement.visible = false
+		return
+extends StaticBody2D
+
+var items_disposed = 0
+var minigame_active = false
+
+var stored_item = null
+
+onready var player = Helper.get_player()
+onready var minigame = get_tree().get_root().find_node("TrashThrowing", true, false)
+onready var animation: AnimationPlayer = get_tree().get_root().find_node("StartMinigameAnimation", true, false)
+
+#func interact(gui, actor):
+#	start_minigame()
+
+func store_item(object) -> bool:
+	if object == null:
+		return false
+	
+	if stored_item != null:
+		stored_item.queue_free()
+	
+	object.collision_layer = 0
+	object.collision_mask = 0
+	$TrashPosition.add_child(object)
+	object.position = Vector2.ZERO
+	stored_item = object
+	
+	start_minigame()
+	return true
+
+func remove_item() -> Node:
+	var item = stored_item
+	$TrashPosition.remove_child(stored_item)
+	stored_item = null
+	return item
+
+func has_baby() -> bool:
+	if stored_item != null && stored_item.is_in_group("baby"):
+		return true
+	return false
+
+func start_minigame():
+	if has_baby():
+		print("You lose...")
+	
+	player.state = player.State.MINIGAME
+	
+	minigame.start()
+	animation.play("StartTrashThrowing")
+
+	minigame_active = true
+	$AnimationPlayer.play("Expand")
+
+func stop_minigame():
+	player.state = player.State.NORMAL
+	
+	minigame.stop()
+	animation.play_backwards("StartTrashThrowing")
+	
+	minigame_active = false
+	#$Minigame.visible = false
+	$AnimationPlayer.play_backwards("Expand")
+
+func _process(delta):
+	if !minigame_active:
+		return
+	
+	if Input.is_action_just_released("ui_cancel"):
+		# The player decided to not finish the mini game so they get their trash back.
+		var item = remove_item()
+		player.store_item(item)
+		
+		stop_minigame()
+		return
+	
+	if !minigame.active:
+		# The player completed the mini game.
+		items_disposed += 1
+		$Minigame/GameQualityValue.text = str(items_disposed)
+		stop_minigame()
+extends Node2D
+
+onready var initial_arrow_rotation = $ArrowPivot.rotation
+onready var initial_can_position = $Can.position
+const arrow_rotation_speed = PI/200
+var arrow_size = 1.0
+
+const kick_strength = 100.0
+var kicked: bool
+var active: bool
+
+onready var trash_scene = load("res://Interactions/TrashMinigame/TrashRigidBody.tscn")
+var trash: RigidBody2D
+
+func start():
+	# Reset arrow orientation
+	$ArrowPivot.rotation = initial_arrow_rotation
+	
+	# Pick a new trash can location
+	var new_pos =initial_can_position + (Vector2.RIGHT * (rand_range(-58, 58)))
+	$Can.position = new_pos
+	$CanBack.position = new_pos
+	
+	reset_kick()
+	active = true
+
+func stop():
+	active = false
+
+	for child in $TrashNodes.get_children():
+		child.queue_free()
+
+func reset_kick():
+	$ArrowPivot.scale = Vector2.ONE
+	arrow_size = 1.0
+	
+	trash = trash_scene.instance()
+	trash.position = $ArrowPivot.position
+	trash.rotation = $ArrowPivot.rotation
+	$TrashNodes.add_child(trash)
+	
+	kicked = false
+
+func _process(delta):
+	if !active:
+		return
+
+	if !kicked:
+		charge_kick()
+
+func charge_kick():
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector = input_vector.normalized()
+	
+	# Rotate arrow
+	if input_vector.x > 0:
+		$ArrowPivot.rotate(arrow_rotation_speed)
+	if input_vector.x < 0:
+		$ArrowPivot.rotate(-arrow_rotation_speed)
+	
+	if Input.is_action_pressed("ui_accept"):
+		arrow_size = min(arrow_size+0.005, 2.0)
+		$ArrowPivot.scale = Vector2(arrow_size, arrow_size)
+	
+	if Input.is_action_just_released("ui_accept"):
+		$Player.frame = 0
+		$Player.play("default")
+		var strength_modifier = kick_strength * 0.9 * (arrow_size - 1.0)
+		var impulse = $ArrowPivot.transform.x.normalized() * (kick_strength + strength_modifier)
+		trash.apply_impulse(Vector2.LEFT, impulse)
+		trash.apply_torque_impulse(1.0)
+		
+		kicked = true
+		$ResetTimer.start()
+
+func _on_ResetTimer_timeout():
+	reset_kick()
+
+
+func _on_Goal_body_entered(body):
+	print ("aaaaaaaaaaaa ", body.name)
+	
+	$CheerAudio.play()
+	$Can/CheerParticles.emitting = true
+	$CelebrationTimer.start()
+
+
+func _on_CelebrationTimer_timeout():
+	stop()
+extends Node2D
+
+enum States {
+	MENU_1,
+	BACKSTORY_1,
+	PLAYER_NAMING,
+	SPOUSE_NAMING,
+	BABY_NAMING,
+	BACKSTORY_2,
+	TUTORIAL
+}
+var state = States.MENU_1
+onready var menu1 = $menu_1
+onready var backstory_1 = $backstory_1
+onready var playerNaming = $playerNaming
+onready var spouseNaming = $spouseNaming
+onready var babyNaming = $babyNaming
+onready var backstory_2 = $backstory_2
+onready var tutorial = $tutorial
+
+# Called when the node enters the scene tree for the first time.
+#func _ready():
+#	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_NewGameButton_pressed():
+	menu1.visible = false
+	backstory_1.visible = true
+	state = States.BACKSTORY_1
+
+func _on_backstoryContinue_pressed():
+	backstory_1.visible = false
+	playerNaming.visible = true
+	state = States.PLAYER_NAMING
+
+func _on_playerNameConfirm_pressed():
+	playerNaming.visible = false
+	spouseNaming.visible = true
+	state = States.SPOUSE_NAMING
+
+func _on_spouseNameConfirm_pressed():
+	spouseNaming.visible = false
+	babyNaming.visible = true
+	state = States.BABY_NAMING
+
+func _on_babyNameConfirm_pressed():
+	babyNaming.visible = false
+	backstory_2.visible = true
+	state = States.BACKSTORY_2
+
+func _on_backstory2Continue_pressed():
+	backstory_2.visible = false
+	tutorial.visible = true
+	state = States.TUTORIAL
+
+func _on_tutorialContinue_pressed():
+	get_tree().change_scene("res://HouseV2.tscn")
 extends KinematicBody2D
 
 const ACCEL = 2000
 const MAX_SPEED = 200
-const MIN_SPEED = 50
+const MIN_SPEED = 100
 const FRICTION = 1200
 
 enum State {
@@ -329,24 +738,76 @@ onready var guiHandle = $Camera2D/GUI
 
 onready var objectInFront = null
 
+var objectsInFront = []
+
+var held_object = null
+
 var velocity = Vector2.ZERO
 
 func takeAction(object):
 	print("name: ", object.get_name())
 	
+	print(object)
+	if object.has_method("interact"):
+		object.interact(guiHandle, self)
+	
 	if object.get_name() == "Fridge":
 		print("Opening the fridge for a snack!")
 		guiHandle.updateEnergy(100)
 
-	print(object)
-	if object.has_method("interact"):
-		object.interact(guiHandle, self)
+func pickup_or_drop() -> bool:
+	# Drop the object, if we already have one.
+	if held_object != null:
+		var item = remove_item()
+		
+		# Drop at station
+		for object in objectsInFront:
+			if object.is_in_group("container"):
+				if object.store_item(item):
+					return true
+					
+		
+		# Drop on floor
+		get_parent().add_child(item)
+		item.position = position + Vector2.DOWN
+		return true
+	
+	# Try to pick up objects in front of us.
+	for object in objectsInFront:
+		if object.is_in_group("pickupable"):
+			var parent = object.get_parent()
+			parent.remove_child(object)
+			store_item(object)
+			return true
+	
+	return false
+
+func store_item(object):
+	if object == null:
+		return
+	
+	add_child(object)
+	object.position = Vector2.ZERO
+	held_object = object
+	
+	if object.is_in_group("baby"):
+		object.hold()
+
+func remove_item() -> Node:
+	var item = held_object
+	remove_child(held_object)
+	held_object = null
+	return item
 
 func _process(delta):
 	if state == State.MINIGAME:
 		return
 	
 	if Input.is_action_just_released("ui_accept"):
+		if pickup_or_drop():
+			print("Picked up object")
+			return
+		
 		if objectInFront != null:
 			takeAction(objectInFront)
 
@@ -373,17 +834,32 @@ func _physics_process(delta):
 	
 	move_and_slide(velocity)
 
+func object_stack_add(object):
+	if !objectsInFront.has(object):
+		objectsInFront.append(object)
+
+func object_stack_del(object):
+	objectsInFront.erase(object)
 
 func _on_ActionArea_area_shape_entered(area_id, area, area_shape, self_shape):
 	#print(area_id, area, area_shape, self_shape)
 	#print(area.get_name())
 	objectInFront = area
+	object_stack_add(area)
 
 func _on_ActionArea_area_shape_exited(area_id, area, area_shape, self_shape):
 	objectInFront = null
+	object_stack_del(area)
 
 func _on_ActionArea_body_entered(body):
 	objectInFront = body
+	object_stack_add(body)
 
 func _on_ActionArea_body_exited(body):
 	objectInFront = null
+	object_stack_del(body)
+extends Node
+
+func get_player():
+	for player in get_tree().get_nodes_in_group("player"):
+		return player

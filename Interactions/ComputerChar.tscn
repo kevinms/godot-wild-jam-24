@@ -1,14 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Interactions/ComputerChar.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=1]
-size = 9
-font_data = ExtResource( 1 )
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/carlito/Carlito-Regular.ttf"
 
-[sub_resource type="Animation" id=2]
-resource_name = "Grow"
+[sub_resource type="DynamicFont" id=2]
+size = 7
+font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -28,8 +29,8 @@ script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_right = 5.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
 text = "A"
 align = 1
 __meta__ = {
@@ -37,4 +38,4 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Grow = SubResource( 2 )
+anims/Grow = SubResource( 3 )

@@ -33,11 +33,10 @@ texture = ExtResource( 1 )
 position = Vector2( -64.83, -62.9718 )
 
 [node name="ComputerCursor" type="Node2D" parent="TextPosition"]
-position = Vector2( 0.0180206, -0.0513611 )
 
 [node name="Sprite" type="Sprite" parent="TextPosition/ComputerCursor"]
-position = Vector2( 2.52106, 5.08277 )
-scale = Vector2( 5, 10 )
+position = Vector2( 3.94091, 6.36721 )
+scale = Vector2( 3.5, 7 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextPosition/ComputerCursor"]

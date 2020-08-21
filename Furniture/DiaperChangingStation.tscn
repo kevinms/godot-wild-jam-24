@@ -1,12 +1,67 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Furniture/Assets/diaper-changing-station.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Furniture/Assets/dialogue-white.png" type="Texture" id=3]
+[ext_resource path="res://Interactions/DiaperChangingStation.gd" type="Script" id=4]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 4.25789
 height = 42.6375
 
-[node name="DiaperChangingStation" type="StaticBody2D"]
+[sub_resource type="DynamicFont" id=5]
+size = 15
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Expand"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Minigame:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Minigame:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="DiaperChangingStation" type="StaticBody2D" groups=[
+"container",
+]]
+collision_layer = 3
+collision_mask = 2
+script = ExtResource( 4 )
 
 [node name="diaper-changing-station" type="Sprite" parent="."]
 position = Vector2( 0.561867, -32.3072 )
@@ -16,4 +71,132 @@ texture = ExtResource( 1 )
 visible = false
 position = Vector2( 3.8147e-06, -8.52163 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 8 )
+
+[node name="Minigame" type="Node2D" parent="."]
+visible = false
+position = Vector2( 20.9801, 33.5788 )
+z_index = 60
+
+[node name="Requirement" type="Node2D" parent="Minigame"]
+visible = false
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="Minigame/Requirement"]
+margin_left = -6.27518
+margin_top = -112.736
+margin_right = 90.7248
+margin_bottom = -86.7357
+texture = ExtResource( 3 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning" type="Label" parent="Minigame/Requirement"]
+margin_left = -0.919769
+margin_top = -107.7
+margin_right = 88.0802
+margin_bottom = -85.7001
+custom_fonts/font = SubResource( 5 )
+text = "Baby required!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Minigame"]
+margin_left = 82.449
+margin_top = -20.4719
+margin_right = 179.449
+margin_bottom = 5.52806
+texture = ExtResource( 3 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Minigame"]
+margin_left = 87.8044
+margin_top = -15.4364
+margin_right = 174.804
+margin_bottom = 6.5636
+custom_fonts/font = SubResource( 5 )
+text = "Diaper Change"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Minigame"]
+margin_left = 47.0
+margin_top = 0.5
+margin_right = 182.0
+margin_bottom = 63.5
+texture = ExtResource( 3 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Label" parent="Minigame"]
+margin_left = 52.0
+margin_top = 5.5
+margin_right = 174.0
+margin_bottom = 17.5
+custom_fonts/font = SubResource( 6 )
+text = "Clean!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameQuality" type="Label" parent="Minigame"]
+margin_left = 54.3575
+margin_top = 26.6591
+margin_right = 128.357
+margin_bottom = 38.6591
+custom_fonts/font = SubResource( 6 )
+text = "Baby Cleanliness:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameQualityValue" type="Label" parent="Minigame"]
+margin_left = 129.405
+margin_top = 26.0953
+margin_right = 176.405
+margin_bottom = 38.0953
+custom_fonts/font = SubResource( 6 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitInstructions" type="Label" parent="Minigame"]
+margin_left = 52.1606
+margin_top = 51.4764
+margin_right = 99.1606
+margin_bottom = 59.4764
+custom_fonts/font = SubResource( 7 )
+text = "Press ESC to quit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Expand = SubResource( 9 )
+
+[node name="BabyPosition" type="Position2D" parent="."]
+position = Vector2( 6.13518, -24.5407 )
