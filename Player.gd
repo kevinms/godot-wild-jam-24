@@ -102,8 +102,10 @@ func _process(delta):
 			print("Picked up object")
 			return
 		
-		if objectInFront != null:
-			takeAction(objectInFront)
+		if objectsInFront.size() > 0:
+			takeAction(objectsInFront[0])
+#		if objectInFront != null:
+#			takeAction(objectInFront)
 
 func _physics_process(delta):
 	if state == State.MINIGAME:
