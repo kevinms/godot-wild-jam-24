@@ -1,0 +1,279 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Furniture/Assets/baby-puppet-head.png" type="Texture" id=1]
+[ext_resource path="res://Furniture/Assets/baby-puppet-jaw.png" type="Texture" id=2]
+[ext_resource path="res://Furniture/Assets/baby-puppet-arm.png" type="Texture" id=3]
+[ext_resource path="res://Interactions/FeedBabyMinigame/BottleArm.gd" type="Script" id=4]
+[ext_resource path="res://Interactions/FeedBabyMinigame/FeedBabyMinigame.gd" type="Script" id=5]
+[ext_resource path="res://Furniture/Assets/bottle-and-arm.png" type="Texture" id=6]
+[ext_resource path="res://Furniture/Assets/arrow-down.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=16]
+resource_name = "pulse"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Up:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.03635, 2.03635 ), Vector2( 1.4755, 1.4755 ), Vector2( 2.03635, 2.03635 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/Down:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.03635, 2.03635 ), Vector2( 1.475, 1.475 ), Vector2( 2.03635, 2.03635 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22.7012, 14.3495 )
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 3.303
+height = 5.52407
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 14.8217
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 9.30938
+height = 11.8161
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4.44084, 4.52688 )
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 3.61454
+height = 23.0403
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 3.61454
+height = 8.91473
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 3.61454
+height = 8.91473
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 3.45151
+height = 13.378
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 4.5603
+height = 9.52921
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 8.92106
+
+[sub_resource type="CapsuleShape2D" id=14]
+radius = 4.16263
+height = 213.683
+
+[sub_resource type="Animation" id=11]
+resource_name = "Wave"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Baby/Arm:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -39.6575, 34.2281, -39.6575 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Baby/Body/Jaw:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.02177, 8.05547 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Move"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Baby:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10, 50 ), Vector2( -10, -65 ), Vector2( -10, 50 ) ]
+}
+
+[node name="FeedBabyMinigame" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "pulse"
+anims/pulse = SubResource( 16 )
+
+[node name="Up" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( -219.962, -93.088 )
+rotation = 3.14159
+scale = Vector2( 1.74279, 1.74279 )
+z_index = -1
+texture = ExtResource( 7 )
+
+[node name="Down" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( -219.962, 109.553 )
+scale = Vector2( 1.74253, 1.74253 )
+z_index = -1
+texture = ExtResource( 7 )
+
+[node name="Baby" type="Position2D" parent="."]
+position = Vector2( -10, 50 )
+
+[node name="Body" type="Sprite" parent="Baby"]
+position = Vector2( 143.25, 15 )
+scale = Vector2( 4.07812, 4.1875 )
+texture = ExtResource( 1 )
+
+[node name="Jaw" type="Sprite" parent="Baby/Body"]
+z_index = 100
+texture = ExtResource( 2 )
+
+[node name="Goal" type="Area2D" parent="Baby/Body/Jaw"]
+position = Vector2( -4.82735, -9.45621 )
+scale = Vector2( 0.245211, 0.238806 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Baby/Body/Jaw/Goal"]
+position = Vector2( 2.38526, 3.50771 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Baby/Body/Jaw"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Baby/Body/Jaw/StaticBody2D"]
+position = Vector2( -4.35942, -1.6543 )
+rotation = 1.5708
+shape = SubResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Baby/Body"]
+visible = false
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
+position = Vector2( 3.49031, -14.9383 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
+position = Vector2( 5.50793, 15.9457 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
+position = Vector2( -7.07247, -8.76622 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
+position = Vector2( 2.27449, 20.4355 )
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
+position = Vector2( -5.48042, 26.2964 )
+rotation = 0.416557
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
+position = Vector2( 12.0531, 26.2036 )
+rotation = -0.572873
+shape = SubResource( 7 )
+
+[node name="Arm" type="Sprite" parent="Baby"]
+position = Vector2( 166.347, 63.7684 )
+rotation = -0.692153
+scale = Vector2( 4.07812, 4.1875 )
+texture = ExtResource( 3 )
+offset = Vector2( -7.01362, -9.49226 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Baby/Arm"]
+visible = false
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Baby/Arm/StaticBody2D"]
+position = Vector2( 1.03875, 10.7997 )
+rotation = 1.45176
+shape = SubResource( 8 )
+
+[node name="BottleArm" type="KinematicBody2D" parent="."]
+position = Vector2( -394.608, 14.2888 )
+scale = Vector2( 1.90638, 1.95751 )
+collision_layer = 128
+collision_mask = 128
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="BottleArm"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottleArm"]
+position = Vector2( 112.574, -0.486279 )
+rotation = 1.5708
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BottleArm"]
+position = Vector2( 102.511, -1.87265 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BottleArm"]
+position = Vector2( -10.8147, 0.948105 )
+rotation = 1.5708
+shape = SubResource( 14 )
+
+[node name="ArmAnimation" type="AnimationPlayer" parent="."]
+autoplay = "Wave"
+anims/Wave = SubResource( 11 )
+
+[node name="JawAnimation" type="AnimationPlayer" parent="."]
+autoplay = "Move"
+anims/Move = SubResource( 10 )
+
+[node name="ArmSwingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="JawOpenTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BabyAnimation" type="AnimationPlayer" parent="."]
+autoplay = "Move"
+playback_speed = 0.2
+anims/Move = SubResource( 15 )
+[connection signal="body_exited" from="Baby/Body/Jaw/Goal" to="." method="_on_Goal_body_exited"]
+[connection signal="animation_finished" from="ArmAnimation" to="." method="_on_ArmAnimation_animation_finished"]
+[connection signal="animation_finished" from="JawAnimation" to="." method="_on_JawAnimation_animation_finished"]
+[connection signal="timeout" from="ArmSwingTimer" to="." method="_on_ArmSwingTimer_timeout"]
+[connection signal="timeout" from="JawOpenTimer" to="." method="_on_JawOpenTimer_timeout"]

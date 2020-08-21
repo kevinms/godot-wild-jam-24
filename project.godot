@@ -113,6 +113,7 @@ ui_down={
 2d_physics/layer_2="Interactions"
 2d_physics/layer_6="TrashMinigame"
 2d_physics/layer_7="FridgeMinigame"
+2d_physics/layer_8="FeedBabyMinigame"
 
 [rendering]
 
