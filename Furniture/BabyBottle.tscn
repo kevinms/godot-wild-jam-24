@@ -7,6 +7,7 @@ radius = 4.6875
 height = 8.375
 
 [node name="BabyBottle" type="Area2D" groups=[
+"babyfood",
 "pickupable",
 ]]
 collision_layer = 2

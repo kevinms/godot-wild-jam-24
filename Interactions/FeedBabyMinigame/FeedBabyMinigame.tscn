@@ -130,9 +130,6 @@ tracks/0/keys = {
 [node name="FeedBabyMinigame" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "pulse"
 anims/pulse = SubResource( 16 )
@@ -140,13 +137,13 @@ anims/pulse = SubResource( 16 )
 [node name="Up" type="Sprite" parent="AnimationPlayer"]
 position = Vector2( -219.962, -93.088 )
 rotation = 3.14159
-scale = Vector2( 1.74279, 1.74279 )
+scale = Vector2( 1.87655, 1.87655 )
 z_index = -1
 texture = ExtResource( 7 )
 
 [node name="Down" type="Sprite" parent="AnimationPlayer"]
 position = Vector2( -219.962, 109.553 )
-scale = Vector2( 1.74253, 1.74253 )
+scale = Vector2( 1.87641, 1.87641 )
 z_index = -1
 texture = ExtResource( 7 )
 

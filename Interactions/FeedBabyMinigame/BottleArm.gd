@@ -5,10 +5,16 @@ var retreat_speed = 300
 var attack_speed = 500
 var attack_pos: Vector2
 
+onready var initial_pos = position
+
 enum State {
 	POSITION, ATTACK, RETREAT
 }
 var state = State.POSITION
+
+func reset():
+	state = State.POSITION
+	position = initial_pos
 
 func _physics_process(delta):
 	match state:

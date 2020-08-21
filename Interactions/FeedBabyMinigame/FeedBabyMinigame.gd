@@ -4,6 +4,9 @@ var active = false
 
 func start():
 	active = true
+	$BottleArm.reset()
+	$ArmAnimation.play("Wave")
+	$JawAnimation.play("Move")
 
 func stop():
 	$ArmAnimation.stop()
@@ -17,7 +20,7 @@ func _on_ArmAnimation_animation_finished(anim_name):
 	$ArmSwingTimer.start()
 
 func _on_JawAnimation_animation_finished(anim_name):
-	$JawOpenTimer.wait_time = rand_range(0.1, 2.0)
+	$JawOpenTimer.wait_time = rand_range(0.1, 1.5)
 	$JawOpenTimer.start()
 
 func _on_ArmSwingTimer_timeout():
@@ -27,7 +30,7 @@ func _on_ArmSwingTimer_timeout():
 
 func _on_JawOpenTimer_timeout():
 	# Play again with a random speed.
-	$JawAnimation.playback_speed = rand_range(0.5, 3.0)
+	$JawAnimation.playback_speed = rand_range(0.5, 1.5)
 	$JawAnimation.play("Move")
 
 
