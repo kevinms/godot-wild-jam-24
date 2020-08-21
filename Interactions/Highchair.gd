@@ -47,8 +47,11 @@ func store_item(object) -> bool:
 		object.collision_mask = 0
 	elif food:
 		# We already have something in the food slot.
+		Helper.notify("There is already something on the highchair.")
 		return false
 	else:
+		if !object.is_in_group("babyfood"):
+			Helper.notify("That is not baby food.")
 		food = object
 		$FoodPosition.add_child(object)
 		object.position = Vector2.ZERO

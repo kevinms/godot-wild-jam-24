@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ding2.ogg-37e83b629d4e455c7c75c95157405ca0.oggstr"
+
+[deps]
+
+source_file="res://SFX/ding2.ogg"
+dest_files=[ "res://.import/ding2.ogg-37e83b629d4e455c7c75c95157405ca0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
