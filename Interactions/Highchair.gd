@@ -42,6 +42,8 @@ func store_item(object) -> bool:
 		baby = object
 		$BabyPosition.add_child(object)
 		object.position = Vector2.ZERO
+		if !food:
+			Helper.notify("Baby food is in the fridge.")
 		baby_layer_save = object.collision_layer
 		object.collision_layer = 0
 		object.collision_mask = 0
@@ -51,7 +53,7 @@ func store_item(object) -> bool:
 		return false
 	else:
 		if !object.is_in_group("babyfood"):
-			Helper.notify("That is not baby food.")
+			Helper.notify("That is not baby food -- check the fridge")
 		food = object
 		$FoodPosition.add_child(object)
 		object.position = Vector2.ZERO

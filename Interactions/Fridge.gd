@@ -22,8 +22,10 @@ func _on_Minigame_player_won():
 	match minigame.which_item:
 		"Pizza":
 			item = pizza_scene.instance()
+			Helper.notify("Received a pizza slice!")
 		"BabyBottle":
 			item = babybottle_scene.instance()
+			Helper.notify("Received a baby bottle!")
 	player.store_item(item)
 
 func interact(gui, actor):

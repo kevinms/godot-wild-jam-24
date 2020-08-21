@@ -155,7 +155,7 @@ volume_db = -8.0
 visible = false
 position = Vector2( -3.69894, -9.36442 )
 frames = SubResource( 8 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="PoopAudio" type="AudioStreamPlayer2D" parent="."]
@@ -166,7 +166,7 @@ visible = false
 position = Vector2( -4.625, -15.125 )
 rotation = -0.523759
 frames = SubResource( 15 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Snot" type="Position2D" parent="SleepEffect"]

@@ -34,6 +34,8 @@ func hold():
 	if !lonely:
 		return
 	
+	Helper.notify("I'm here baby. You are so cute! Yes you are.")
+	
 	lonely = false
 	set_state(State.OBSERVE)
 
@@ -67,6 +69,7 @@ func _on_ConditionTimer_timeout():
 			var dist = distance_to_player()
 			if dist > 125:
 				lonely = true
+				Helper.notify("Baby is lonely.")
 				set_state(State.CRY)
 			
 			# Make sure the baby is upset.
@@ -102,6 +105,7 @@ func set_state(new_state):
 			$CryEffect.play()
 			$CryEffect.visible = true
 		State.SLEEP:
+			Helper.notify("Baby is asleep.")
 			$SnoreAudio.play()
 			$SleepEffect.play()
 			$SleepEffect.visible = true
