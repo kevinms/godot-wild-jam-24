@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Furniture/Assets/fridge-shelf.png" type="Texture" id=1]
+[ext_resource path="res://Interactions/FridgeMinigame/Platform.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17.0002, 2.99845 )
+
+[node name="Platform" type="KinematicBody2D"]
+position = Vector2( -0.100609, -0.163677 )
+collision_layer = 64
+collision_mask = 64
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.981144, -5.98455 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0489464, -2.98793 )
+shape = SubResource( 1 )
+one_way_collision = true
