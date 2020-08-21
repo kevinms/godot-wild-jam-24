@@ -22,6 +22,7 @@ func _ready():
 
 func start():
 	active = true
+	$Player.active = true
 	elapsed_time = 0
 	which_item = ""
 	game_over = false
@@ -40,6 +41,8 @@ func start():
 
 func stop():
 	active = false
+	$Player.active = false
+	
 	for child in $Spawn.get_children():
 		child.queue_free()
 

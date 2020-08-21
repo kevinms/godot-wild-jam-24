@@ -11,10 +11,15 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 
+var active = false
+
 var velocity = Vector2.ZERO
 var can_jump = true
 
 func _physics_process(delta):
+	if !active:
+		return
+	
 	var dir = Vector2.ZERO
 	dir.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	dir = dir.normalized()

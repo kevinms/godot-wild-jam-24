@@ -17,6 +17,7 @@ func stop():
 	$JawAnimation.stop()
 	$ArmSwingTimer.stop()
 	$JawOpenTimer.stop()
+	$BottleArm.pause()
 	active = false
 
 func celebrate():

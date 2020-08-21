@@ -10,7 +10,7 @@ onready var initial_pos = position
 enum State {
 	POSITION, ATTACK, RETREAT, PAUSE
 }
-var state = State.POSITION
+var state = State.PAUSE
 
 func reset():
 	state = State.POSITION

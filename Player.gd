@@ -132,7 +132,8 @@ func _physics_process(delta):
 
 func object_stack_add(object):
 	if !objectsInFront.has(object):
-		objectsInFront.append(object)
+		#objectsInFront.append(object)
+		objectsInFront.push_front(object)
 
 func object_stack_del(object):
 	objectsInFront.erase(object)
