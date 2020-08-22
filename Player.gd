@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const ACCEL = 2000
 const MAX_SPEED = 200
-const MIN_SPEED = 100
+const MIN_SPEED = 50
 const FRICTION = 1200
 
 enum State {
@@ -34,10 +34,6 @@ func takeAction(object):
 	print(object)
 	if object.has_method("interact"):
 		object.interact(guiHandle, self)
-	
-	if object.get_name() == "Fridge":
-		print("Opening the fridge for a snack!")
-		guiHandle.updateEnergy(100)
 
 func pickup_or_drop() -> bool:
 	# Drop the object, if we already have one.
@@ -123,9 +119,9 @@ func _physics_process(delta):
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Walk/blend_position", input_vector)
 		animationState.travel("Walk")
-		var effectiveSpeed = MAX_SPEED * (guiHandle.getEnergy() / 100.0 )
-		if effectiveSpeed < MIN_SPEED:
-			effectiveSpeed = MIN_SPEED
+		
+		var effectiveSpeed = lerp(MIN_SPEED, MAX_SPEED, 1.0 - (Helper.player_sleepiness / 100.0))
+		
 		velocity = velocity.move_toward(input_vector*effectiveSpeed, ACCEL * delta)
 	else:
 		animationState.travel("Idle")

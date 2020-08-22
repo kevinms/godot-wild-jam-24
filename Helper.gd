@@ -1,41 +1,89 @@
 extends Node
 
-var player_name: String
-var baby_name: String
-var spouse_name: String
+var player_name: String = "Player" setget set_player_name
+var baby_name: String = "Baby"  setget set_baby_name
+var spouse_name: String = "Spouse"  setget set_spouse_name
 
+func set_player_name(value):
+	player_name = value.strip_edges()
+	if player_name == "":
+		player_name = "Player"
+func set_baby_name(value):
+	baby_name = value.strip_edges()
+	if baby_name == "":
+		baby_name = "Baby"
+func set_spouse_name(value):
+	spouse_name = value.strip_edges()
+	if spouse_name == "":
+		spouse_name = "Spouse"
+
+# Everything that effects the important stats should use time_scale... so that time_scale works!
 const time_scale = 1.0
 
 # Important game stats displayed by UI
 var min_remaining: int
 var player_sleepiness: float setget set_player_sleepiness
-const player_sleepiness_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
 var player_hungriness: float setget set_player_hungriness
-const player_hungriness_per_min = 100.0 / (12.0 * 60.0) * time_scale # Every 12h sim time, hungriness will be 100%
 var baby_happiness: float setget set_baby_happiness
 var baby_sleepiness: float setget set_baby_sleepiness
-const baby_sleepiness_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
 var baby_hungriness: float setget set_baby_hungriness
-const baby_hungriness_per_min = 100.0 / (12.0 * 60.0) * time_scale # Every 12h sim time, hungriness will be 100%
 var spouse_happiness: float setget set_spouse_happiness
-const spouse_trash_hatred_per_item_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
-const spouse_crying_hatred_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
-const baby_crying_hatred_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
 var game_quality: float
 var trash_generated: float
 var trash_disposed: int
 
+const player_sleep_in_bed_min = (7*60) # 7h sim time
+const player_sleepiness_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
+const player_hungriness_per_min = 100.0 / (12.0 * 60.0) * time_scale # Every 12h sim time, hungriness will be 100%
+const baby_sleepiness_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
+const baby_hungriness_per_min = 100.0 / (12.0 * 60.0) * time_scale # Every 12h sim time, hungriness will be 100%
+const spouse_trash_hatred_per_item_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
+const spouse_crying_hatred_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
+const baby_crying_hatred_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, sleepiness will be 100%
+
+enum Threshold {
+	INCREASING, DECREASING
+}
+
+func crossing_thresholds(old, new, thresholds: Array, direction) -> bool:
+	for threshold in thresholds:
+		if threshold <= max(old, new) and threshold >= min(old, new):
+			# It is crossing this threshold.
+			var is_decreasing = new < old
+			
+			# Make sure we are crossing in the correct direction.
+			if direction == Threshold.DECREASING and new <= old:
+				return true
+			if direction == Threshold.INCREASING and new >= old:
+				return true
+			
+			return false
+	
+	return false
+
 func set_player_sleepiness(value):
+	if crossing_thresholds(player_sleepiness, value, [75], Threshold.INCREASING):
+		Helper.notify("%s is very sleepy -- take a nap to speed up." % Helper.player_name)
 	player_sleepiness = clamp(value, 0.0, 100.0)
 func set_player_hungriness(value):
+	if crossing_thresholds(player_hungriness, value, [75], Threshold.INCREASING):
+		Helper.notify("%s is very hungry -- eat some food or... die." % Helper.player_name)
 	player_hungriness = clamp(value, 0.0, 100.0)
 func set_baby_happiness(value):
+	if crossing_thresholds(baby_happiness, value, [25], Threshold.DECREASING):
+		Helper.notify("%s is very unhappy." % Helper.baby_name)
 	baby_happiness = clamp(value, 0.0, 100.0)
 func set_baby_sleepiness(value):
+	if crossing_thresholds(baby_sleepiness, value, [75], Threshold.INCREASING):
+		Helper.notify("%s is very sleepy -- the crib will help." % Helper.baby_name)
 	baby_sleepiness = clamp(value, 0.0, 100.0)
 func set_baby_hungriness(value):
+	if crossing_thresholds(baby_hungriness, value, [75], Threshold.INCREASING):
+		Helper.notify("%s is very hungry -- it will starve :'(" % Helper.baby_name)
 	baby_hungriness = clamp(value, 0.0, 100.0)
 func set_spouse_happiness(value):
+	if crossing_thresholds(spouse_happiness, value, [25], Threshold.DECREASING):
+		Helper.notify("%s is very unhappy." % Helper.spouse_name)
 	spouse_happiness = clamp(value, 0.0, 100.0)
 
 # Indirectly important stats (other stats are adjusted based on these)

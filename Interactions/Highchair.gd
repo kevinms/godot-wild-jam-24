@@ -23,6 +23,7 @@ func _on_Minigame_player_won():
 	
 	# Update global stats
 	Helper.baby_bottles_used += 1
+	Helper.baby_hungriness = 0.0
 	
 	# Remove food item
 	if food:

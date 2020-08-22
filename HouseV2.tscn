@@ -670,7 +670,7 @@ position = Vector2( 325.406, 41.8771 )
 position = Vector2( 46.9881, 180.645 )
 
 [node name="DirtyDiaper" parent="YSort" instance=ExtResource( 32 )]
-position = Vector2( 336.266, -128.986 )
+position = Vector2( 332.261, 100.273 )
 
 [node name="Highchair" parent="YSort" instance=ExtResource( 35 )]
 position = Vector2( 502.434, 123.487 )
