@@ -52,7 +52,7 @@ func lullaby():
 
 func _on_ConditionTimer_timeout():
 	# There is chance of pooping at nearly any time.
-	if !poopy and randf() < 0.01:
+	if !poopy and randf() < 0.05:
 		poopy = true
 		set_state(State.POOP)
 	
