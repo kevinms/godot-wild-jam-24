@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://World/walls-v2.png" type="Texture" id=1]
 [ext_resource path="res://World/floor-tiles-v2.png" type="Texture" id=2]
@@ -31,12 +31,16 @@
 [ext_resource path="res://Furniture/KitchenCounter.tscn" type="PackedScene" id=29]
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Furniture/TrashCan.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Furniture/Toilet.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Interactions/TrashThrowing.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Interactions/FridgeMinigame/FridgeMinigame.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Furniture/Highchair.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Furniture/Shower.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Interactions/FeedBabyMinigame/FeedBabyMinigame.tscn" type="PackedScene" id=37]
 [ext_resource path="res://World/NotificationPanel.tscn" type="PackedScene" id=38]
 [ext_resource path="res://UI/StatsPanel.tscn" type="PackedScene" id=39]
+[ext_resource path="res://Furniture/BathroomSink.tscn" type="PackedScene" id=40]
+[ext_resource path="res://Furniture/BathroomSinkHorizontal.tscn" type="PackedScene" id=41]
 
 [sub_resource type="TileSet" id=1]
 0/name = "floor-tiles-v2.png 0"
@@ -590,6 +594,12 @@ position = Vector2( 145.212, 10.8169 )
 [node name="PlantSmall" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 255.025, -20.0661 )
 
+[node name="PlantSmall5" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 38.7061, 31.3967 )
+
+[node name="PlantSmall6" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 512.546, -43.8932 )
+
 [node name="TrashCan" parent="YSort" instance=ExtResource( 31 )]
 position = Vector2( 324.382, 129.926 )
 
@@ -641,6 +651,9 @@ position = Vector2( 62.7495, 130.336 )
 [node name="Stool" parent="YSort" instance=ExtResource( 26 )]
 position = Vector2( 404.085, 222.257 )
 
+[node name="Stool4" parent="YSort" instance=ExtResource( 26 )]
+position = Vector2( 62.7827, 12.7781 )
+
 [node name="Stool2" parent="YSort" instance=ExtResource( 26 )]
 position = Vector2( 349.039, 193.968 )
 
@@ -668,45 +681,36 @@ position = Vector2( 46.9881, 180.645 )
 [node name="Highchair" parent="YSort" instance=ExtResource( 35 )]
 position = Vector2( 502.434, 123.487 )
 
+[node name="Toilet" parent="YSort" instance=ExtResource( 32 )]
+position = Vector2( 180.133, -112.735 )
+
+[node name="Toilet2" parent="YSort" instance=ExtResource( 32 )]
+position = Vector2( 483.704, -48.2275 )
+
+[node name="Shower" parent="YSort" instance=ExtResource( 36 )]
+position = Vector2( 141.9, -94.081 )
+
+[node name="Shower2" parent="YSort" instance=ExtResource( 36 )]
+position = Vector2( 399.702, -30.3093 )
+
+[node name="BathroomSink" parent="YSort" instance=ExtResource( 40 )]
+position = Vector2( 252.676, -114.644 )
+
+[node name="KitchenCounter" parent="YSort/BathroomSink" instance=ExtResource( 29 )]
+position = Vector2( -28.2572, -0.251808 )
+
+[node name="LampTall3" parent="YSort" instance=ExtResource( 23 )]
+position = Vector2( 31.4985, 10.8652 )
+
+[node name="BathroomSink2" parent="YSort" instance=ExtResource( 41 )]
+position = Vector2( 514.236, 0.829536 )
+
 [node name="Label7" type="Label" parent="."]
 margin_left = 278.346
 margin_top = -41.3814
 margin_right = 385.346
 margin_bottom = -27.3814
 text = "Laundry"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 0.297302
-margin_top = 11.0002
-margin_right = 107.297
-margin_bottom = 25.0002
-text = "Closet"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="."]
-margin_left = 137.651
-margin_top = -104.056
-margin_right = 244.651
-margin_bottom = -90.0556
-text = "Master Bath"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label4" type="Label" parent="."]
-margin_left = 397.195
-margin_top = -38.0546
-margin_right = 504.195
-margin_bottom = -24.0546
-text = "Bathroom"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
