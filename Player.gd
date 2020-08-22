@@ -120,7 +120,14 @@ func _physics_process(delta):
 		animationTree.set("parameters/Walk/blend_position", input_vector)
 		animationState.travel("Walk")
 		
-		var effectiveSpeed = lerp(MIN_SPEED, MAX_SPEED, 1.0 - (Helper.player_sleepiness / 100.0))
+#		# Movement speed smoothly decreases... So smooth, the player may not realize
+#		var effectiveSpeed = lerp(MIN_SPEED, MAX_SPEED, 1.0 - (Helper.player_sleepiness / 100.0))
+		
+		# Much more abrupt, but lines up with the UI guages going red and pulsing.
+		var effectiveSpeed = MAX_SPEED
+		if Helper.player_sleepiness >= 100.0:
+			effectiveSpeed = MIN_SPEED
+
 		
 		velocity = velocity.move_toward(input_vector*effectiveSpeed, ACCEL * delta)
 	else:
