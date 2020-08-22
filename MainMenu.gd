@@ -18,6 +18,10 @@ onready var babyNaming = $babyNaming
 onready var backstory_2 = $backstory_2
 onready var tutorial = $tutorial
 
+onready var playerNameInput = $playerNaming/playerNameEntry
+onready var spouseNameInput = $spouseNaming/spouseNameEntry
+onready var babyNameInput = $babyNaming/babyNameEntry
+
 # Called when the node enters the scene tree for the first time.
 #func _ready():
 #	pass # Replace with function body.
@@ -58,4 +62,8 @@ func _on_backstory2Continue_pressed():
 	state = States.TUTORIAL
 
 func _on_tutorialContinue_pressed():
+	Helper.player_name = playerNameInput.text
+	Helper.spouse_name = spouseNameInput.text
+	Helper.baby_name = babyNameInput.text
+
 	get_tree().change_scene("res://HouseV2.tscn")
