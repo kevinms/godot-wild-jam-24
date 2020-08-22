@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Furniture/Assets/dark-pixel.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/GameOverReason.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="GameOverReason" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.843137 )
+position = Vector2( -258.444, -146.279 )
+scale = Vector2( 517.065, 292.749 )
+z_index = -2
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Reason" type="Label" parent="."]
+margin_left = -217.5
+margin_top = -21.5
+margin_right = 212.5
+margin_bottom = 12.5
+rect_pivot_offset = Vector2( 103.827, 6.72059 )
+custom_fonts/font = SubResource( 1 )
+text = "Sarah left you and took the baby."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

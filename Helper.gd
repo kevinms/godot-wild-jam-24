@@ -33,7 +33,7 @@ var trash_disposed: int
 # Everything that effects the important stats should use time_scale... so that time_scale works!
 const time_scale = 1.0
 
-const player_sleep_in_bed_min = (5*60) # 5h sim time
+const player_sleep_in_bed_min = (5*60) * time_scale # 5h sim time
 const player_sleepiness_per_min = 100.0 / (48.0 * 60.0) * time_scale # Every 48h sim time, sleepiness will be 100%
 const player_hungriness_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, hungriness will be 100%
 const baby_sleepiness_per_min = 100.0 / (30.0 * 60.0) * time_scale # Every 30h sim time, sleepiness will be 100%
@@ -134,3 +134,12 @@ signal send_notification(msg)
 
 func notify(msg = "This is a notification message."):
 	emit_signal("send_notification", msg)
+
+func trigger_game_over(reason: String):
+	# Set GameOverReason scene text.
+	var reason_node = get_tree().get_root().find_node("GameOverReason", true, false)
+	reason_node.text = reason
+	
+	# Start the game over animation.
+	var animation: AnimationPlayer = get_tree().get_root().find_node("StartMinigameAnimation", true, false)
+	animation.play("GameOver")

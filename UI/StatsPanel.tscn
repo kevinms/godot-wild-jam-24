@@ -29,6 +29,9 @@ font_data = ExtResource( 2 )
 [node name="TimePanel" type="Node2D" parent="."]
 position = Vector2( 0.45726, 0.407364 )
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NinePatchRect" type="NinePatchRect" parent="TimePanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -76,6 +79,9 @@ autostart = true
 [node name="YourPanel" type="Node2D" parent="."]
 position = Vector2( 73.1705, 0.104584 )
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NinePatchRect" type="NinePatchRect" parent="YourPanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -145,6 +151,9 @@ margin_bottom = 31.578
 [node name="BabyPanel" type="Node2D" parent="."]
 position = Vector2( 200.279, -0.0270348 )
 script = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NinePatchRect" type="NinePatchRect" parent="BabyPanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -232,6 +241,9 @@ margin_bottom = 44.0175
 [node name="SpousePanel" type="Node2D" parent="."]
 position = Vector2( 329.209, 0.102045 )
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NinePatchRect" type="NinePatchRect" parent="SpousePanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -282,9 +294,16 @@ margin_right = 95.4444
 margin_bottom = 30.9898
 flatline = 0.0
 
+[node name="SpouseLeavingTime" type="Timer" parent="SpousePanel"]
+wait_time = 10.0
+one_shot = true
+
 [node name="GameJamPanel" type="Node2D" parent="."]
 position = Vector2( 434.771, 0.164265 )
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GameJamPanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -332,7 +351,8 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="TimePanel/Timer" to="SpousePanel" method="_on_Timer_timeout"]
-[connection signal="timeout" from="TimePanel/Timer" to="BabyPanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="YourPanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimePanel/Timer" to="BabyPanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimePanel/Timer" to="SpousePanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="TimePanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="SpousePanel/SpouseLeavingTime" to="SpousePanel" method="_on_SpouseLeavingTime_timeout"]

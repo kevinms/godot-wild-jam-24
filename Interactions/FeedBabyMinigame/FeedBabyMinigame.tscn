@@ -53,7 +53,7 @@ radius = 14.8217
 radius = 9.30938
 height = 11.8161
 
-[sub_resource type="CircleShape2D" id=17]
+[sub_resource type="CircleShape2D" id=6]
 radius = 6.30602
 
 [sub_resource type="CapsuleShape2D" id=7]
@@ -200,7 +200,7 @@ shape = SubResource( 5 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
 position = Vector2( -5.71271, -10.6821 )
-shape = SubResource( 17 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
 position = Vector2( 2.27449, 20.4355 )

@@ -96,7 +96,7 @@ func _on_ConditionTimer_timeout():
 #					set_state(State.POOP)
 		State.OBSERVE:
 			var dist = distance_to_player()
-			if dist > 125:
+			if dist > 145:
 				lonely = true
 				Helper.notify("Baby is lonely.")
 				set_state(State.CRY)
