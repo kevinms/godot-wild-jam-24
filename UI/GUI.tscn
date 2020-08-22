@@ -255,7 +255,7 @@ text = "Day: 0"
 
 [node name="RemainingLabel" type="Label" parent="CanvasLayer/CenterContainer"]
 margin_left = 200.0
-margin_top = 136.0
+margin_top = 200.0
 margin_right = 312.0
 margin_bottom = 152.0
 custom_fonts/font = SubResource( 2 )

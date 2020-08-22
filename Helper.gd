@@ -10,11 +10,17 @@ var player_sleepiness: float
 const player_sleepiness_per_min = 100.0 / (24.0 * 60.0) # Every 24h sim time, sleepiness will be 100%
 var player_hungriness: float
 const player_hungriness_per_min = 100.0 / (6.0 * 60.0) # Every 6h sim time, hungriness will be 100%
+var baby_happiness: float
+var baby_sleepiness: float
+const baby_sleepiness_per_min = 100.0 / (24.0 * 60.0) # Every 24h sim time, sleepiness will be 100%
+var baby_hungriness: float
+const baby_hungriness_per_min = 100.0 / (6.0 * 60.0) # Every 6h sim time, hungriness will be 100%
+var spouse_happiness: float
+var game_quality: float
 
 # Fun statistics
 var characters_types: int
 var typing_error_rate: int
-var game_quality: int
 var trash_disposed: int
 var baby_pooped: int
 var baby_diapers_changed: int
@@ -25,10 +31,14 @@ func reset():
 	min_remaining = 9 * (24*60)
 	player_sleepiness = 0
 	player_hungriness = 0
+	baby_happiness = 0
+	baby_sleepiness = 0
+	baby_hungriness = 0
+	spouse_happiness = 0
+	game_quality = 0
 	
 	characters_types = 0
 	typing_error_rate = 0
-	game_quality = 0
 	trash_disposed = 0
 	baby_pooped = 0
 	baby_diapers_changed = 0

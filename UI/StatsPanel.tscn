@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Characters/spouse-outline.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Characters/player-picture.png" type="Texture" id=7]
 [ext_resource path="res://UI/TimePanel.gd" type="Script" id=8]
 [ext_resource path="res://UI/YourPanel.gd" type="Script" id=9]
+[ext_resource path="res://UI/BabyPanel.gd" type="Script" id=10]
+[ext_resource path="res://UI/SpousePanel.gd" type="Script" id=11]
+[ext_resource path="res://UI/GameJamPanel.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -153,6 +156,7 @@ __meta__ = {
 
 [node name="BabyPanel" type="Node2D" parent="."]
 position = Vector2( 200.279, -0.0270348 )
+script = ExtResource( 10 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="BabyPanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -196,7 +200,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Guage2" type="TextureProgress" parent="BabyPanel"]
+[node name="HappyGuage" type="TextureProgress" parent="BabyPanel"]
 margin_left = 56.1418
 margin_top = 2.22009
 margin_right = 120.142
@@ -219,7 +223,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Guage" type="TextureProgress" parent="BabyPanel"]
+[node name="SleepyGuage" type="TextureProgress" parent="BabyPanel"]
 margin_left = 56.1051
 margin_top = 15.054
 margin_right = 120.105
@@ -242,7 +246,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Guage3" type="TextureProgress" parent="BabyPanel"]
+[node name="HungryGuage" type="TextureProgress" parent="BabyPanel"]
 margin_left = 56.0
 margin_top = 29.3492
 margin_right = 120.0
@@ -256,6 +260,7 @@ __meta__ = {
 
 [node name="SpousePanel" type="Node2D" parent="."]
 position = Vector2( 329.209, 0.102045 )
+script = ExtResource( 11 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="SpousePanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -299,7 +304,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Guage" type="TextureProgress" parent="SpousePanel"]
+[node name="HappyGuage" type="TextureProgress" parent="SpousePanel"]
 margin_left = 31.4647
 margin_top = 14.8334
 margin_right = 95.4647
@@ -313,6 +318,7 @@ __meta__ = {
 
 [node name="GameJamPanel" type="Node2D" parent="."]
 position = Vector2( 434.771, 0.164265 )
+script = ExtResource( 12 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GameJamPanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -362,3 +368,4 @@ __meta__ = {
 }
 [connection signal="timeout" from="TimePanel/Timer" to="TimePanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="YourPanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimePanel/Timer" to="BabyPanel" method="_on_Timer_timeout"]

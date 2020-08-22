@@ -9,10 +9,13 @@ func _ready():
 	print("Estimated game play length: %s min" % estimated_real_minutes)
 
 func _on_Timer_timeout():
-	Helper.min_remaining -= 1
+	Helper.min_remaining -= 1 * 100
 	
 	var d = Helper.min_remaining / (24*60)
 	var h = Helper.min_remaining / 60 % 24
 	var m = Helper.min_remaining % 60
 	
 	$TimeLeft.text = "%sd %sh %sm" % [d, h, m]
+
+	if Helper.min_remaining <= 0:
+		get_tree().change_scene("res://UI/GameOver.tscn")

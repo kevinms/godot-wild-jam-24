@@ -1,0 +1,256 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Furniture/Assets/dialogue-white.png" type="Texture" id=1]
+[ext_resource path="res://UI/GameOver.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/carlito/Carlito-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 21
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TitleCard" type="Node2D" parent="."]
+position = Vector2( -3.96851, -0.396851 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TitleCard"]
+margin_left = 176.235
+margin_top = 3.97286
+margin_right = 341.235
+margin_bottom = 40.9729
+texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="TitleCard"]
+margin_left = 211.557
+margin_top = 12.2814
+margin_right = 306.557
+margin_bottom = 34.2814
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Game Over"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FamilyInfo" type="Node2D" parent="."]
+position = Vector2( 3.76962, 47.9741 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="FamilyInfo"]
+margin_left = -0.43782
+margin_top = -0.131805
+margin_right = 157.562
+margin_bottom = 122.868
+texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="FamilyInfo"]
+margin_left = 28.4776
+margin_top = 5.93268
+margin_right = 123.478
+margin_bottom = 27.9327
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Player"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Player" type="Label" parent="FamilyInfo"]
+margin_left = 6.62704
+margin_top = 27.5194
+margin_right = 75.627
+margin_bottom = 39.5194
+grow_horizontal = 2
+custom_fonts/font = SubResource( 2 )
+text = "Player Name: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="Label" parent="FamilyInfo"]
+margin_left = 76.6464
+margin_top = 27.8787
+margin_right = 151.646
+margin_bottom = 39.8787
+grow_horizontal = 2
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spouse" type="Label" parent="FamilyInfo"]
+margin_left = 8.04124
+margin_top = 48.3791
+margin_right = 77.0412
+margin_bottom = 60.3791
+grow_horizontal = 2
+custom_fonts/font = SubResource( 2 )
+text = "Spouse Name: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpouseName" type="Label" parent="FamilyInfo"]
+margin_left = 78.0606
+margin_top = 48.7383
+margin_right = 153.061
+margin_bottom = 60.7383
+grow_horizontal = 2
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Baby" type="Label" parent="FamilyInfo"]
+margin_left = 1.67728
+margin_top = 65.7032
+margin_right = 70.6773
+margin_bottom = 77.7032
+grow_horizontal = 2
+custom_fonts/font = SubResource( 2 )
+text = "Baby Name: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BabyName" type="Label" parent="FamilyInfo"]
+margin_left = 71.6967
+margin_top = 66.0624
+margin_right = 146.697
+margin_bottom = 78.0624
+grow_horizontal = 2
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BabyInfo" type="Node2D" parent="."]
+position = Vector2( 176.003, 48.7678 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BabyInfo"]
+margin_left = -0.43782
+margin_top = -0.131805
+margin_right = 157.562
+margin_bottom = 122.868
+texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="BabyInfo"]
+margin_left = 28.4776
+margin_top = 5.93268
+margin_right = 123.478
+margin_bottom = 27.9327
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Baby"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SpouseInfo" type="Node2D" parent="."]
+position = Vector2( 349.823, 48.3709 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SpouseInfo"]
+margin_left = -0.43782
+margin_top = -0.131805
+margin_right = 157.562
+margin_bottom = 122.868
+texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="SpouseInfo"]
+margin_left = 28.4776
+margin_top = 5.93268
+margin_right = 123.478
+margin_bottom = 27.9327
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Spouse"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Instructions" type="Node2D" parent="."]
+position = Vector2( -7.93701, 257.556 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Instructions"]
+margin_left = 176.0
+margin_top = 4.0
+margin_right = 355.0
+margin_bottom = 26.0
+texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Instructions"]
+margin_left = 196.906
+margin_top = 9.90032
+margin_right = 333.906
+margin_bottom = 31.9003
+grow_horizontal = 2
+custom_fonts/font = SubResource( 4 )
+text = "Press ESC for main menu"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

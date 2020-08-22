@@ -13,10 +13,10 @@
 [ext_resource path="res://Furniture/Crib.tscn" type="PackedScene" id=11]
 [ext_resource path="res://MainMenu.gd" type="Script" id=12]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 1 )
 
@@ -90,7 +90,7 @@ __meta__ = {
 }
 
 [node name="NewGameButton" type="Button" parent="menu_1/buttonGroup"]
-margin_right = 108.0
+margin_right = 107.0
 margin_bottom = 22.0
 custom_fonts/font = ExtResource( 7 )
 text = "New Game"
@@ -100,7 +100,7 @@ __meta__ = {
 
 [node name="LeaderboardButton" type="Button" parent="menu_1/buttonGroup"]
 margin_top = 26.0
-margin_right = 108.0
+margin_right = 107.0
 margin_bottom = 48.0
 custom_fonts/font = ExtResource( 7 )
 text = "Leader Board"
@@ -110,7 +110,7 @@ __meta__ = {
 
 [node name="CreditsButton" type="Button" parent="menu_1/buttonGroup"]
 margin_top = 52.0
-margin_right = 108.0
+margin_right = 107.0
 margin_bottom = 74.0
 custom_fonts/font = ExtResource( 7 )
 text = "Credits"
@@ -195,7 +195,7 @@ margin_left = 184.661
 margin_top = 66.0971
 margin_right = 352.661
 margin_bottom = 89.0971
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -205,7 +205,7 @@ margin_left = 63.5558
 margin_top = 68.3439
 margin_right = 188.556
 margin_bottom = 88.3439
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "Your name is:"
 autowrap = true
 __meta__ = {
@@ -246,7 +246,7 @@ margin_left = 212.505
 margin_top = 64.2094
 margin_right = 380.505
 margin_bottom = 87.2094
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -256,7 +256,7 @@ margin_left = -22.9312
 margin_top = 65.1684
 margin_right = 212.069
 margin_bottom = 108.168
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "You are happily married to:"
 autowrap = true
 __meta__ = {
@@ -306,7 +306,7 @@ margin_left = 171.447
 margin_top = 174.171
 margin_right = 339.447
 margin_bottom = 197.171
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
