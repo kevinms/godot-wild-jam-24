@@ -18,4 +18,4 @@ func _on_Timer_timeout():
 	$TimeLeft.text = "%sd %sh %sm" % [d, h, m]
 
 	if Helper.min_remaining <= 0:
-		get_tree().change_scene("res://UI/GameOver.tscn")
+		Helper.trigger_game_over("The game jam is over! Let's see how you did.")
