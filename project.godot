@@ -119,6 +119,10 @@ ui_down={
 2d_physics/layer_7="FridgeMinigame"
 2d_physics/layer_8="FeedBabyMinigame"
 
+[physics]
+
+2d/default_gravity=300
+
 [rendering]
 
 quality/2d/use_pixel_snap=true

@@ -1,10 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Characters/spouse-outline.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Furniture/Assets/dialogue-white.png" type="Texture" id=3]
-[ext_resource path="res://UI/bar_outline.png" type="Texture" id=4]
-[ext_resource path="res://UI/green_bar.png" type="Texture" id=5]
 [ext_resource path="res://Characters/baby-picture.png" type="Texture" id=6]
 [ext_resource path="res://Characters/player-picture.png" type="Texture" id=7]
 [ext_resource path="res://UI/TimePanel.gd" type="Script" id=8]
@@ -12,6 +10,7 @@
 [ext_resource path="res://UI/BabyPanel.gd" type="Script" id=10]
 [ext_resource path="res://UI/SpousePanel.gd" type="Script" id=11]
 [ext_resource path="res://UI/GameJamPanel.gd" type="Script" id=12]
+[ext_resource path="res://UI/Guage.tscn" type="PackedScene" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -120,16 +119,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SleepyGuage" type="TextureProgress" parent="YourPanel"]
-margin_left = 56.0367
-margin_top = 3.16609
-margin_right = 120.037
-margin_bottom = 19.1661
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="SleepyGuage" parent="YourPanel" instance=ExtResource( 13 )]
+margin_left = 56.4288
+margin_top = 3.1931
+margin_right = 120.429
+margin_bottom = 19.1931
 
 [node name="Hungry" type="Label" parent="YourPanel"]
 margin_left = 28.3716
@@ -142,17 +136,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HungryGuage" type="TextureProgress" parent="YourPanel"]
-margin_left = 56.0
-margin_top = 16.0
-margin_right = 120.0
-margin_bottom = 32.0
-value = 60.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HungryGuage" parent="YourPanel" instance=ExtResource( 13 )]
+margin_left = 56.3604
+margin_top = 15.578
+margin_right = 120.36
+margin_bottom = 31.578
 
 [node name="BabyPanel" type="Node2D" parent="."]
 position = Vector2( 200.279, -0.0270348 )
@@ -200,17 +188,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HappyGuage" type="TextureProgress" parent="BabyPanel"]
-margin_left = 56.1418
-margin_top = 2.22009
-margin_right = 120.142
-margin_bottom = 18.2201
-value = 60.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HappyGuage" parent="BabyPanel" instance=ExtResource( 13 )]
+margin_left = 56.4173
+margin_top = 2.2175
+margin_right = 120.417
+margin_bottom = 18.2175
+flatline = 0.0
 
 [node name="Sleepy" type="Label" parent="BabyPanel"]
 margin_left = 28.4767
@@ -223,17 +206,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SleepyGuage" type="TextureProgress" parent="BabyPanel"]
-margin_left = 56.1051
-margin_top = 15.054
-margin_right = 120.105
-margin_bottom = 31.054
-value = 60.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="SleepyGuage" parent="BabyPanel" instance=ExtResource( 13 )]
+margin_left = 55.7298
+margin_top = 15.28
+margin_right = 119.73
+margin_bottom = 31.28
 
 [node name="Hungry" type="Label" parent="BabyPanel"]
 margin_left = 28.3716
@@ -246,17 +223,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HungryGuage" type="TextureProgress" parent="BabyPanel"]
-margin_left = 56.0
-margin_top = 29.3492
-margin_right = 120.0
-margin_bottom = 45.3492
-value = 60.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HungryGuage" parent="BabyPanel" instance=ExtResource( 13 )]
+margin_left = 56.1669
+margin_top = 28.0175
+margin_right = 120.167
+margin_bottom = 44.0175
 
 [node name="SpousePanel" type="Node2D" parent="."]
 position = Vector2( 329.209, 0.102045 )
@@ -304,17 +275,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HappyGuage" type="TextureProgress" parent="SpousePanel"]
-margin_left = 31.4647
-margin_top = 14.8334
-margin_right = 95.4647
-margin_bottom = 30.8334
-value = 60.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HappyGuage" parent="SpousePanel" instance=ExtResource( 13 )]
+margin_left = 31.4444
+margin_top = 14.9898
+margin_right = 95.4444
+margin_bottom = 30.9898
+flatline = 0.0
 
 [node name="GameJamPanel" type="Node2D" parent="."]
 position = Vector2( 434.771, 0.164265 )
@@ -366,7 +332,7 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="TimePanel/Timer" to="TimePanel" method="_on_Timer_timeout"]
-[connection signal="timeout" from="TimePanel/Timer" to="YourPanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="SpousePanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="BabyPanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimePanel/Timer" to="YourPanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimePanel/Timer" to="TimePanel" method="_on_Timer_timeout"]

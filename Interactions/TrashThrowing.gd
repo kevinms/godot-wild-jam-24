@@ -5,7 +5,7 @@ onready var initial_can_position = $Can.position
 const arrow_rotation_speed = PI/200
 var arrow_size = 1.0
 
-const kick_strength = 100.0
+const kick_strength = 175.0
 var kicked: bool
 var active: bool
 

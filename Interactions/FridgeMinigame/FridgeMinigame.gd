@@ -34,10 +34,14 @@ func start():
 	height_between = dist / max_platforms
 	
 	# Create one platform
-	var platform = platform_scene.instance()
-	$Spawn.add_child(platform)
-	platform.position = Vector2(rand_range(-120, 120), 0.0)
-	last_spawn = platform
+	var y = (max_platforms-1) * height_between
+	for i in range(max_platforms):
+		spawn(y)
+		y -= height_between
+#	var platform = platform_scene.instance()
+#	$Spawn.add_child(platform)
+#	platform.position = Vector2(rand_range(-120, 120), 0.0)
+#	last_spawn = platform
 
 func stop():
 	active = false
@@ -46,7 +50,7 @@ func stop():
 	for child in $Spawn.get_children():
 		child.queue_free()
 
-func spawn():
+func spawn(y: float = 0.0):
 	var platform = platform_scene.instance()
 	$Spawn.add_child(platform)
 	
@@ -55,21 +59,26 @@ func spawn():
 #	else:
 #		platform.speed = lerp(min_speed, max_speed, (elapsed_time-10.0) / 10.0)
 	
-	var minx = last_spawn.position.x - 90
-	var maxx = last_spawn.position.x + 90
+	var minx = -120
+	var maxx = 120
 	
-	# Shift spawn region to keep it in the bounds.
-	if last_spawn.position.x - 90 < -120:
-		minx = -120
-		maxx = minx + 180
-	elif last_spawn.position.x + 90 > 120:
-		maxx = 120
-		minx = maxx - 180
+	# Make sure it's close-ish to the last spawn.x
+	if last_spawn:
+		minx = last_spawn.position.x - 90
+		maxx = last_spawn.position.x + 90
+		
+		# Shift spawn region to keep it in the bounds.
+		if last_spawn.position.x - 90 < -120:
+			minx = -120
+			maxx = minx + 180
+		elif last_spawn.position.x + 90 > 120:
+			maxx = 120
+			minx = maxx - 180
 	
 	var x = rand_range(minx, maxx)
 	
 	#x = clamp(x, -120, 120)
-	platform.position = Vector2(x, 0.0)
+	platform.position = Vector2(x, y)
 	
 	last_spawn = platform
 

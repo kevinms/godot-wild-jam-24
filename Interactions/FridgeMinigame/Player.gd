@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export (int) var speed = 120
-export (int) var jump_speed = -275
+export (int) var jump_speed = -295
 export (int) var gravity = 800
 
 export (float, 0, 1.0) var friction = 0.3

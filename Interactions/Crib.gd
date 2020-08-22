@@ -3,7 +3,7 @@ extends StaticBody2D
 var stored_item = null
 
 onready var player = Helper.get_player()
-onready var dirty_diaper_scene = load("res://Furniture/DirtyDiaper.tscn")
+onready var trash_scene = load("res://Furniture/DinnerWareTrash.tscn")
 
 func interact(gui, actor):
 	if stored_item:
@@ -15,33 +15,17 @@ func start_minigame():
 		Helper.notify("That's not a baby?!")
 		return
 	
-	if !stored_item.poopy:
-		Helper.notify("The diaper is clean.")
-		return
-	
 	player.state = player.State.MINIGAME
-	$ChangeAudio.play()
+	$EffectAudio.play()
 
 func has_baby() -> bool:
-	var object = $BabyPosition.get_child(0)
+	var object = $ItemPosition.get_child(0)
 	if object != null && object.is_in_group("baby"):
 		return true
 	return false
 
-func diaper_changed():
-	stored_item.diaper_change()
-	
-	# Create dirty diaper
-	var trash = dirty_diaper_scene.instance()
-	var world = player.get_parent()
-	world.add_child(trash)
-	trash.global_position = $TrashPosition.global_position + Helper.rand_vector(10)
-	Helper.trash_generated += 1
-	
-	Helper.baby_diapers_changed += 1
-
 func store_item(object) -> bool:
-	$BabyPosition.add_child(object)
+	$ItemPosition.add_child(object)
 	object.position = Vector2.ZERO
 	stored_item = object
 	
@@ -49,12 +33,14 @@ func store_item(object) -> bool:
 	return true
 
 func remove_item() -> Node:
+	if !stored_item:
+		return null
 	var item = stored_item
-	$BabyPosition.remove_child(stored_item)
+	$ItemPosition.remove_child(stored_item)
 	stored_item = null
 	return item
 
-func _on_ChangeAudio_finished():
-	diaper_changed()
+func _on_EffectAudio_finished():
+	stored_item.lullaby()
 	
 	player.state = player.State.NORMAL

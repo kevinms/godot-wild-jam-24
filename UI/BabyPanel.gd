@@ -13,11 +13,12 @@ func _on_Timer_timeout():
 		Helper.baby_sleepiness -= Helper.baby_sleepiness_per_min
 		# Wake up the baby if rested.
 		if Helper.baby_sleepiness <= 0:
-			baby.set_state(baby.State.OBSERVE)
+			baby.wakeup()
 	else:
 		Helper.baby_sleepiness += Helper.baby_sleepiness_per_min
-	
-	Helper.baby_hungriness += Helper.baby_hungriness_per_min
+		
+		# The baby doesn't get hungry while sleeping (makes the game easier)
+		Helper.baby_hungriness += Helper.baby_hungriness_per_min
 	
 	if baby.is_happy():
 		Helper.baby_happiness += Helper.baby_crying_hatred_per_min *2.0

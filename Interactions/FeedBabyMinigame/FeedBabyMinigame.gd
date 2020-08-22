@@ -40,21 +40,21 @@ func _on_ArmAnimation_animation_finished(anim_name):
 		$ArmSwingTimer.wait_time = rand_range(0.8, 3.0)
 	$ArmSwingTimer.start()
 
+# How long the jaw stays open
 func _on_JawAnimation_animation_finished(anim_name):
 	if !game_over:
-		$JawOpenTimer.wait_time = rand_range(0.1, 1.0)
+		$JawOpenTimer.wait_time = rand_range(0.5, 1.0)
 	$JawOpenTimer.start()
 
 func _on_ArmSwingTimer_timeout():
-	# Play again with a random speed.
 	if !game_over:
 		$ArmAnimation.playback_speed = rand_range(0.5, 1.0)
 	$ArmAnimation.play("Wave")
 
+# How fast the jaw closes
 func _on_JawOpenTimer_timeout():
-	# Play again with a random speed.
 	if !game_over:
-		$JawAnimation.playback_speed = rand_range(0.5, 1.5)
+		$JawAnimation.playback_speed = rand_range(0.5, 1.0)
 	$JawAnimation.play("Move")
 
 func _on_Goal_body_entered(body):

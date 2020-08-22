@@ -5,24 +5,42 @@ enum State {
 }
 var state = State.SLEEP
 
-# Conditions
-var hungry = false
-var poopy = false
-var lonely = false
-var sleepy = false
-
 func _ready():
 	set_state(State.OBSERVE)
+	reset_poop_timer(true)
 
+# Conditions
+var poopy = false
+var lonely = false
+
+# Conditions controlled by UI meters
+func is_sleepy():
+	return Helper.baby_sleepiness >= 99.0
+func is_hungry():
+	return Helper.baby_hungriness >= 99.0
+
+
+##
+# Methods for checking baby's state
+##
 func is_happy():
 	return state != State.CRY
 
+func is_sleeping():
+	return state == State.SLEEP
+
+
+##
+# Methods for changing baby's state
+##
 func feed():
-	if !hungry:
-		return
-	
-	hungry = false
 	set_state(State.EAT)
+
+func lullaby():
+	set_state(State.SLEEP)
+
+func wakeup():
+	set_state(State.OBSERVE)
 
 func diaper_change():
 	if !poopy:
@@ -42,32 +60,40 @@ func hold():
 	lonely = false
 	set_state(State.OBSERVE)
 
-func lullaby():
-	if !sleepy:
-		return
-	
-	sleepy = false
-	set_state(State.SLEEP)
+func reset_poop_timer(first=false):
+	if first:
+		$PoopTimer.wait_time = 10.0
+	else:
+		$PoopTimer.wait_time = rand_range(30.0, 60.0)
+	$PoopTimer.start()
 
+func _on_PoopTimer_timeout():
+	if !is_sleeping():
+		set_state(State.POOP)
+		poopy = true
+	
+	# Pick the next time
+	reset_poop_timer()
 
 func _on_ConditionTimer_timeout():
 	# There is chance of pooping at nearly any time.
-	if !poopy and randf() < 0.05:
-		poopy = true
-		set_state(State.POOP)
+#	if !poopy and !is_sleeping() and randf() < 0.1:
+#		poopy = true
+#		set_state(State.POOP)
 	
 	match state:
 		State.SLEEP:
-			# Chance something bad will happen.
-			if randf() < 0.1:
-				# Time to wake up and be unhappy.
-				var coin = randf()
-				if coin < 0.5:
-					hungry = true
-					set_state(State.CRY)
-				else:
-					poopy = true
-					set_state(State.POOP)
+			pass
+#			# Chance something bad will happen.
+#			if randf() < 0.1:
+#				# Time to wake up and be unhappy.
+#				var coin = randf()
+#				if coin < 0.5:
+#					hungry = true
+#					set_state(State.CRY)
+#				else:
+#					poopy = true
+#					set_state(State.POOP)
 		State.OBSERVE:
 			var dist = distance_to_player()
 			if dist > 125:
@@ -76,7 +102,7 @@ func _on_ConditionTimer_timeout():
 				set_state(State.CRY)
 			
 			# Make sure the baby is upset.
-			if hungry || poopy || lonely || sleepy:
+			if is_hungry() || poopy || lonely || is_sleepy():
 				set_state(State.CRY)
 
 func distance_to_player() -> float:

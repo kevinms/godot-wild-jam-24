@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Furniture/Assets/baby-puppet-head.png" type="Texture" id=1]
 [ext_resource path="res://Furniture/Assets/baby-puppet-jaw.png" type="Texture" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://Furniture/Assets/bottle-and-arm.png" type="Texture" id=6]
 [ext_resource path="res://Furniture/Assets/arrow-down.png" type="Texture" id=7]
 [ext_resource path="res://SFX/yay.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Furniture/Assets/computer-cursor.png" type="Texture" id=9]
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=1]
 resource_name = "pulse"
 length = 0.4
 loop = true
@@ -38,28 +39,28 @@ tracks/1/keys = {
 "values": [ Vector2( 2.03635, 2.03635 ), Vector2( 1.475, 1.475 ), Vector2( 2.03635, 2.03635 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 22.7012, 14.3495 )
 
-[sub_resource type="CapsuleShape2D" id=19]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 3.303
 height = 5.52407
 
-[sub_resource type="CircleShape2D" id=20]
+[sub_resource type="CircleShape2D" id=4]
 radius = 14.8217
 
-[sub_resource type="CapsuleShape2D" id=21]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 9.30938
 height = 11.8161
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 4.44084, 4.52688 )
 
-[sub_resource type="CapsuleShape2D" id=23]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 3.61454
 height = 23.0403
 
-[sub_resource type="CapsuleShape2D" id=24]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 3.61454
 height = 8.91473
 
@@ -67,11 +68,11 @@ height = 8.91473
 radius = 3.61454
 height = 8.91473
 
-[sub_resource type="CapsuleShape2D" id=25]
+[sub_resource type="CapsuleShape2D" id=10]
 radius = 3.45151
 height = 13.378
 
-[sub_resource type="CapsuleShape2D" id=26]
+[sub_resource type="CapsuleShape2D" id=11]
 radius = 4.5603
 height = 9.52921
 
@@ -96,7 +97,7 @@ tracks/0/keys = {
 "values": [ -39.6575, 34.2281, -39.6575 ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Baby/Body/Jaw:position")
 tracks/0/interp = 1
@@ -128,6 +129,14 @@ tracks/0/keys = {
 [node name="FeedBabyMinigame" type="Node2D"]
 script = ExtResource( 5 )
 
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.572549 )
+position = Vector2( -258.444, -146.279 )
+scale = Vector2( 517.065, 292.749 )
+z_index = -2
+texture = ExtResource( 9 )
+offset = Vector2( 0.5, 0.5 )
+
 [node name="Up" type="Sprite" parent="."]
 position = Vector2( -219.962, -93.088 )
 rotation = 3.14159
@@ -143,7 +152,7 @@ texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "pulse"
-anims/pulse = SubResource( 17 )
+anims/pulse = SubResource( 1 )
 
 [node name="Baby" type="Position2D" parent="."]
 position = Vector2( -10, 4 )
@@ -166,7 +175,7 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Baby/Body/Jaw/Goal"]
 position = Vector2( 2.38526, 3.50771 )
-shape = SubResource( 18 )
+shape = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Baby/Body/Jaw"]
 visible = false
@@ -174,7 +183,7 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Baby/Body/Jaw/StaticBody2D"]
 position = Vector2( -4.35942, -1.6543 )
 rotation = 1.5708
-shape = SubResource( 19 )
+shape = SubResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Baby/Body"]
 visible = false
@@ -183,25 +192,25 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
 position = Vector2( 3.49031, -14.9383 )
-shape = SubResource( 20 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
 position = Vector2( 5.50793, 15.9457 )
-shape = SubResource( 21 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
 position = Vector2( -7.07247, -8.76622 )
-shape = SubResource( 22 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
 position = Vector2( 2.27449, 20.4355 )
 rotation = 1.5708
-shape = SubResource( 23 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
 position = Vector2( -5.48042, 26.2964 )
 rotation = 0.416557
-shape = SubResource( 24 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Baby/Body/StaticBody2D"]
 position = Vector2( 12.0531, 26.2036 )
@@ -223,7 +232,7 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Baby/Arm/StaticBody2D"]
 position = Vector2( 1.03875, 10.7997 )
 rotation = 1.45176
-shape = SubResource( 25 )
+shape = SubResource( 10 )
 
 [node name="BottleArm" type="KinematicBody2D" parent="."]
 position = Vector2( -394.608, 14.2888 )
@@ -238,7 +247,7 @@ texture = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottleArm"]
 position = Vector2( 112.574, -0.486279 )
 rotation = 1.5708
-shape = SubResource( 26 )
+shape = SubResource( 11 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BottleArm"]
 position = Vector2( 102.511, -1.87265 )
@@ -255,7 +264,7 @@ anims/Wave = SubResource( 14 )
 
 [node name="JawAnimation" type="AnimationPlayer" parent="."]
 autoplay = "Move"
-anims/Move = SubResource( 27 )
+anims/Move = SubResource( 15 )
 
 [node name="ArmSwingTimer" type="Timer" parent="."]
 one_shot = true
@@ -269,10 +278,13 @@ playback_speed = 0.1
 anims/Move = SubResource( 16 )
 
 [node name="CelebrationTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="CelebrationAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
 [connection signal="body_entered" from="Baby/Body/Jaw/Goal" to="." method="_on_Goal_body_entered"]
 [connection signal="animation_finished" from="ArmAnimation" to="." method="_on_ArmAnimation_animation_finished"]
 [connection signal="animation_finished" from="JawAnimation" to="." method="_on_JawAnimation_animation_finished"]

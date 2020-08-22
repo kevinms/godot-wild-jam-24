@@ -62,7 +62,7 @@ flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
 spread = 82.24
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 60.0
+initial_velocity = 243.91
 initial_velocity_random = 0.21
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
@@ -121,7 +121,7 @@ position = Vector2( 74, -30 )
 position = Vector2( -7.46442, 1.38529 )
 emitting = false
 amount = 100
-lifetime = 1.5
+lifetime = 0.5
 one_shot = true
 explosiveness = 0.59
 randomness = 0.64
@@ -169,7 +169,7 @@ one_shot = true
 [node name="TrashNodes" type="Node2D" parent="."]
 
 [node name="CelebrationTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.25
 one_shot = true
 
 [node name="CheerAudio" type="AudioStreamPlayer" parent="."]

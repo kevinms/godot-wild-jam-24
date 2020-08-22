@@ -49,7 +49,7 @@ func store_item(object) -> bool:
 	return true
 
 func remove_item() -> Node:
-	if !item_removable:
+	if !stored_item or !item_removable:
 		return null
 	
 	var item = stored_item

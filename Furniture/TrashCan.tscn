@@ -89,10 +89,10 @@ position = Vector2( -0.969208, -9.12711 )
 z_index = 60
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="Minigame"]
-margin_left = 93.5852
-margin_top = -126.043
-margin_right = 190.585
-margin_bottom = -100.043
+margin_left = 94.1149
+margin_top = -71.7455
+margin_right = 191.115
+margin_bottom = -45.7455
 texture = ExtResource( 5 )
 patch_margin_left = 12
 patch_margin_top = 12
@@ -103,10 +103,10 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="Minigame"]
-margin_left = 98.9406
-margin_top = -121.008
-margin_right = 185.941
-margin_bottom = -99.0079
+margin_left = 99.4703
+margin_top = -66.7105
+margin_right = 186.471
+margin_bottom = -44.7104
 custom_fonts/font = SubResource( 2 )
 text = "Trash"
 align = 1
@@ -115,10 +115,10 @@ __meta__ = {
 }
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Minigame"]
-margin_left = 58.1362
-margin_top = -105.072
-margin_right = 193.136
-margin_bottom = -42.0715
+margin_left = 58.4108
+margin_top = -50.7783
+margin_right = 193.411
+margin_bottom = -5.77829
 texture = ExtResource( 5 )
 patch_margin_left = 12
 patch_margin_top = 12
@@ -128,23 +128,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Instructions" type="Label" parent="Minigame"]
-margin_left = 63.1362
-margin_top = -100.072
-margin_right = 185.136
-margin_bottom = -88.0715
-custom_fonts/font = SubResource( 3 )
-text = "Clean!"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="GameQuality" type="Label" parent="Minigame"]
-margin_left = 65.4937
-margin_top = -78.9124
-margin_right = 142.494
-margin_bottom = -66.9124
+margin_left = 67.8775
+margin_top = -39.4474
+margin_right = 144.878
+margin_bottom = -27.4474
 custom_fonts/font = SubResource( 3 )
 text = "Trash Disposed:"
 align = 1
@@ -153,10 +141,10 @@ __meta__ = {
 }
 
 [node name="GameQualityValue" type="Label" parent="Minigame"]
-margin_left = 140.541
-margin_top = -79.4762
-margin_right = 187.541
-margin_bottom = -67.4762
+margin_left = 142.925
+margin_top = -40.0112
+margin_right = 189.925
+margin_bottom = -28.0112
 custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
@@ -165,10 +153,10 @@ __meta__ = {
 }
 
 [node name="ExitInstructions" type="Label" parent="Minigame"]
-margin_left = 63.2968
-margin_top = -54.0951
-margin_right = 118.297
-margin_bottom = -46.0951
+margin_left = 66.2103
+margin_top = -20.4571
+margin_right = 121.211
+margin_bottom = -12.4571
 custom_fonts/font = SubResource( 4 )
 text = "Press ESC to quit"
 align = 1

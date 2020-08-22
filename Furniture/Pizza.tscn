@@ -7,6 +7,7 @@ radius = 6.25
 height = 5.5
 
 [node name="Pizza" type="Area2D" groups=[
+"food",
 "pickupable",
 ]]
 collision_layer = 2
