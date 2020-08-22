@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://World/walls-v2.png" type="Texture" id=1]
 [ext_resource path="res://World/floor-tiles-v2.png" type="Texture" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://Furniture/BabyBottle.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Interactions/FeedBabyMinigame/FeedBabyMinigame.tscn" type="PackedScene" id=37]
 [ext_resource path="res://World/NotificationPanel.tscn" type="PackedScene" id=38]
+[ext_resource path="res://UI/StatsPanel.tscn" type="PackedScene" id=39]
 
 [sub_resource type="TileSet" id=1]
 0/name = "floor-tiles-v2.png 0"
@@ -504,14 +505,19 @@ position = Vector2( 437.836, 108.769 )
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
 
+[node name="StatsPanel" parent="YSort/Player/Camera2D" instance=ExtResource( 39 )]
+position = Vector2( -255.242, -143.089 )
+z_index = 800
+
 [node name="GUI" parent="YSort/Player/Camera2D" instance=ExtResource( 30 )]
+visible = false
 margin_left = -207.994
 margin_top = -148.347
 margin_right = -62.9944
 margin_bottom = -108.347
 
 [node name="NotificationPanel" parent="YSort/Player/Camera2D" instance=ExtResource( 38 )]
-position = Vector2( 98.1789, -72.2408 )
+position = Vector2( 101.925, -26.1679 )
 z_index = 300
 
 [node name="TrashThrowing" parent="YSort/Player/Camera2D" instance=ExtResource( 33 )]
