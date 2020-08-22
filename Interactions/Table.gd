@@ -25,6 +25,10 @@ func has_food() -> bool:
 	return false
 
 func store_item(object) -> bool:
+	if stored_item:
+		Helper.notify("There is no room on the table.")
+		return false
+	
 	$ItemPosition.add_child(object)
 	object.position = Vector2.ZERO
 	stored_item = object

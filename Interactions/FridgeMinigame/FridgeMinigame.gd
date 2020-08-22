@@ -7,6 +7,8 @@ var max_platforms = 9
 var min_speed = 40
 var max_speed = 50
 
+var max_dist_apart = 90
+
 var last_spawn = null
 var height_between: float
 
@@ -59,21 +61,22 @@ func spawn(y: float = 0.0):
 #	else:
 #		platform.speed = lerp(min_speed, max_speed, (elapsed_time-10.0) / 10.0)
 	
+	# Overall bounds of the game
 	var minx = -120
 	var maxx = 120
 	
 	# Make sure it's close-ish to the last spawn.x
 	if last_spawn:
-		minx = last_spawn.position.x - 90
-		maxx = last_spawn.position.x + 90
+		minx = last_spawn.position.x - max_dist_apart
+		maxx = last_spawn.position.x + max_dist_apart
 		
 		# Shift spawn region to keep it in the bounds.
-		if last_spawn.position.x - 90 < -120:
+		if last_spawn.position.x - max_dist_apart < -120:
 			minx = -120
-			maxx = minx + 180
-		elif last_spawn.position.x + 90 > 120:
+			maxx = minx + (max_dist_apart*2)
+		elif last_spawn.position.x + max_dist_apart > 120:
 			maxx = 120
-			minx = maxx - 180
+			minx = maxx - (max_dist_apart*2)
 	
 	var x = rand_range(minx, maxx)
 	

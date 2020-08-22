@@ -17,9 +17,6 @@ func set_spouse_name(value):
 	if spouse_name == "":
 		spouse_name = "Spouse"
 
-# Everything that effects the important stats should use time_scale... so that time_scale works!
-const time_scale = 1.0
-
 # Important game stats displayed by UI
 var min_remaining: int
 var player_sleepiness: float setget set_player_sleepiness
@@ -31,6 +28,10 @@ var spouse_happiness: float setget set_spouse_happiness
 var game_quality: float
 var trash_generated: float
 var trash_disposed: int
+
+# !!!!!! ATTENTION !!!!!!
+# Everything that effects the important stats should use time_scale... so that time_scale works!
+const time_scale = 1.0
 
 const player_sleep_in_bed_min = (5*60) # 5h sim time
 const player_sleepiness_per_min = 100.0 / (48.0 * 60.0) * time_scale # Every 48h sim time, sleepiness will be 100%

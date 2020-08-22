@@ -11,10 +11,6 @@ func interact(gui, actor):
 		player.store_item(item)
 
 func start_minigame():
-	if !has_baby():
-		Helper.notify("That's not a baby?!")
-		return
-	
 	player.state = player.State.MINIGAME
 	$EffectAudio.play()
 
@@ -25,9 +21,17 @@ func has_baby() -> bool:
 	return false
 
 func store_item(object) -> bool:
+	if stored_item:
+		Helper.notify("Something else is already in the crib.")
+		return false
+	
 	$ItemPosition.add_child(object)
 	object.position = Vector2.ZERO
 	stored_item = object
+	
+	if !has_baby():
+		Helper.notify("That's not a baby?!")
+		return true
 	
 	start_minigame()
 	return true
@@ -35,6 +39,10 @@ func store_item(object) -> bool:
 func remove_item() -> Node:
 	if !stored_item:
 		return null
+	
+	if has_baby():
+		stored_item.wakeup()
+	
 	var item = stored_item
 	$ItemPosition.remove_child(stored_item)
 	stored_item = null
