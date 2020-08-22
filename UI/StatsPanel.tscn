@@ -149,6 +149,8 @@ margin_right = 120.36
 margin_bottom = 31.578
 
 [node name="StarvationTimer" type="Timer" parent="YourPanel"]
+wait_time = 10.0
+one_shot = true
 
 [node name="BabyPanel" type="Node2D" parent="."]
 position = Vector2( 200.279, -0.0270348 )
@@ -242,6 +244,7 @@ margin_bottom = 44.0175
 
 [node name="SocialServicesTimer" type="Timer" parent="BabyPanel"]
 wait_time = 10.0
+one_shot = true
 
 [node name="SpousePanel" type="Node2D" parent="."]
 position = Vector2( 329.209, 0.102045 )

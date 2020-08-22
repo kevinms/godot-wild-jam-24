@@ -12,7 +12,7 @@ func _on_Timer_timeout():
 	Helper.player_hungriness += Helper.player_hungriness_per_min
 	
 	# Check if player might die
-	if Helper.player_hungriness <= 0:
+	if Helper.player_hungriness >= 100.0:
 		if !player_might_die:
 			Helper.notify("You will starve to death.")
 			player_might_die = true
