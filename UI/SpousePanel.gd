@@ -22,8 +22,8 @@ func _on_Timer_timeout():
 		# This makes your spouse happy.
 		Helper.spouse_happiness += Helper.spouse_trash_hatred_per_item_per_min * 2.0
 
+	# Check if spouse is very upset and might leave.
 	if Helper.spouse_happiness <= 0:
-		# Spouse is very upset and might leave.
 		if !spouse_might_leave:
 			Helper.notify("%s is very unhappy and will leave you." % Helper.spouse_name)
 			spouse_might_leave = true

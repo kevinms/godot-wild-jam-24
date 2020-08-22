@@ -1,5 +1,7 @@
 extends Node2D
 
+var social_services_might_come = false
+
 onready var baby = Helper.get_baby()
 
 func _process(delta):
@@ -24,3 +26,17 @@ func _on_Timer_timeout():
 		Helper.baby_happiness += Helper.baby_crying_hatred_per_min *2.0
 	else:
 		Helper.baby_happiness -= Helper.baby_crying_hatred_per_min
+	
+	# Check if social services might come
+	if Helper.baby_happiness <= 0:
+		if !social_services_might_come:
+			Helper.notify("%s is very unhappy and social services will come." % Helper.baby_name)
+			social_services_might_come = true
+			$SocialServicesTimer.start()
+	else:
+		social_services_might_come = false
+		$SocialServicesTimer.stop()
+
+
+func _on_SocialServicesTimer_timeout():
+	Helper.trigger_game_over("Social services came and took %s." % [Helper.baby_name])

@@ -24,7 +24,7 @@ func is_hungry():
 # Methods for checking baby's state
 ##
 func is_happy():
-	return state != State.CRY
+	return state != State.CRY and !poopy
 
 func is_sleeping():
 	return state == State.SLEEP

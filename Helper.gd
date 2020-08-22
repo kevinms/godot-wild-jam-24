@@ -98,6 +98,8 @@ var baby_diapers_changed: int
 var baby_bottles_used: int
 var pizza_eaten: int #TODO: can't eat pizza currently :(
 
+var game_over_triggered = false
+
 func reset():
 	min_remaining = 9 * (24*60)
 	player_sleepiness = 0
@@ -116,6 +118,8 @@ func reset():
 	pizza_eaten = 0
 	trash_generated = 0
 	trash_disposed = 0
+	
+	game_over_triggered = false
 
 func get_player():
 	for node in get_tree().get_nodes_in_group("player"):
@@ -136,6 +140,10 @@ func notify(msg = "This is a notification message."):
 	emit_signal("send_notification", msg)
 
 func trigger_game_over(reason: String):
+	if game_over_triggered:
+		print("Game is already over.")
+		return
+	
 	# Set GameOverReason scene text.
 	var reason_node = get_tree().get_root().find_node("GameOverReason", true, false)
 	reason_node.text = reason
@@ -143,3 +151,5 @@ func trigger_game_over(reason: String):
 	# Start the game over animation.
 	var animation: AnimationPlayer = get_tree().get_root().find_node("StartMinigameAnimation", true, false)
 	animation.play("GameOver")
+	
+	game_over_triggered = true
