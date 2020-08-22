@@ -33,7 +33,7 @@ func has_baby() -> bool:
 	return false
 
 func diaper_changed():
-	if !has_baby():
+	if !has_baby() || !stored_item.poopy:
 		return
 	
 	stored_item.diaper_change()
@@ -43,6 +43,9 @@ func diaper_changed():
 	var world = player.get_parent()
 	world.add_child(trash)
 	trash.global_position = $TrashPosition.global_position + Helper.rand_vector(10)
+	Helper.trash_generated += 1
+	
+	Helper.baby_diapers_changed += 1
 
 func start_minigame():
 	if !has_baby():

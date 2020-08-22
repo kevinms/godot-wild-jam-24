@@ -21,7 +21,8 @@ func _on_Minigame_player_won():
 	print("Player won yay")
 	player_won = true
 	
-	#TODO Update global stats
+	# Update global stats
+	Helper.baby_bottles_used += 1
 	
 	# Remove food item
 	if food:
@@ -33,6 +34,7 @@ func _on_Minigame_player_won():
 	var world = player.get_parent()
 	world.add_child(trash)
 	trash.global_position = $TrashPosition.global_position  + Helper.rand_vector(10)
+	Helper.trash_generated += 1
 
 func store_item(object) -> bool:
 	if object == null:

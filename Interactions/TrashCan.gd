@@ -1,11 +1,11 @@
 extends StaticBody2D
 
-var items_disposed = 0
 var minigame_active = false
 
 var stored_item = null
 var item_layer_save = 0
 var item_mask_save = 0
+var item_was_trash = false
 var item_removable = false
 
 onready var player = Helper.get_player()
@@ -20,8 +20,8 @@ var player_won: bool
 # Every trash can will receive the event?!
 func _on_Minigame_player_won():
 	print("Player won yay")
-	items_disposed += 1
-	$Minigame/GameQualityValue.text = str(items_disposed)
+	Helper.trash_disposed += 1
+	$Minigame/GameQualityValue.text = str(Helper.trash_disposed)
 	player_won = true
 	item_removable = false
 
@@ -33,6 +33,9 @@ func store_item(object) -> bool:
 		if !has_baby():
 			stored_item.queue_free()
 	
+	if object.is_in_group("trash"):
+		item_was_trash = true
+		object.remove_from_group("trash")
 	item_layer_save = object.collision_layer
 	item_mask_save = object.collision_mask
 	object.collision_layer = 0
@@ -54,6 +57,8 @@ func remove_item() -> Node:
 	stored_item = null
 	item.collision_layer = item_layer_save
 	item.collision_mask = item_mask_save
+	if item_was_trash:
+		item.add_to_group("trash")
 	return item
 
 func has_baby() -> bool:

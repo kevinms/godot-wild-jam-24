@@ -69,6 +69,10 @@ func key_press(letter):
 	if c.text != letter:
 		return
 	
+	# They typed the correct character!
+	Helper.game_quality += 5
+	Helper.computer_letters_typed += 1
+	
 	c.color = Color(0,1,0)
 	
 	# Find next typeable character!

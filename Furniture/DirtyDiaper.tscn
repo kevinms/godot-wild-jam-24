@@ -6,6 +6,7 @@
 
 [node name="DirtyDiaper" type="Area2D" groups=[
 "pickupable",
+"trash",
 ]]
 collision_layer = 2
 collision_mask = 2147483650

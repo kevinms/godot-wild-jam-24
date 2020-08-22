@@ -7,13 +7,23 @@ var player = null
 onready var minigame = $Minigame
 var minigame_active = false
 
+var ignoreInput = {
+	KEY_ESCAPE: 1,
+	KEY_SHIFT: 1,
+	KEY_CONTROL: 1,
+	KEY_META: 1,
+	KEY_ALT: 1,
+	KEY_CAPSLOCK: 1
+}
+
 func _input(event):
 	if !minigame_active:
 		return
 
 	if event is InputEventKey and event.pressed:
-		quality += 1
-		$Minigame/GameQualityValue.text = str(quality)
+		if !ignoreInput.has(event.scancode):
+			Helper.computer_keys_pressed += 1
+		$Minigame/GameQualityValue.text = str(Helper.game_quality)
 		
 		# Update the computer screen
 		var letter = char(event.unicode)

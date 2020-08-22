@@ -14,6 +14,9 @@ var sleepy = false
 func _ready():
 	set_state(State.OBSERVE)
 
+func is_happy():
+	return state != State.CRY
+
 func feed():
 	if !hungry:
 		return
@@ -99,6 +102,7 @@ func set_state(new_state):
 	
 	match new_state:
 		State.POOP:
+			Helper.baby_pooped += 1
 			$PoopAudio.play()
 		State.CRY:
 			$CryAudio.play()

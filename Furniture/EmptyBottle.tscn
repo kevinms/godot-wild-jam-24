@@ -8,6 +8,7 @@ height = 4.32379
 
 [node name="EmptyBottle" type="Area2D" groups=[
 "pickupable",
+"trash",
 ]]
 collision_layer = 2
 collision_mask = 2
