@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/spouse-outline.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://UI/green_bar.png" type="Texture" id=5]
 [ext_resource path="res://Characters/baby-picture.png" type="Texture" id=6]
 [ext_resource path="res://Characters/player-picture.png" type="Texture" id=7]
+[ext_resource path="res://UI/TimePanel.gd" type="Script" id=8]
+[ext_resource path="res://UI/YourPanel.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -24,6 +26,7 @@ font_data = ExtResource( 2 )
 
 [node name="TimePanel" type="Node2D" parent="."]
 position = Vector2( 0.45726, 0.407364 )
+script = ExtResource( 8 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="TimePanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -64,8 +67,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Timer" type="Timer" parent="TimePanel"]
+wait_time = 0.05
+autostart = true
+
 [node name="YourPanel" type="Node2D" parent="."]
-position = Vector2( 70.8982, 0.208939 )
+position = Vector2( 73.1705, 0.104584 )
+script = ExtResource( 9 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="YourPanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -109,12 +117,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Guage2" type="TextureProgress" parent="YourPanel"]
+[node name="SleepyGuage" type="TextureProgress" parent="YourPanel"]
 margin_left = 56.0367
 margin_top = 3.16609
 margin_right = 120.037
 margin_bottom = 19.1661
-value = 60.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 5 )
 __meta__ = {
@@ -132,7 +139,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Guage" type="TextureProgress" parent="YourPanel"]
+[node name="HungryGuage" type="TextureProgress" parent="YourPanel"]
 margin_left = 56.0
 margin_top = 16.0
 margin_right = 120.0
@@ -145,7 +152,7 @@ __meta__ = {
 }
 
 [node name="BabyPanel" type="Node2D" parent="."]
-position = Vector2( 199.029, -0.0270348 )
+position = Vector2( 200.279, -0.0270348 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="BabyPanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -248,7 +255,7 @@ __meta__ = {
 }
 
 [node name="SpousePanel" type="Node2D" parent="."]
-position = Vector2( 328.188, 0.998821 )
+position = Vector2( 329.209, 0.102045 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="SpousePanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -305,7 +312,7 @@ __meta__ = {
 }
 
 [node name="GameJamPanel" type="Node2D" parent="."]
-position = Vector2( 434.938, 1.24882 )
+position = Vector2( 434.771, 0.164265 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GameJamPanel"]
 modulate = Color( 1, 1, 1, 0.737255 )
@@ -353,3 +360,5 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="timeout" from="TimePanel/Timer" to="TimePanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimePanel/Timer" to="YourPanel" method="_on_Timer_timeout"]

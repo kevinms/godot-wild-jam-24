@@ -25,6 +25,9 @@ var held_object = null
 
 var velocity = Vector2.ZERO
 
+func _ready():
+	Helper.reset()
+
 func takeAction(object):
 	print("name: ", object.get_name())
 	
