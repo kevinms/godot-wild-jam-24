@@ -27,7 +27,7 @@ func _process(delta):
 	
 	var errorPercent = 0.0
 	if Helper.computer_keys_pressed > 0:
-		errorPercent = float(Helper.computer_letters_typed) / float(Helper.computer_keys_pressed) * 100.0
+		errorPercent = 100.0 - (float(Helper.computer_letters_typed) / float(Helper.computer_keys_pressed) * 100.0)
 	
 	$StatValues.text = "%d\n%.2f\n%d\n%d" % [Helper.computer_letters_typed, errorPercent, Helper.trash_generated, Helper.trash_disposed]
 	$StatValues2.text = "%d\n%d\n%d\n%d" % [Helper.baby_pooped, Helper.baby_diapers_changed, Helper.baby_bottles_used, Helper.pizza_eaten]
