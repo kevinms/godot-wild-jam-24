@@ -6,10 +6,8 @@ func _ready():
 	
 
 func _on_request_completed(result, response_code, headers, body):
-	pass 
-	#TODO: load high score page
-	#var json = JSON.parse(body.get_string_from_utf8())
-	#print(json.result)
+	get_tree().change_scene("res://HighScores.tscn")
+
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):

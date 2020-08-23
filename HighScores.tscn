@@ -31,9 +31,12 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-margin_left = 217.563
-margin_top = 77.3976
-margin_right = 257.563
-margin_bottom = 117.398
+margin_left = 34.4513
+margin_top = 67.4869
+margin_right = 74.4513
+margin_bottom = 107.487
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
