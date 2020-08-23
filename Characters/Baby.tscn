@@ -10,7 +10,7 @@
 [ext_resource path="res://SFX/snore.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Furniture/Assets/stink.png" type="Texture" id=9]
 
-[sub_resource type="CapsuleShape2D" id=25]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 4.8335
 height = 8.29904
 
@@ -38,7 +38,7 @@ region = Rect2( 64, 0, 16, 16 )
 atlas = ExtResource( 4 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=26]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
@@ -46,39 +46,39 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 6 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 6 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 6 )
 region = Rect2( 48, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 6 )
 region = Rect2( 64, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 6 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=33]
+[sub_resource type="SpriteFrames" id=15]
 animations = [ {
-"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=16]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -94,33 +94,33 @@ tracks/0/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.7, 0.7 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 9 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 9 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 9 )
 region = Rect2( 48, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 9 )
 region = Rect2( 64, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 9 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=24]
+[sub_resource type="SpriteFrames" id=23]
 animations = [ {
-"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -141,7 +141,7 @@ texture = ExtResource( 1 )
 visible = false
 position = Vector2( 0.371628, -4.31088 )
 rotation = 1.5708
-shape = SubResource( 25 )
+shape = SubResource( 1 )
 
 [node name="ConditionTimer" type="Timer" parent="."]
 autostart = true
@@ -153,7 +153,7 @@ volume_db = -8.0
 [node name="CryEffect" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( -3.69894, -9.36442 )
-frames = SubResource( 26 )
+frames = SubResource( 8 )
 frame = 2
 playing = true
 
@@ -165,7 +165,7 @@ volume_db = 8.0
 visible = false
 position = Vector2( -4.625, -15.125 )
 rotation = -0.523759
-frames = SubResource( 33 )
+frames = SubResource( 15 )
 frame = 4
 playing = true
 
@@ -180,7 +180,7 @@ texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SleepEffect/Snot/Sprite"]
 autoplay = "Bubble"
-anims/Bubble = SubResource( 34 )
+anims/Bubble = SubResource( 16 )
 
 [node name="SnoreAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
@@ -191,7 +191,7 @@ stream = ExtResource( 8 )
 visible = false
 position = Vector2( 9.68124, -12.3471 )
 rotation = 0.695726
-frames = SubResource( 24 )
+frames = SubResource( 23 )
 
 [node name="PoopTimer" type="Timer" parent="."]
 one_shot = true

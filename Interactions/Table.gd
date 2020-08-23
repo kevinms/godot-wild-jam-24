@@ -25,6 +25,9 @@ func has_food() -> bool:
 	return false
 
 func store_item(object) -> bool:
+	if object == null:
+		return false
+	
 	if stored_item:
 		Helper.notify("There is no room on the table.")
 		return false

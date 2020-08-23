@@ -87,6 +87,8 @@ func store_item(object):
 		object.hold()
 
 func remove_item() -> Node:
+	if !held_object:
+		return null
 	var item = held_object
 	remove_child(held_object)
 	held_object = null
