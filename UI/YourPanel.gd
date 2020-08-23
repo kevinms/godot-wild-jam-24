@@ -27,4 +27,4 @@ func _on_Timer_timeout():
 		$EndPanel.visible = false
 
 func _on_StarvationTimer_timeout():
-	Helper.trigger_game_over("%s starved to death." % [Helper.player_name])
+	Helper.trigger_game_over("%s starved to death." % [Helper.player_name], false)

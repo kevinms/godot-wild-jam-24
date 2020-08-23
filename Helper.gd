@@ -98,6 +98,7 @@ var baby_diapers_changed: int
 var baby_bottles_used: int
 var pizza_eaten: int
 
+var player_won = false
 var game_over_triggered = false
 
 func reset():
@@ -120,6 +121,7 @@ func reset():
 	trash_disposed = 0
 	
 	game_over_triggered = false
+	player_won = false
 
 func get_player():
 	for node in get_tree().get_nodes_in_group("player"):
@@ -139,11 +141,12 @@ signal send_notification(msg)
 func notify(msg = "This is a notification message."):
 	emit_signal("send_notification", msg)
 
-func trigger_game_over(reason: String):
+func trigger_game_over(reason: String, won: bool):
 	if game_over_triggered:
 		print("Game is already over.")
 		return
 	game_over_triggered = true
+	player_won = won
 	
 	# Set GameOverReason scene text.
 	var reason_node = get_tree().get_root().find_node("GameOverReason", true, false)

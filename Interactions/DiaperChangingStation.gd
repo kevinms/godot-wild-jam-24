@@ -41,6 +41,13 @@ func diaper_changed():
 	Helper.baby_diapers_changed += 1
 
 func store_item(object) -> bool:
+	if object == null:
+		return false
+	
+	if stored_item:
+		Helper.notify("There is no room on the table.")
+		return false
+	
 	$BabyPosition.add_child(object)
 	object.position = Vector2.ZERO
 	stored_item = object
@@ -49,6 +56,9 @@ func store_item(object) -> bool:
 	return true
 
 func remove_item() -> Node:
+	if !stored_item:
+		return null
+	
 	var item = stored_item
 	$BabyPosition.remove_child(stored_item)
 	stored_item = null

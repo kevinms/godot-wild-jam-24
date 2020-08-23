@@ -15,16 +15,19 @@ var lonely = false
 
 # Conditions controlled by UI meters
 func is_sleepy():
-	return Helper.baby_sleepiness >= 99.0
+	return Helper.baby_sleepiness >= 100.0
 func is_hungry():
-	return Helper.baby_hungriness >= 99.0
+	return Helper.baby_hungriness >= 100.0
 
 
 ##
 # Methods for checking baby's state
 ##
 func is_happy():
-	return state != State.CRY and !poopy
+	if is_hungry() || poopy || lonely || is_sleepy():
+		return false
+	return true
+	#return state != State.CRY and !poopy
 
 func is_sleeping():
 	return state == State.SLEEP
@@ -100,10 +103,11 @@ func _on_ConditionTimer_timeout():
 				lonely = true
 				Helper.notify("Baby is lonely.")
 				set_state(State.CRY)
-			
-			# Make sure the baby is upset.
-			if is_hungry() || poopy || lonely || is_sleepy():
-				set_state(State.CRY)
+	
+	if state != State.CRY:
+		# Make sure the baby is upset, if it should be.
+		if is_hungry() || poopy || lonely || is_sleepy():
+			set_state(State.CRY)
 
 func distance_to_player() -> float:
 	for player in get_tree().get_nodes_in_group("player"):

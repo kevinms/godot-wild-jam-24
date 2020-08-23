@@ -9,6 +9,20 @@ func _process(delta):
 	
 	if spouse_might_leave:
 		$EndPanel/Value.text = "%.2f" % $SpouseLeavingTime.time_left
+	
+	$Help.text = get_help_text()
+
+func get_help_text() -> String:
+	var msg = ""
+	
+	var count = get_tree().get_nodes_in_group("trash").size()
+	if count > 0:
+		msg += "Unhappy with %d pieces of trash.\n" % [count]
+	
+	if !baby.is_happy():
+		msg += "Unhappy with baby crying."
+	
+	return msg
 
 func _on_Timer_timeout():
 	# Check for trash
@@ -39,4 +53,4 @@ func _on_Timer_timeout():
 
 func _on_SpouseLeavingTime_timeout():
 	#Helper.notify("%s has left you." % Helper.spouse_name)
-	Helper.trigger_game_over("%s left you and took %s." % [Helper.spouse_name, Helper.baby_name])
+	Helper.trigger_game_over("%s left you and took %s." % [Helper.spouse_name, Helper.baby_name], false)

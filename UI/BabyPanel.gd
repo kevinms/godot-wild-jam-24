@@ -11,6 +11,11 @@ func _process(delta):
 	
 	if social_services_might_come:
 		$EndPanel/Value.text = "%.2f" % $SocialServicesTimer.time_left
+	
+	if baby.poopy:
+		$PoopEmoji.visible = true
+	else:
+		$PoopEmoji.visible = false
 
 # Called every simulation minute
 func _on_Timer_timeout():
@@ -44,4 +49,4 @@ func _on_Timer_timeout():
 
 
 func _on_SocialServicesTimer_timeout():
-	Helper.trigger_game_over("Social services came and took %s." % [Helper.baby_name])
+	Helper.trigger_game_over("Social services came and took %s." % [Helper.baby_name], false)

@@ -21,6 +21,9 @@ func has_baby() -> bool:
 	return false
 
 func store_item(object) -> bool:
+	if object == null:
+		return false
+	
 	if stored_item:
 		Helper.notify("Something else is already in the crib.")
 		return false
