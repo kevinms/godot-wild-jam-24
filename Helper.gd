@@ -35,9 +35,9 @@ const time_scale = 1.0
 
 const player_sleep_in_bed_min = (5*60) * time_scale # 5h sim time
 const player_sleepiness_per_min = 100.0 / (48.0 * 60.0) * time_scale # Every 48h sim time, sleepiness will be 100%
-const player_hungriness_per_min = 100.0 / (36.0 * 60.0) * time_scale # Every 24h sim time, hungriness will be 100%
-const baby_sleepiness_per_min = 100.0 / (30.0 * 60.0) * time_scale # Every 30h sim time, sleepiness will be 100%
-const baby_hungriness_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, hungriness will be 100%
+const player_hungriness_per_min = 100.0 / (42.0 * 60.0) * time_scale # Every 24h sim time, hungriness will be 100%
+const baby_sleepiness_per_min = 100.0 / (36.0 * 60.0) * time_scale # Every 30h sim time, sleepiness will be 100%
+const baby_hungriness_per_min = 100.0 / (28.0 * 60.0) * time_scale # Every 24h sim time, hungriness will be 100%
 const spouse_trash_hatred_per_item_per_min = 100.0 / (48.0 * 60.0) * time_scale # Every 24h sim time, happiness will be 0%
 const spouse_crying_hatred_per_min = 100.0 / (36.0 * 60.0) * time_scale # Every 24h sim time, happiness will be 0%
 const baby_crying_hatred_per_min = 100.0 / (24.0 * 60.0) * time_scale # Every 24h sim time, happiness will be 0%
@@ -96,7 +96,7 @@ var computer_keys_pressed: int
 var baby_pooped: int
 var baby_diapers_changed: int
 var baby_bottles_used: int
-var pizza_eaten: int #TODO: can't eat pizza currently :(
+var pizza_eaten: int
 
 var game_over_triggered = false
 
@@ -143,6 +143,7 @@ func trigger_game_over(reason: String):
 	if game_over_triggered:
 		print("Game is already over.")
 		return
+	game_over_triggered = true
 	
 	# Set GameOverReason scene text.
 	var reason_node = get_tree().get_root().find_node("GameOverReason", true, false)
@@ -151,5 +152,3 @@ func trigger_game_over(reason: String):
 	# Start the game over animation.
 	var animation: AnimationPlayer = get_tree().get_root().find_node("GameOverReasonAnimation", true, false)
 	animation.play("GameOver")
-	
-	game_over_triggered = true
