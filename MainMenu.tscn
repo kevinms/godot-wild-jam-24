@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Furniture/Assets/dialogue-white.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Furniture/Assets/frig.png" type="Texture" id=10]
 [ext_resource path="res://Furniture/Crib.tscn" type="PackedScene" id=11]
 [ext_resource path="res://MainMenu.gd" type="Script" id=12]
+[ext_resource path="res://SFX/godot-wildjam-24-track1-kevin-edit.ogg" type="AudioStream" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -90,7 +91,7 @@ __meta__ = {
 }
 
 [node name="NewGameButton" type="Button" parent="menu_1/buttonGroup"]
-margin_right = 107.0
+margin_right = 108.0
 margin_bottom = 22.0
 custom_fonts/font = ExtResource( 7 )
 text = "New Game"
@@ -446,6 +447,10 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+autoplay = true
 [connection signal="pressed" from="menu_1/buttonGroup/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="backstory_1/backstoryContinue" to="." method="_on_backstoryContinue_pressed"]
 [connection signal="pressed" from="playerNaming/playerNameConfirm" to="." method="_on_playerNameConfirm_pressed"]
