@@ -6,6 +6,9 @@ var spouse_might_leave = false
 
 func _process(delta):
 	$HappyGuage.value = Helper.spouse_happiness
+	
+	if spouse_might_leave:
+		$EndPanel/Value.text = "%.2f" % $SpouseLeavingTime.time_left
 
 func _on_Timer_timeout():
 	# Check for trash
@@ -28,9 +31,11 @@ func _on_Timer_timeout():
 			Helper.notify("%s is very unhappy and will leave you." % Helper.spouse_name)
 			spouse_might_leave = true
 			$SpouseLeavingTime.start()
+			$EndPanel.visible = true
 	else:
 		spouse_might_leave = false
 		$SpouseLeavingTime.stop()
+		$EndPanel.visible = false
 
 func _on_SpouseLeavingTime_timeout():
 	#Helper.notify("%s has left you." % Helper.spouse_name)

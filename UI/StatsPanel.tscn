@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Characters/spouse-outline.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=2]
@@ -20,6 +20,12 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 11
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 8
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
@@ -152,6 +158,49 @@ margin_bottom = 31.578
 wait_time = 10.0
 one_shot = true
 
+[node name="EndPanel" type="Node2D" parent="YourPanel"]
+position = Vector2( 11.7859, 0.982155 )
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="YourPanel/EndPanel"]
+modulate = Color( 1, 1, 1, 0.737255 )
+margin_top = 34.0
+margin_right = 100.0
+margin_bottom = 53.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="YourPanel/EndPanel"]
+margin_left = 9.9738
+margin_top = 39.8749
+margin_right = 54.9738
+margin_bottom = 47.8749
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Starvation in:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="YourPanel/EndPanel"]
+margin_left = 60.0154
+margin_top = 39.5791
+margin_right = 91.0154
+margin_bottom = 47.5791
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "10"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BabyPanel" type="Node2D" parent="."]
 position = Vector2( 200.279, -0.0270348 )
 script = ExtResource( 10 )
@@ -246,6 +295,49 @@ margin_bottom = 44.0175
 wait_time = 10.0
 one_shot = true
 
+[node name="EndPanel" type="Node2D" parent="BabyPanel"]
+position = Vector2( 13.4799, 14.8639 )
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="BabyPanel/EndPanel"]
+modulate = Color( 1, 1, 1, 0.737255 )
+margin_top = 34.0
+margin_right = 100.0
+margin_bottom = 53.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="BabyPanel/EndPanel"]
+margin_left = 5.43811
+margin_top = 39.8749
+margin_right = 63.4381
+margin_bottom = 47.8749
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Social Services in:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="BabyPanel/EndPanel"]
+margin_left = 65.4874
+margin_top = 40.0
+margin_right = 96.4874
+margin_bottom = 48.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "10"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SpousePanel" type="Node2D" parent="."]
 position = Vector2( 329.209, 0.102045 )
 script = ExtResource( 11 )
@@ -305,6 +397,49 @@ flatline = 0.0
 [node name="SpouseLeavingTime" type="Timer" parent="SpousePanel"]
 wait_time = 10.0
 one_shot = true
+
+[node name="EndPanel" type="Node2D" parent="SpousePanel"]
+position = Vector2( 0.163483, 0.423468 )
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="SpousePanel/EndPanel"]
+modulate = Color( 1, 1, 1, 0.737255 )
+margin_top = 34.0
+margin_right = 100.0
+margin_bottom = 53.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="SpousePanel/EndPanel"]
+margin_left = 5.07842
+margin_top = 39.7346
+margin_right = 64.0784
+margin_bottom = 47.7346
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Spouse leaving in:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="SpousePanel/EndPanel"]
+margin_left = 66.0486
+margin_top = 40.4209
+margin_right = 97.0486
+margin_bottom = 48.4209
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "10"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameJamPanel" type="Node2D" parent="."]
 position = Vector2( 434.771, 0.164265 )

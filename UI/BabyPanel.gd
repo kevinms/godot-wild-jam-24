@@ -8,6 +8,9 @@ func _process(delta):
 	$HappyGuage.value = Helper.baby_happiness
 	$SleepyGuage.value = Helper.baby_sleepiness
 	$HungryGuage.value = Helper.baby_hungriness
+	
+	if social_services_might_come:
+		$EndPanel/Value.text = "%.2f" % $SocialServicesTimer.time_left
 
 # Called every simulation minute
 func _on_Timer_timeout():
@@ -33,9 +36,11 @@ func _on_Timer_timeout():
 			Helper.notify("%s is very unhappy and social services will come." % Helper.baby_name)
 			social_services_might_come = true
 			$SocialServicesTimer.start()
+			$EndPanel.visible = true
 	else:
 		social_services_might_come = false
 		$SocialServicesTimer.stop()
+		$EndPanel.visible = false
 
 
 func _on_SocialServicesTimer_timeout():
