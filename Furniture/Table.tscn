@@ -32,7 +32,7 @@ position = Vector2( -13.75, -24.125 )
 position = Vector2( 15, -24.25 )
 
 [node name="ItemPosition" type="Position2D" parent="."]
-position = Vector2( 14.1556, -22.7216 )
+position = Vector2( 14.0068, -20.4893 )
 
 [node name="EffectAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

@@ -13,7 +13,24 @@ func _on_request_completed(result, response_code, headers, body):
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene("res://MainMenu.tscn")
-
+		
+	if Helper.player_won:
+		$Title.text = "Game jam entry completed!"
+	else:
+		$Title.text = Helper.game_over_reason
+	
+	$Player/Value.text = Helper.player_name
+	$Spouse/Value.text = Helper.spouse_name
+	$Baby/Value.text = Helper.baby_name
+	
+	$GameQuality/Value.text = str(Helper.game_quality)
+	
+	var errorPercent = 0.0
+	if Helper.computer_keys_pressed > 0:
+		errorPercent = 100.0 - (float(Helper.computer_letters_typed) / float(Helper.computer_keys_pressed) * 100.0)
+	
+	$StatValues.text = "%d\n%.2f\n%d\n%d" % [Helper.computer_letters_typed, errorPercent, Helper.trash_generated, Helper.trash_disposed]
+	$StatValues2.text = "%d\n%d\n%d\n%d" % [Helper.baby_pooped, Helper.baby_diapers_changed, Helper.baby_bottles_used, Helper.pizza_eaten]
 
 func _on_Button_pressed():
 	var data_to_send = {

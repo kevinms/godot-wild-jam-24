@@ -4,18 +4,20 @@ var player_name: String = "Player" setget set_player_name
 var baby_name: String = "Baby"  setget set_baby_name
 var spouse_name: String = "Spouse"  setget set_spouse_name
 
+func sanatize(value, default) -> String:
+	value = value.strip_edges()
+	value = value.replace("\n", "")
+	value = value.replace("\t", "")
+	if value == "":
+		value = default
+	return value
+
 func set_player_name(value):
-	player_name = value.strip_edges()
-	if player_name == "":
-		player_name = "Player"
+	player_name = sanatize(value, "Player")
 func set_baby_name(value):
-	baby_name = value.strip_edges()
-	if baby_name == "":
-		baby_name = "Baby"
+	baby_name = sanatize(value, "Baby")
 func set_spouse_name(value):
-	spouse_name = value.strip_edges()
-	if spouse_name == "":
-		spouse_name = "Spouse"
+	spouse_name = sanatize(value, "Spouse")
 
 # Important game stats displayed by UI
 var min_remaining: int
@@ -99,6 +101,7 @@ var baby_bottles_used: int
 var pizza_eaten: int
 
 var player_won = false
+var game_over_reason = "You lost..."
 var game_over_triggered = false
 
 func reset():
@@ -120,6 +123,7 @@ func reset():
 	trash_generated = 0
 	trash_disposed = 0
 	
+	game_over_reason = "You lost..."
 	game_over_triggered = false
 	player_won = false
 
@@ -146,6 +150,7 @@ func trigger_game_over(reason: String, won: bool):
 		print("Game is already over.")
 		return
 	game_over_triggered = true
+	game_over_reason = reason
 	player_won = won
 	
 	# Set GameOverReason scene text.
