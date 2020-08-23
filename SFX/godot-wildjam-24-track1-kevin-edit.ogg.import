@@ -11,5 +11,5 @@ dest_files=[ "res://.import/godot-wildjam-24-track1-kevin-edit.ogg-088f26fc0b7f7
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
