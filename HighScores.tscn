@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/MainMenuTitleFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Furniture/Assets/dialogue-white.png" type="Texture" id=2]
+[ext_resource path="res://HighScores.gd" type="Script" id=3]
+
+[node name="HighScores" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="NinePatchRect" parent="Control"]
+margin_right = 512.0
+margin_bottom = 288.0
+texture = ExtResource( 2 )
+
+[node name="title" type="Label" parent="Control"]
+margin_left = 153.379
+margin_top = 24.0687
+margin_right = 366.379
+margin_bottom = 70.0687
+custom_fonts/font = ExtResource( 1 )
+text = "High Scores"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+margin_left = 217.563
+margin_top = 77.3976
+margin_right = 257.563
+margin_bottom = 117.398
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
