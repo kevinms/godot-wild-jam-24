@@ -82,10 +82,10 @@ __meta__ = {
 }
 
 [node name="buttonGroup" type="VBoxContainer" parent="menu_1"]
-margin_left = 203.0
-margin_top = 154.0
-margin_right = 309.0
-margin_bottom = 242.0
+margin_left = 200.773
+margin_top = 139.746
+margin_right = 306.773
+margin_bottom = 227.746
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -109,13 +109,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreditsButton" type="Button" parent="menu_1/buttonGroup"]
-visible = false
+[node name="ExitButton" type="Button" parent="menu_1/buttonGroup"]
 margin_top = 52.0
-margin_right = 107.0
+margin_right = 106.0
 margin_bottom = 74.0
 custom_fonts/font = ExtResource( 7 )
-text = "Credits"
+text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -453,6 +452,7 @@ volume_db = -8.0
 autoplay = true
 [connection signal="pressed" from="menu_1/buttonGroup/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="menu_1/buttonGroup/LeaderboardButton" to="." method="_on_LeaderboardButton_pressed"]
+[connection signal="pressed" from="menu_1/buttonGroup/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="backstory_1/backstoryContinue" to="." method="_on_backstoryContinue_pressed"]
 [connection signal="pressed" from="playerNaming/playerNameConfirm" to="." method="_on_playerNameConfirm_pressed"]
 [connection signal="pressed" from="spouseNaming/spouseNameConfirm" to="." method="_on_spouseNameConfirm_pressed"]

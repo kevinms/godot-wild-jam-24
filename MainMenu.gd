@@ -71,3 +71,7 @@ func _on_tutorialContinue_pressed():
 
 func _on_LeaderboardButton_pressed():
 	get_tree().change_scene("res://HighScores.tscn")
+
+
+func _on_ExitButton_pressed():
+	get_tree().quit()
