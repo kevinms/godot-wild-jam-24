@@ -155,7 +155,7 @@ margin_right = 120.36
 margin_bottom = 31.578
 
 [node name="StarvationTimer" type="Timer" parent="YourPanel"]
-wait_time = 30.0
+wait_time = 20.0
 one_shot = true
 
 [node name="EndPanel" type="Node2D" parent="YourPanel"]
@@ -292,7 +292,7 @@ margin_right = 120.167
 margin_bottom = 44.0175
 
 [node name="SocialServicesTimer" type="Timer" parent="BabyPanel"]
-wait_time = 30.0
+wait_time = 20.0
 one_shot = true
 
 [node name="EndPanel" type="Node2D" parent="BabyPanel"]
@@ -395,7 +395,7 @@ margin_bottom = 30.9898
 flatline = 0.0
 
 [node name="SpouseLeavingTime" type="Timer" parent="SpousePanel"]
-wait_time = 30.0
+wait_time = 20.0
 one_shot = true
 
 [node name="EndPanel" type="Node2D" parent="SpousePanel"]
