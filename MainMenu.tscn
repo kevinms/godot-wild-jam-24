@@ -133,6 +133,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Node2D" type="Node2D" parent="menu_1"]
+position = Vector2( 319.765, 56.1099 )
+scale = Vector2( 0.802513, 0.802513 )
+
+[node name="GWJ-WC-3" type="Sprite" parent="menu_1/Node2D"]
+position = Vector2( 134.979, 160.601 )
+scale = Vector2( 0.0625557, 0.0625557 )
+texture = ExtResource( 15 )
+
+[node name="GWJ-WC-2" type="Sprite" parent="menu_1/Node2D"]
+position = Vector2( 74.7974, 160.203 )
+scale = Vector2( 0.0625557, 0.0625557 )
+texture = ExtResource( 16 )
+
+[node name="Wildcards" type="Sprite" parent="menu_1/Node2D"]
+position = Vector2( 174.799, 97.354 )
+scale = Vector2( 0.850619, 0.850619 )
+texture = ExtResource( 14 )
+
 [node name="backstory_1" type="Control" parent="."]
 visible = false
 margin_right = 511.0
@@ -453,25 +472,6 @@ __meta__ = {
 stream = ExtResource( 13 )
 volume_db = -8.0
 autoplay = true
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 319.765, 56.1099 )
-scale = Vector2( 0.802513, 0.802513 )
-
-[node name="GWJ-WC-3" type="Sprite" parent="Node2D"]
-position = Vector2( 134.979, 160.601 )
-scale = Vector2( 0.0625557, 0.0625557 )
-texture = ExtResource( 15 )
-
-[node name="GWJ-WC-2" type="Sprite" parent="Node2D"]
-position = Vector2( 74.7974, 160.203 )
-scale = Vector2( 0.0625557, 0.0625557 )
-texture = ExtResource( 16 )
-
-[node name="Wildcards" type="Sprite" parent="Node2D"]
-position = Vector2( 174.799, 97.354 )
-scale = Vector2( 0.850619, 0.850619 )
-texture = ExtResource( 14 )
 [connection signal="pressed" from="menu_1/buttonGroup/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="menu_1/buttonGroup/LeaderboardButton" to="." method="_on_LeaderboardButton_pressed"]
 [connection signal="pressed" from="menu_1/buttonGroup/ExitButton" to="." method="_on_ExitButton_pressed"]
