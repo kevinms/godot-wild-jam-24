@@ -58,7 +58,7 @@ func hold():
 	if !lonely:
 		return
 	
-	Helper.notify("I'm here baby. You are so cute! Yes you are.")
+	Helper.notify("I'm here %s. You are so cute! Yes you are." % Helper.baby_name)
 	
 	lonely = false
 	set_state(State.OBSERVE)
@@ -79,29 +79,12 @@ func _on_PoopTimer_timeout():
 	reset_poop_timer()
 
 func _on_ConditionTimer_timeout():
-	# There is chance of pooping at nearly any time.
-#	if !poopy and !is_sleeping() and randf() < 0.1:
-#		poopy = true
-#		set_state(State.POOP)
-	
 	match state:
-		State.SLEEP:
-			pass
-#			# Chance something bad will happen.
-#			if randf() < 0.1:
-#				# Time to wake up and be unhappy.
-#				var coin = randf()
-#				if coin < 0.5:
-#					hungry = true
-#					set_state(State.CRY)
-#				else:
-#					poopy = true
-#					set_state(State.POOP)
 		State.OBSERVE:
 			var dist = distance_to_player()
 			if dist > 145:
 				lonely = true
-				Helper.notify("Baby is lonely.")
+				Helper.notify("%s is lonely." % Helper.baby_name)
 				set_state(State.CRY)
 	
 	if state != State.CRY:
@@ -139,7 +122,7 @@ func set_state(new_state):
 			$CryEffect.play()
 			$CryEffect.visible = true
 		State.SLEEP:
-			Helper.notify("Baby is asleep.")
+			Helper.notify("%s is asleep." % Helper.baby_name)
 			$SnoreAudio.play()
 			$SleepEffect.play()
 			$SleepEffect.visible = true
@@ -151,7 +134,7 @@ func set_state(new_state):
 func _on_PoopAudio_finished():
 	$StinkEffect.play()
 	$StinkEffect.visible = true
-	Helper.notify("Baby pooped.")
+	Helper.notify("%s pooped." % Helper.baby_name)
 	set_state(State.CRY)
 
 

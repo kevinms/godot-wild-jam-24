@@ -1,0 +1,288 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Furniture/Assets/dialogue-white.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/carlito/Carlito-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Furniture/Assets/computer-desk.png" type="Texture" id=3]
+[ext_resource path="res://Furniture/Assets/crib_bars.png" type="Texture" id=4]
+[ext_resource path="res://Furniture/Assets/frig.png" type="Texture" id=5]
+[ext_resource path="res://Furniture/Assets/bed-large.png" type="Texture" id=6]
+[ext_resource path="res://Furniture/Assets/crib_base.png" type="Texture" id=7]
+[ext_resource path="res://Furniture/Assets/highchair-back.png" type="Texture" id=8]
+[ext_resource path="res://Furniture/Assets/trash-can.png" type="Texture" id=9]
+[ext_resource path="res://Furniture/Assets/dinner-ware.png" type="Texture" id=10]
+[ext_resource path="res://Furniture/Assets/diaper-changing-station.png" type="Texture" id=11]
+[ext_resource path="res://Furniture/Assets/table.png" type="Texture" id=12]
+[ext_resource path="res://Furniture/Assets/diaper.png" type="Texture" id=13]
+[ext_resource path="res://Furniture/Assets/dinner-ware-dirty.png" type="Texture" id=14]
+[ext_resource path="res://Furniture/Assets/empty-bottle.png" type="Texture" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 7
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 9
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="HelpPanel" type="Node2D"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 1.0
+margin_top = 38.0
+margin_right = 324.0
+margin_bottom = 287.0
+texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Label" parent="NinePatchRect"]
+margin_left = 141.788
+margin_top = 6.2946
+margin_right = 181.788
+margin_bottom = 20.2946
+custom_fonts/font = SubResource( 1 )
+text = "Controls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="NinePatchRect"]
+position = Vector2( 106.211, 3.17839 )
+
+[node name="Actions" type="Label" parent="NinePatchRect/Node2D"]
+margin_left = 11.4023
+margin_top = 18.1277
+margin_right = 76.4023
+margin_bottom = 59.1277
+custom_fonts/font = SubResource( 2 )
+text = "Interact:
+Move:
+Exit minigames:"
+
+[node name="Keys" type="Label" parent="NinePatchRect/Node2D"]
+margin_left = 66.6835
+margin_top = 18.4084
+margin_right = 131.684
+margin_bottom = 59.4084
+custom_fonts/font = SubResource( 2 )
+text = "SPACE
+Arrows Keys
+ESC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tips" type="Label" parent="NinePatchRect"]
+margin_left = 150.109
+margin_top = 62.4954
+margin_right = 190.109
+margin_bottom = 76.4954
+custom_fonts/font = SubResource( 1 )
+text = "Tips"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Node2D" parent="NinePatchRect"]
+position = Vector2( 23, -11.75 )
+
+[node name="Bed" type="Sprite" parent="NinePatchRect/Items"]
+position = Vector2( 239.311, 163.293 )
+scale = Vector2( 0.484614, 0.484614 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="NinePatchRect/Items"]
+margin_left = 212.199
+margin_top = 182.496
+margin_right = 274.199
+margin_bottom = 199.496
+custom_fonts/font = SubResource( 4 )
+text = "Put yourself to sleep"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fridge" type="Sprite" parent="NinePatchRect/Items"]
+position = Vector2( 139.509, 99.6336 )
+scale = Vector2( 0.877232, 0.877232 )
+texture = ExtResource( 5 )
+
+[node name="Label2" type="Label" parent="NinePatchRect/Items"]
+margin_left = 127.432
+margin_top = 130.818
+margin_right = 189.432
+margin_bottom = 147.818
+custom_fonts/font = SubResource( 4 )
+text = "Get food"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Computer" type="Sprite" parent="NinePatchRect/Items"]
+position = Vector2( 238.944, 102.918 )
+scale = Vector2( 0.87723, 0.87723 )
+texture = ExtResource( 3 )
+
+[node name="Label3" type="Label" parent="NinePatchRect/Items"]
+margin_left = 205.923
+margin_top = 127.117
+margin_right = 267.923
+margin_bottom = 146.117
+custom_fonts/font = SubResource( 4 )
+text = "Develop Game
+(type code)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crib" type="Node2D" parent="NinePatchRect/Items"]
+position = Vector2( -23.378, 113.35 )
+
+[node name="crib_base" type="Sprite" parent="NinePatchRect/Items/Crib"]
+position = Vector2( 58.1262, 47.9503 )
+texture = ExtResource( 7 )
+
+[node name="crib_bars" type="Sprite" parent="NinePatchRect/Items/Crib/crib_base"]
+position = Vector2( -0.0261536, -2.01723 )
+texture = ExtResource( 4 )
+
+[node name="Label4" type="Label" parent="NinePatchRect/Items"]
+margin_left = 10.0645
+margin_top = 180.211
+margin_right = 72.0645
+margin_bottom = 197.211
+custom_fonts/font = SubResource( 4 )
+text = "Put Baby to sleep"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Highchair" type="Sprite" parent="NinePatchRect/Items"]
+position = Vector2( 27.1737, 210.503 )
+texture = ExtResource( 8 )
+
+[node name="Label5" type="Label" parent="NinePatchRect/Items"]
+margin_left = 20.785
+margin_top = 233.079
+margin_right = 82.785
+margin_bottom = 250.079
+custom_fonts/font = SubResource( 4 )
+text = "Feed Baby"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trashcan" type="Sprite" parent="NinePatchRect/Items"]
+position = Vector2( 127.991, 215.031 )
+texture = ExtResource( 9 )
+
+[node name="Bottle" type="Sprite" parent="NinePatchRect/Items/Trashcan"]
+position = Vector2( 27.4144, 5.33058 )
+texture = ExtResource( 15 )
+
+[node name="Diaper" type="Sprite" parent="NinePatchRect/Items/Trashcan"]
+position = Vector2( 47.9758, 7.04247 )
+texture = ExtResource( 13 )
+
+[node name="DirtyPlate" type="Sprite" parent="NinePatchRect/Items/Trashcan"]
+position = Vector2( 72.3226, 7.98369 )
+texture = ExtResource( 14 )
+
+[node name="Label6" type="Label" parent="NinePatchRect/Items"]
+margin_left = 136.619
+margin_top = 233.878
+margin_right = 198.619
+margin_bottom = 250.878
+custom_fonts/font = SubResource( 4 )
+text = "Throw away trash"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DinnerTable" type="Sprite" parent="NinePatchRect/Items"]
+position = Vector2( 139.801, 160.053 )
+scale = Vector2( 0.780769, 0.780769 )
+texture = ExtResource( 12 )
+
+[node name="Plate" type="Sprite" parent="NinePatchRect/Items/DinnerTable"]
+position = Vector2( -12.4123, -4.08789 )
+texture = ExtResource( 10 )
+
+[node name="Plate2" type="Sprite" parent="NinePatchRect/Items/DinnerTable"]
+position = Vector2( 13.5272, -4.31087 )
+texture = ExtResource( 10 )
+
+[node name="Label7" type="Label" parent="NinePatchRect/Items"]
+margin_left = 127.706
+margin_top = 183.552
+margin_right = 189.706
+margin_bottom = 200.552
+custom_fonts/font = SubResource( 4 )
+text = "Eat food"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiaperStation" type="Sprite" parent="NinePatchRect/Items"]
+position = Vector2( 36.1563, 99.9726 )
+scale = Vector2( 0.868461, 0.868461 )
+texture = ExtResource( 11 )
+
+[node name="Label8" type="Label" parent="NinePatchRect/Items"]
+margin_left = 14.4406
+margin_top = 127.981
+margin_right = 64.4406
+margin_bottom = 144.981
+custom_fonts/font = SubResource( 4 )
+text = "Change diapers"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+margin_left = 324.103
+margin_top = 243.434
+margin_right = 370.103
+margin_bottom = 258.434
+texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NinePatchRect2"]
+margin_left = 4.51059
+margin_top = 3.32506
+margin_right = 43.5106
+margin_bottom = 14.325
+custom_fonts/font = SubResource( 3 )
+text = "Press TAB"
+__meta__ = {
+"_edit_use_anchors_": false
+}

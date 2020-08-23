@@ -45,7 +45,7 @@ func remove_item() -> Node:
 	var item = stored_item
 	$ItemPosition.remove_child(stored_item)
 	stored_item = null
-	$DinnerWare.visible = true
+	$DinnerWare2.visible = true
 	return item
 
 func food_eaten():
@@ -56,8 +56,9 @@ func food_eaten():
 	$ItemPosition.add_child(trash)
 	stored_item = trash
 	Helper.trash_generated += 1
+	Helper.notify("Make sure to clean off the table.")
 	
-	$DinnerWare.visible = false
+	$DinnerWare2.visible = false
 	
 	Helper.player_hungriness = 0.0
 	Helper.pizza_eaten += 1
