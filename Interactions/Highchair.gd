@@ -103,6 +103,7 @@ func stop_minigame():
 	player.state = player.State.NORMAL
 	
 	minigame.stop()
+	animation.advance(0)
 	animation.play_backwards("StartFeedBabyMinigame")
 	
 	minigame.disconnect("player_won", self, "_on_Minigame_player_won")
