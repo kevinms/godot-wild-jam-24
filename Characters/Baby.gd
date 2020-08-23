@@ -79,24 +79,7 @@ func _on_PoopTimer_timeout():
 	reset_poop_timer()
 
 func _on_ConditionTimer_timeout():
-	# There is chance of pooping at nearly any time.
-#	if !poopy and !is_sleeping() and randf() < 0.1:
-#		poopy = true
-#		set_state(State.POOP)
-	
 	match state:
-		State.SLEEP:
-			pass
-#			# Chance something bad will happen.
-#			if randf() < 0.1:
-#				# Time to wake up and be unhappy.
-#				var coin = randf()
-#				if coin < 0.5:
-#					hungry = true
-#					set_state(State.CRY)
-#				else:
-#					poopy = true
-#					set_state(State.POOP)
 		State.OBSERVE:
 			var dist = distance_to_player()
 			if dist > 145:
