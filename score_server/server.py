@@ -28,6 +28,7 @@ class Index(tornado.web.RequestHandler):
         rdata["scores"] = rows
 
         conn.close()
+        print(rows)
         self.render("page.html", data=rdata)
         return
 

@@ -23,11 +23,11 @@
 	{% for index, s in enumerate(data["scores"]) %}
 	<tr>
 		<td>{{ index }}</td>
-		<td>{{ s.game_quality }}</td>
-		<td>{{ s.player_name }}</td>
-		<td>{{ s.spouse_name }}</td>
-		<td>{{ s.baby_name }}</td>
-		<td>{{ s.timestamp }}</td>
+		<td>{{ s["game_quality"] }}</td>
+		<td>{{ s["player_name"] }}</td>
+		<td>{{ s["spouse_name"] }}</td>
+		<td>{{ s["baby_name"] }}</td>
+		<td>{{ s["timestamp"] }}</td>
 	</tr>
 	{% end %}
 	</table>
