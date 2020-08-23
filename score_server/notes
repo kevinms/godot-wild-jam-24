@@ -7,4 +7,5 @@ sudo ufw allow 6680
 
 #in server directory
 sqlite3 score.db < schema.sql 
+sqlite3 score.db "PRAGMA journal_mode=WAL"
 ./server.py
