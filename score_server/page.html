@@ -1,0 +1,37 @@
+<html>
+	<head>
+<!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	</head>
+	<body>
+
+	<h1>Game Jam Simulator</h1>
+	<table class="table">
+		<tr>
+			<th>Rank</th>
+			<th>Game Quality</th>
+			<th>Player Name</th>
+			<th>Spouse Name</th>
+			<th>Baby Name</th>
+			<th>Upload Time</th>
+		</tr>
+	{% for index, s in enumerate(data["scores"]) %}
+	<tr>
+		<td>{{ index }}</td>
+		<td>{{ s.game_quality }}</td>
+		<td>{{ s.player_name }}</td>
+		<td>{{ s.spouse_name }}</td>
+		<td>{{ s.baby_name }}</td>
+		<td>{{ s.timestamp }}</td>
+	</tr>
+	{% end %}
+	</table>
+	<h3>Created for Godot Game Jam 24</h3>
+	<h3>Created by Kevin Smith and Karl Brewer</h3>
+	</body>
+</html>
