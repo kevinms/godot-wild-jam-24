@@ -631,7 +631,7 @@ position = Vector2( 233.242, 103.087 )
 position = Vector2( 316.225, -152.364 )
 
 [node name="bookshelf_flower4" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 451.71, -150.535 )
+position = Vector2( 420.369, -151.637 )
 
 [node name="crib" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 365.511, -102.766 )
@@ -641,6 +641,9 @@ position = Vector2( 145.212, 10.8169 )
 
 [node name="PlantSmall" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 255.025, -20.0661 )
+
+[node name="PlantSmall7" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 347.463, -46.0229 )
 
 [node name="PlantSmall5" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 38.7061, 31.3967 )
@@ -652,7 +655,7 @@ position = Vector2( 512.546, -43.8932 )
 position = Vector2( 324.382, 129.926 )
 
 [node name="TrashCan2" parent="YSort" instance=ExtResource( 31 )]
-position = Vector2( 428.338, -143.658 )
+position = Vector2( 446.292, -140.823 )
 
 [node name="PlantSmall3" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 15.7839, 154.923 )
@@ -669,6 +672,12 @@ position = Vector2( 191.304, -25.3761 )
 [node name="Lamp" parent="YSort/TableSmallFront" instance=ExtResource( 9 )]
 position = Vector2( 0, -14.4212 )
 
+[node name="TableSmallFront3" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 319.409, -55.3198 )
+
+[node name="Lamp" parent="YSort/TableSmallFront3" instance=ExtResource( 9 )]
+position = Vector2( 0, -14.4212 )
+
 [node name="TableSmallFront2" parent="YSort" instance=ExtResource( 17 )]
 position = Vector2( 95.7871, -25.5634 )
 
@@ -676,7 +685,7 @@ position = Vector2( 95.7871, -25.5634 )
 position = Vector2( -0.374573, -14.0466 )
 
 [node name="DiaperChangingStation" parent="YSort" instance=ExtResource( 20 )]
-position = Vector2( 371.24, -142.127 )
+position = Vector2( 375.492, -142.127 )
 
 [node name="GodotPicture" parent="YSort" instance=ExtResource( 22 )]
 position = Vector2( 43.2654, 129.302 )
@@ -698,6 +707,12 @@ position = Vector2( 62.7495, 130.336 )
 
 [node name="Stool" parent="YSort" instance=ExtResource( 26 )]
 position = Vector2( 404.085, 222.257 )
+
+[node name="Stool5" parent="YSort" instance=ExtResource( 26 )]
+position = Vector2( 350.317, -23.0087 )
+
+[node name="Stool6" parent="YSort" instance=ExtResource( 26 )]
+position = Vector2( 350.317, -2.61403 )
 
 [node name="Stool4" parent="YSort" instance=ExtResource( 26 )]
 position = Vector2( 62.7827, 12.7781 )
@@ -752,17 +767,6 @@ position = Vector2( 31.4985, 10.8652 )
 
 [node name="BathroomSink2" parent="YSort" instance=ExtResource( 41 )]
 position = Vector2( 514.236, 0.829536 )
-
-[node name="Label7" type="Label" parent="."]
-margin_left = 278.346
-margin_top = -41.3814
-margin_right = 385.346
-margin_bottom = -27.3814
-text = "Laundry"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 43 )
