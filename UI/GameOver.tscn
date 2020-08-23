@@ -151,6 +151,7 @@ __meta__ = {
 }
 
 [node name="StatNames" type="Label" parent="."]
+modulate = Color( 0.00784314, 0.752941, 0.615686, 1 )
 margin_left = 40.0315
 margin_top = 157.603
 margin_right = 186.031
@@ -158,7 +159,7 @@ margin_bottom = 230.603
 grow_horizontal = 2
 custom_fonts/font = SubResource( 3 )
 text = "Characters of code typed:
-Typing error rate:
+Typing error %:
 Trash produced:
 Trash disposed:"
 align = 2
@@ -167,9 +168,9 @@ __meta__ = {
 }
 
 [node name="StatValues" type="Label" parent="."]
-margin_left = 190.181
+margin_left = 194.15
 margin_top = 159.092
-margin_right = 251.181
+margin_right = 255.15
 margin_bottom = 216.092
 grow_horizontal = 2
 custom_fonts/font = SubResource( 3 )
@@ -182,6 +183,7 @@ __meta__ = {
 }
 
 [node name="StatNames2" type="Label" parent="."]
+modulate = Color( 0.607843, 0.611765, 0.905882, 1 )
 margin_left = 258.181
 margin_top = 158.982
 margin_right = 356.181
@@ -198,10 +200,10 @@ __meta__ = {
 }
 
 [node name="StatValues2" type="Label" parent="."]
-margin_left = 361.181
-margin_top = 157.982
-margin_right = 417.181
-margin_bottom = 214.982
+margin_left = 365.009
+margin_top = 158.824
+margin_right = 421.009
+margin_bottom = 215.824
 grow_horizontal = 2
 custom_fonts/font = SubResource( 3 )
 text = "365302

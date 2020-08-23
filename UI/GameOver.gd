@@ -13,8 +13,7 @@ func _on_request_completed(result, response_code, headers, body):
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene("res://MainMenu.tscn")
-	
-	#TODO: Update title to reflect reason.
+		
 	if Helper.player_won:
 		$Title.text = "Game jam entry completed!"
 	else:
