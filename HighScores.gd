@@ -14,3 +14,7 @@ func _on_request_completed(result, response_code, headers, body):
 		$Control/VBoxContainer.add_child(node)
 		node.set_owner(get_tree().get_edited_scene_root())
 		rank += 1
+
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://MainMenu.tscn")

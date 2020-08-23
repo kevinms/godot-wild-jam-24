@@ -3,7 +3,8 @@ extends Node2D
 
 func _ready():
 	$HTTPRequest.connect("request_completed", self, "_on_request_completed")
-	
+	if Helper.player_won == false:
+		$submit_high_scores.visible = false
 
 func _on_request_completed(result, response_code, headers, body):
 	get_tree().change_scene("res://HighScores.tscn")

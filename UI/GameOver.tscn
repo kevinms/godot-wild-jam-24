@@ -258,7 +258,7 @@ __meta__ = {
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="Button" type="Button" parent="."]
+[node name="submit_high_scores" type="Button" parent="."]
 margin_left = 170.528
 margin_top = 218.033
 margin_right = 345.528
@@ -268,4 +268,4 @@ text = "Submit High Scores"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="submit_high_scores" to="." method="_on_Button_pressed"]

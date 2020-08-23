@@ -18,6 +18,9 @@ __meta__ = {
 margin_right = 512.0
 margin_bottom = 288.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="title" type="Label" parent="Control"]
 margin_left = 153.379
@@ -40,3 +43,14 @@ __meta__ = {
 }
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 190.662
+margin_top = 231.249
+margin_right = 324.662
+margin_bottom = 251.249
+text = "Back to Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

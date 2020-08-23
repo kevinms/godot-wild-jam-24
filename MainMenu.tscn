@@ -82,16 +82,16 @@ __meta__ = {
 }
 
 [node name="buttonGroup" type="VBoxContainer" parent="menu_1"]
-margin_left = 200.807
-margin_top = 172.887
-margin_right = 308.807
-margin_bottom = 241.887
+margin_left = 203.0
+margin_top = 154.0
+margin_right = 309.0
+margin_bottom = 242.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NewGameButton" type="Button" parent="menu_1/buttonGroup"]
-margin_right = 108.0
+margin_right = 106.0
 margin_bottom = 22.0
 custom_fonts/font = ExtResource( 7 )
 text = "New Game"
@@ -100,9 +100,8 @@ __meta__ = {
 }
 
 [node name="LeaderboardButton" type="Button" parent="menu_1/buttonGroup"]
-visible = false
 margin_top = 26.0
-margin_right = 107.0
+margin_right = 106.0
 margin_bottom = 48.0
 custom_fonts/font = ExtResource( 7 )
 text = "Leader Board"
@@ -453,6 +452,7 @@ stream = ExtResource( 13 )
 volume_db = -8.0
 autoplay = true
 [connection signal="pressed" from="menu_1/buttonGroup/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="menu_1/buttonGroup/LeaderboardButton" to="." method="_on_LeaderboardButton_pressed"]
 [connection signal="pressed" from="backstory_1/backstoryContinue" to="." method="_on_backstoryContinue_pressed"]
 [connection signal="pressed" from="playerNaming/playerNameConfirm" to="." method="_on_playerNameConfirm_pressed"]
 [connection signal="pressed" from="spouseNaming/spouseNameConfirm" to="." method="_on_spouseNameConfirm_pressed"]

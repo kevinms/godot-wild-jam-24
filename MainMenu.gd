@@ -67,3 +67,7 @@ func _on_tutorialContinue_pressed():
 	Helper.baby_name = babyNameInput.text
 
 	get_tree().change_scene("res://HouseV2.tscn")
+
+
+func _on_LeaderboardButton_pressed():
+	get_tree().change_scene("res://HighScores.tscn")
