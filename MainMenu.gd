@@ -22,13 +22,9 @@ onready var playerNameInput = $playerNaming/playerNameEntry
 onready var spouseNameInput = $spouseNaming/spouseNameEntry
 onready var babyNameInput = $babyNaming/babyNameEntry
 
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-#	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _ready():
+	OS.window_maximized = true
 
 
 func _on_NewGameButton_pressed():
@@ -60,6 +56,8 @@ func _on_backstory2Continue_pressed():
 	backstory_2.visible = false
 	tutorial.visible = true
 	state = States.TUTORIAL
+	
+	get_tree().change_scene("res://HouseV2.tscn")
 
 func _on_tutorialContinue_pressed():
 	Helper.player_name = playerNameInput.text
