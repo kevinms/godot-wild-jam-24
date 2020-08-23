@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const ACCEL = 2000
 const MAX_SPEED = 200
-const MIN_SPEED = 100
+const MIN_SPEED = 75
 const FRICTION = 1200
 
 enum State {
