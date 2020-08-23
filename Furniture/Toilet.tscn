@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Furniture/Assets/toilet.png" type="Texture" id=1]
 [ext_resource path="res://Furniture/Toilet.gd" type="Script" id=2]
+[ext_resource path="res://SFX/flush.ogg" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -19,3 +20,6 @@ visible = false
 position = Vector2( 1.03008, -9.73901 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="FlushAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

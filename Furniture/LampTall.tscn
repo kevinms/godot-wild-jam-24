@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Furniture/Assets/lamp-tall.png" type="Texture" id=1]
 [ext_resource path="res://World/light-texture.png" type="Texture" id=2]
 [ext_resource path="res://Interactions/ToggleLight.gd" type="Script" id=3]
+[ext_resource path="res://SFX/light-switch.ogg" type="AudioStream" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.25
@@ -27,3 +28,6 @@ position = Vector2( 1.01998, -0.296242 )
 scale = Vector2( 1.50708, 1.1306 )
 texture = ExtResource( 2 )
 energy = 0.7
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
