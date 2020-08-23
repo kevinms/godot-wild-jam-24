@@ -1,0 +1,11 @@
+
+#Steps to run server
+python3 -m venv godot_score_server_venv
+source ./godot_score_server_venv/bin/activate
+pip3 install tornado
+sudo ufw allow 6680
+
+#in server directory
+sqlite3 score.db < schema.sql 
+sqlite3 score.db "PRAGMA journal_mode=WAL"
+./server.py

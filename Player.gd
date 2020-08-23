@@ -80,7 +80,7 @@ func store_item(object):
 		item.position = position + Vector2.DOWN
 	
 	add_child(object)
-	object.position = Vector2.ZERO
+	object.position = Vector2.UP * 3.0
 	held_object = object
 	
 	if object.is_in_group("baby"):
