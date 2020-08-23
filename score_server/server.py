@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sqlite3
 import json
+import hashlib
 
 #Tornado Libraries
 import tornado.ioloop
@@ -38,12 +39,12 @@ class NewScore(tornado.web.RequestHandler):
         rdata["scores"] = []
         data = json.loads(self.request.body.decode('utf-8'))
 
-
+        remote_ip = str(self.request.remote_ip)
         conn = sqlite3.connect("score.db")
         conn.row_factory = dict_factory
         cur = conn.cursor()
-        u = (data["player_name"], data["spouse_name"], data["baby_name"], data["game_quality"])
-        cur.execute("insert into scores (player_name, spouse_name, baby_name, game_quality) values (?,?,?,?)", u)
+        u = (data["player_name"], data["spouse_name"], data["baby_name"], data["game_quality"], str(hashlib.md5(remote_ip.encode('utf-8')).hexdigest()) )
+        cur.execute("insert into scores (player_name, spouse_name, baby_name, game_quality, origin) values (?,?,?,?, ?)", u)
         conn.commit()
         conn.close()
 

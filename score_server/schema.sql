@@ -6,5 +6,7 @@ create table if not exists scores (
 	baby_name text,
 
 	game_quality real,
+
+	origin text,
 	timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 );
