@@ -57,13 +57,13 @@ func _on_backstory2Continue_pressed():
 	tutorial.visible = true
 	state = States.TUTORIAL
 	
-	get_tree().change_scene("res://HouseV2.tscn")
-
-func _on_tutorialContinue_pressed():
 	Helper.player_name = playerNameInput.text
 	Helper.spouse_name = spouseNameInput.text
 	Helper.baby_name = babyNameInput.text
+	
+	get_tree().change_scene("res://HouseV2.tscn")
 
+func _on_tutorialContinue_pressed():
 	get_tree().change_scene("res://HouseV2.tscn")
 
 
