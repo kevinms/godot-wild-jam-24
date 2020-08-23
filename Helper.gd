@@ -99,6 +99,7 @@ var baby_bottles_used: int
 var pizza_eaten: int
 
 var player_won = false
+var game_over_reason = "You lost..."
 var game_over_triggered = false
 
 func reset():
@@ -120,6 +121,7 @@ func reset():
 	trash_generated = 0
 	trash_disposed = 0
 	
+	game_over_reason = "You lost..."
 	game_over_triggered = false
 	player_won = false
 
@@ -146,6 +148,7 @@ func trigger_game_over(reason: String, won: bool):
 		print("Game is already over.")
 		return
 	game_over_triggered = true
+	game_over_reason = reason
 	player_won = won
 	
 	# Set GameOverReason scene text.
