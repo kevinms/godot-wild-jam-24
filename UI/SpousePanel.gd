@@ -53,4 +53,4 @@ func _on_Timer_timeout():
 
 func _on_SpouseLeavingTime_timeout():
 	#Helper.notify("%s has left you." % Helper.spouse_name)
-	Helper.trigger_game_over("%s left you and took %s." % [Helper.spouse_name, Helper.baby_name])
+	Helper.trigger_game_over("%s left you and took %s." % [Helper.spouse_name, Helper.baby_name], false)

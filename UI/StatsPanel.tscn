@@ -31,7 +31,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "pulse"
 length = 0.4
 loop = true
@@ -48,7 +48,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.34801, 1.34801 ), Vector2( 1.62926, 1.62926 ), Vector2( 1.34801, 1.34801 ) ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 6
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -365,12 +365,12 @@ __meta__ = {
 
 [node name="PoopEmoji" type="Sprite" parent="BabyPanel"]
 position = Vector2( 17.9702, 34.7997 )
-scale = Vector2( 1.59924, 1.59924 )
+scale = Vector2( 1.56144, 1.56144 )
 texture = ExtResource( 4 )
 
 [node name="PoopAnimation" type="AnimationPlayer" parent="BabyPanel"]
 autoplay = "pulse"
-anims/pulse = SubResource( 5 )
+anims/pulse = SubResource( 4 )
 
 [node name="SpousePanel" type="Node2D" parent="."]
 position = Vector2( 329.209, 0.102045 )
@@ -431,7 +431,7 @@ margin_left = 0.326996
 margin_top = 30.596
 margin_right = 103.327
 margin_bottom = 38.596
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Unhappy with 3 pieces of trash.
 Unhappy with baby crying."
 align = 1
@@ -539,8 +539,8 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="TimePanel/Timer" to="TimePanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="BabyPanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimePanel/Timer" to="TimePanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="SpousePanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="YourPanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="YourPanel/StarvationTimer" to="YourPanel" method="_on_StarvationTimer_timeout"]

@@ -49,4 +49,4 @@ func _on_Timer_timeout():
 
 
 func _on_SocialServicesTimer_timeout():
-	Helper.trigger_game_over("Social services came and took %s." % [Helper.baby_name])
+	Helper.trigger_game_over("Social services came and took %s." % [Helper.baby_name], false)
