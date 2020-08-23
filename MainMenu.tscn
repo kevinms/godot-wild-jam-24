@@ -81,10 +81,10 @@ __meta__ = {
 }
 
 [node name="buttonGroup" type="VBoxContainer" parent="menu_1"]
-margin_left = 199.472
-margin_top = 138.181
-margin_right = 307.472
-margin_bottom = 207.181
+margin_left = 200.807
+margin_top = 172.887
+margin_right = 308.807
+margin_bottom = 241.887
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -99,6 +99,7 @@ __meta__ = {
 }
 
 [node name="LeaderboardButton" type="Button" parent="menu_1/buttonGroup"]
+visible = false
 margin_top = 26.0
 margin_right = 107.0
 margin_bottom = 48.0
@@ -109,11 +110,23 @@ __meta__ = {
 }
 
 [node name="CreditsButton" type="Button" parent="menu_1/buttonGroup"]
+visible = false
 margin_top = 52.0
 margin_right = 107.0
 margin_bottom = 74.0
 custom_fonts/font = ExtResource( 7 )
 text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="menu_1"]
+margin_left = 87.211
+margin_top = 226.24
+margin_right = 435.211
+margin_bottom = 252.24
+custom_fonts/font = ExtResource( 6 )
+text = "Made by: Kevin Smith and Karl Brewer"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -138,13 +151,12 @@ __meta__ = {
 }
 
 [node name="backstoryTitle" type="Label" parent="backstory_1"]
-margin_left = 35.3952
-margin_top = 25.0127
-margin_right = 477.395
-margin_bottom = 130.013
+margin_left = 37.3975
+margin_top = 43.033
+margin_right = 479.397
+margin_bottom = 148.033
 custom_fonts/font = ExtResource( 5 )
-text = "Welcome to
- Game Jam Simulator."
+text = "Welcome"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -152,9 +164,9 @@ __meta__ = {
 
 [node name="backstoryText" type="Label" parent="backstory_1"]
 margin_left = 64.37
-margin_top = 119.753
+margin_top = 107.739
 margin_right = 464.37
-margin_bottom = 225.753
+margin_bottom = 213.739
 custom_fonts/font = ExtResource( 6 )
 text = "The year is 2020. The world is in lock-down because of a pandemic. You are an aspiring game developer who enjoys entering game jams."
 autowrap = true
@@ -342,12 +354,12 @@ __meta__ = {
 }
 
 [node name="backstory2Text" type="Label" parent="backstory_2"]
-margin_left = 44.0
-margin_top = 34.0
-margin_right = 476.0
-margin_bottom = 206.0
+margin_left = 43.3326
+margin_top = 40.6742
+margin_right = 475.333
+margin_bottom = 212.674
 custom_fonts/font = ExtResource( 6 )
-text = "To hone your skills as a game developer, you've decided to enter the Godot Wild Jam 24! This is going to be a fun 9 day journey of creativity and exploration. Its also going to be a balancing act keeping your spouse and baby happy...."
+text = "You've entered the Godot Wild Jam 24! There are 9 days to complete a game. Keep your spouse and baby happy while also creating the best game you can."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
