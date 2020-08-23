@@ -11,7 +11,7 @@ var minigame_active = false
 
 onready var player = Helper.get_player()
 onready var minigame = get_tree().get_root().find_node("FeedBabyMinigame", true, false)
-onready var animation: AnimationPlayer = get_tree().get_root().find_node("StartMinigameAnimation", true, false)
+onready var animation: AnimationPlayer = get_tree().get_root().find_node("FeedBabyMinigameAnimation", true, false)
 
 onready var empty_bottle_scene = load("res://Furniture/EmptyBottle.tscn")
 

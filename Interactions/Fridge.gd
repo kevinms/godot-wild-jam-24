@@ -4,7 +4,7 @@ var minigame_active = false
 
 onready var player = Helper.get_player()
 onready var minigame = get_tree().get_root().find_node("FridgeMinigame", true, false)
-onready var animation: AnimationPlayer = get_tree().get_root().find_node("StartMinigameAnimation", true, false)
+onready var animation: AnimationPlayer = get_tree().get_root().find_node("FridgeMinigameAnimation", true, false)
 
 onready var pizza_scene = load("res://Furniture/Pizza.tscn")
 onready var babybottle_scene = load("res://Furniture/BabyBottle.tscn")

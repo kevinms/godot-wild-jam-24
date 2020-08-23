@@ -10,7 +10,7 @@ var item_removable = false
 
 onready var player = Helper.get_player()
 onready var minigame = get_tree().get_root().find_node("TrashThrowing", true, false)
-onready var animation: AnimationPlayer = get_tree().get_root().find_node("StartMinigameAnimation", true, false)
+onready var animation: AnimationPlayer = get_tree().get_root().find_node("TrashThrowingAnimation", true, false)
 
 #func interact(gui, actor):
 #	start_minigame()

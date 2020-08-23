@@ -494,10 +494,10 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="TimePanel/Timer" to="YourPanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimePanel/Timer" to="TimePanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="BabyPanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimePanel/Timer" to="SpousePanel" method="_on_Timer_timeout"]
-[connection signal="timeout" from="TimePanel/Timer" to="TimePanel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimePanel/Timer" to="YourPanel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="YourPanel/StarvationTimer" to="YourPanel" method="_on_StarvationTimer_timeout"]
 [connection signal="timeout" from="BabyPanel/SocialServicesTimer" to="BabyPanel" method="_on_SocialServicesTimer_timeout"]
 [connection signal="timeout" from="SpousePanel/SpouseLeavingTime" to="SpousePanel" method="_on_SpouseLeavingTime_timeout"]

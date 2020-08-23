@@ -149,7 +149,7 @@ func trigger_game_over(reason: String):
 	reason_node.text = reason
 	
 	# Start the game over animation.
-	var animation: AnimationPlayer = get_tree().get_root().find_node("StartMinigameAnimation", true, false)
+	var animation: AnimationPlayer = get_tree().get_root().find_node("GameOverReasonAnimation", true, false)
 	animation.play("GameOver")
 	
 	game_over_triggered = true
