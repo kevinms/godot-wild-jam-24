@@ -24,7 +24,7 @@ class Index(tornado.web.RequestHandler):
         conn = sqlite3.connect("score.db")
         conn.row_factory = dict_factory
         cur = conn.cursor()
-        cur.execute("select * from scores order by game_quality limit 5000")
+        cur.execute("select * from scores order by game_quality desc limit 5000")
         rows = cur.fetchall()
         rdata["scores"] = rows
 
