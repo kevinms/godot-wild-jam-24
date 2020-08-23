@@ -16,6 +16,8 @@ var elapsed_time: float
 var active: bool
 var which_item: String
 
+onready var initial_pos = $Player.position
+
 var game_over: bool
 signal player_won
 
@@ -28,6 +30,9 @@ func start():
 	elapsed_time = 0
 	which_item = ""
 	game_over = false
+	
+	# Reset player position
+	$Player.position = initial_pos
 	
 	$Pizza/Sprite.modulate = Color("#ffffff")
 	$BabyBottle/Sprite.modulate = Color("#ffffff")
