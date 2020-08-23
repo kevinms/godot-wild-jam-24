@@ -2,7 +2,7 @@ extends Node2D
 
 onready var initial_arrow_rotation = $ArrowPivot.rotation
 onready var initial_can_position = $Can.position
-const arrow_rotation_speed = PI/200
+const arrow_rotation_speed = PI*0.6
 var arrow_size = 1.0
 
 const kick_strength = 175.0
@@ -50,21 +50,21 @@ func _process(delta):
 		return
 
 	if !kicked:
-		charge_kick()
+		charge_kick(delta)
 
-func charge_kick():
+func charge_kick(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector = input_vector.normalized()
 	
 	# Rotate arrow
 	if input_vector.x > 0:
-		$ArrowPivot.rotate(arrow_rotation_speed)
+		$ArrowPivot.rotate(arrow_rotation_speed * delta)
 	if input_vector.x < 0:
-		$ArrowPivot.rotate(-arrow_rotation_speed)
+		$ArrowPivot.rotate(-arrow_rotation_speed * delta)
 	
 	if Input.is_action_pressed("ui_accept"):
-		arrow_size = min(arrow_size+0.005, 2.0)
+		arrow_size = min(arrow_size+(0.9*delta), 2.0)
 		$ArrowPivot.scale = Vector2(arrow_size, arrow_size)
 	
 	if Input.is_action_just_released("ui_accept"):
